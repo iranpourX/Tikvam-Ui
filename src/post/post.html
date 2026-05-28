@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./../assets/css/output.css" rel="stylesheet">
+    <title>ثبت آگهی</title>
+</head>
+<body class="bg-white text-gray-800" dir="rtl">
+
+<nav class="bg-blue-50 shadow-sm px-8 py-3">
+    <div class="container mx-auto">
+        <div class="flex flex-row justify-between items-center">
+
+            <div class="flex items-center gap-2 text-blue-600 font-bold text-lg">وامجو</div>
+
+            <ul class="flex flex-row justify-center items-center gap-8 text-base font-semibold text-gray-600">
+                <li class="flex">
+                    <a href="./../loan/loan.html" class="px-4 py-2.5 rounded-2xl">وام ها</a>
+                </li>
+                <li class="flex">
+                    <a href="./../request/request.html" class="px-4 py-2.5 rounded-2xl">درخواست وام</a>
+                </li>
+                <li class="flex">
+                    <a href="post.html" class="px-4 py-2.5 rounded-2xl selected">ثبت آگهی</a>
+                </li>
+            </ul>
+
+            <div class="flex gap-2">
+                <button class="btn text-sm">ورود / ثبت‌نام</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="bg-blue-50 py-12 text-center">
+    <h1 class="text-4xl font-semibold text-blue-800 mb-4">ثبت آگهی فروش امتیاز</h1>
+    <p class="text-xl font-normal text-blue-600">درخواست خود را ثبت کنید تا فروشندگان مناسب با شما تماس بگیرند</p>
+</div>
+
+<main class="container mx-auto p-6 my-16">
+    <div class="relative flex items-center justify-between">
+        <div class="absolute top-5 left-4 right-4 h-1 bg-gray-200 -translate-y-1/2 z-0"></div>
+        <div class="absolute w-1/2 top-5 left-8 right-4 h-1 bg-blue-600 -translate-y-1/2 z-0"></div>
+        <div class="relative z-10 flex flex-col items-start">
+            <div class="size-10 rounded-full bg-blue-600 flex items-center justify-center mb-4 ring-4 ring-gray-100">
+                <span class="size-4 bg-gray-100 rounded-full"></span>
+            </div>
+            <p class="text-base font-semibold text-blue-600">اطلاعات وام</p>
+            <p class="text-sm text-blue-400">تکمیل شده</p>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center">
+            <div class="size-10 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                <span class="size-4 bg-white rounded-full"></span>
+            </div>
+            <p class="text-base font-semibold text-gray-600">شرایط انتقال</p>
+            <p class="text-sm text-gray-400">در حال انجام</p>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-end">
+            <div class="size-10 rounded-full bg-gray-100 flex items-center justify-center mb-4">
+                <span class="size-4 bg-white rounded-full"></span>
+            </div>
+            <p class="text-base font-semibold text-gray-600">مرحله سوم</p>
+            <p class="text-sm text-gray-400">در انتظار</p>
+        </div>
+    </div>
+
+    <br>
+    <br>
+
+    <div class="bg-white rounded-lg shadow-lg p-8">
+
+        <div class="mb-6">
+            <label for="bank" class="mylabel">بانک</label>
+            <select id="bank" class="myselect">
+                <option>انتخاب کنید</option>
+                <option>بانک ملی</option>
+                <option>بانک ملت</option>
+                <option>بانک صادرات</option>
+                <option>بانک تجارت</option>
+            </select>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div>
+                <label for="ghest" class="mylabel max-md:text-sm!">مبلغ اقساط باقیمانده (تومان)</label>
+                <input
+                        id="ghest"
+                        oninput="formatNumberWithCommas(this)"
+                        type="tel"
+                        placeholder=""
+                        class="myinput"
+                />
+            </div>
+            <div>
+                <label for="vam" class="mylabel max-md:text-sm!">مبلغ کل وام (تومان)</label>
+                <input
+                        id="vam"
+                        oninput="formatNumberWithCommas(this)"
+                        type="text"
+                        placeholder=""
+                        class="myinput"
+                />
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div>
+                <label for="jjg" class="mylabel max-md:text-sm!">تعداد اقساط پرداخت شده</label>
+                <select id="jjg" class="myselect">
+                    <option>انتخاب کنید</option>
+                    <option>۱ قسط</option>
+                    <option>۲ قسط</option>
+                    <option>۳ قسط</option>
+                    <option>۶ قسط</option>
+                    <option>۱۲ قسط</option>
+                    <option>۲۴ قسط</option>
+                </select>
+            </div>
+            <div>
+                <label for="azizi" class="mylabel max-md:text-sm!">تعداد کل اقساط</label>
+                <select id="azizi" class="myselect">
+                    <option>انتخاب کنید</option>
+                    <option>۱۲ ماه</option>
+                    <option>۲۴ ماه</option>
+                    <option>۳۶ ماه</option>
+                    <option>۴۸ ماه</option>
+                    <option>۶۰ ماه</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <label for="choban" class="mylabel">نوع تضمین</label>
+            <select id="choban" class="myselect">
+                <option>انتخاب کنید</option>
+                <option>وثیقه ملکی</option>
+                <option>ضامن</option>
+                <option>چک</option>
+                <option>بدون وثیقه</option>
+            </select>
+        </div>
+
+        <div class="mb-6">
+            <label for="expline" class="mylabel">توضیحات</label>
+            <textarea
+                    id="expline"
+                    rows="5"
+                    class="myinput"
+                    placeholder="توضیحات تکمیلی خود را وارد کنید..."></textarea>
+        </div>
+
+        <div class="mb-6">
+            <label class="flex items-center gap-2">
+                <input type="checkbox" class="mycheckbox"/> نمونه چک باکس</label>
+        </div>
+
+        <a href="post-2.html" class="btn w-full py-4!">
+            مرحله بعد
+        </a>
+
+    </div>
+
+</main>
+
+<div class="bg-gray-800 mt-32 px-8 relative">
+    <div class="container bg-gray-50 shadow-xl mx-auto relative bottom-25 p-16 rounded-2xl flex items-center justify-between">
+        <div class="flex flex-col items-start">
+            <h3 class="text-3xl font-bold mb-2">قصد فروش امتیاز خود را دارید؟</h3>
+            <p class="text-gray-400 font-normal text-lg">با ثبت آگهی وام، کارشناسان وامجو در اولین فرصت شما را به
+                فروشندگان مطمئن
+                وصل خواهند کرد</p>
+        </div>
+        <button class="btn text-sm whitespace-nowrap">ثبت آگهی</button>
+    </div>
+</div>
+
+<footer class="bg-gray-800 text-gray-400 text-base px-8 py-10">
+    <div class="container mx-auto grid grid-cols-5 gap-8">
+        <div class="col-span-2">
+            <div class="text-white font-bold text-2xl mb-3 flex items-center gap-1">
+                وامجو
+            </div>
+            <p class="text-lg">پلتفرم امن و شفاف برای خرید و فروش امتیاز وام و انتقال وام بانکی</p>
+        </div>
+        <div class="col-span-1">
+            <div class="text-white font-semibold mb-3">دسترسی سریع</div>
+            <ul class="space-y-2 text-xs">
+                <li><a href="#" class="hover:text-white">مشاهده وام‌ها</a></li>
+                <li><a href="#" class="hover:text-white">درخواست وام</a></li>
+                <li><a href="#" class="hover:text-white">ثبت آگهی</a></li>
+            </ul>
+        </div>
+        <div class="col-span-1">
+            <div class="text-white font-semibold mb-3">راهنما</div>
+            <ul class="space-y-2 text-xs">
+                <li><a href="#" class="hover:text-white">نحوه خرید وام</a></li>
+                <li><a href="#" class="hover:text-white">نحوه فروش وام</a></li>
+                <li><a href="#" class="hover:text-white">سوالات متداول</a></li>
+                <li><a href="#" class="hover:text-white">قوانین و مقررات</a></li>
+            </ul>
+        </div>
+        <div class="col-span-1">
+            <div class="text-white font-semibold mb-3">تماس با ما</div>
+            <ul class="space-y-2 text-xs">
+                <li>تلفن: ۰۲۱-۸۰۵۷۴۵۶۳۴۴۱</li>
+                <li>ایمیل: info@vamjoo.com</li>
+                <li>پشتیبانی: ۲۴/۷</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container mx-auto border-t border-gray-700 mt-8 pt-8 text-center text-sm">
+        تمامی حقوق محفوظ است © ۱۴۰۵ وامجو
+    </div>
+</footer>
+
+<script>
+    function formatNumberWithCommas(input) {
+        let value = input.value.replace(/\D/g, '');
+        value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        input.value = value;
+    }
+</script>
+</body>
+</html>

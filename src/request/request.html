@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./../assets/css/output.css" rel="stylesheet">
+    <title>ثبت آگهی</title>
+</head>
+<body class="bg-white text-gray-800" dir="rtl">
+
+<nav class="bg-blue-50 px-8 py-4.5">
+    <div class="container mx-auto">
+        <div class="flex flex-row justify-between items-center">
+
+            <div class="flex items-center gap-2 text-blue-600 font-bold text-2xl">وامجو</div>
+
+            <ul class="flex flex-row justify-center items-center gap-8 text-base font-semibold text-gray-600">
+                <li class="flex">
+                    <a href="./../loan/loan.html" class="px-4 py-2.5 rounded-2xl">وام ها</a>
+                </li>
+                <li class="flex">
+                    <a href="request.html" class="px-4 py-2.5 rounded-2xl selected">درخواست وام</a>
+                </li>
+                <li class="flex">
+                    <a href="./../post/post.html" class="px-4 py-2.5 rounded-2xl">ثبت آگهی</a>
+                </li>
+            </ul>
+
+            <div class="flex gap-2">
+                <button class="btn text-sm">ورود / ثبت‌نام</button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="bg-blue-50 py-12 text-center">
+    <h1 class="text-4xl font-semibold text-blue-800 mb-4">به دنبال وام مناسب هستید؟</h1>
+    <p class="text-xl font-normal text-blue-600">درخواست خود را ثبت کنید تا فروشندگان مناسب با شما تماس بگیرند</p>
+</div>
+
+<main class="container mx-auto p-6">
+
+    <div class="px-6 py-8 bg-white rounded-lg shadow">
+        <div class="mb-8 flex items-start justify-start gap-4 border-2 border-green-400 rounded-lg p-4 bg-green-100">
+            <div class="flex flex-col">
+                <svg class="size-6 text-green-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path fill="currentColor"
+                          d="M256.1 0c4.6 0 9.2 1 13.3 2.9L457.8 82.8c22 9.3 38.4 31 38.3 57.2-.5 99.2-41.3 280.7-213.6 363.2-16.7 8-36.1 8-52.7 0-172.4-82.5-213.2-263.9-213.7-363.2-.1-26.2 16.3-47.9 38.3-57.2L242.7 2.9C246.8 1 251.4 0 256.1 0zM73.1 127c-5.9 2.5-9.1 7.7-9 12.7 .5 91.4 38.4 249.3 186.4 320.1 3.6 1.7 7.8 1.7 11.3 0 148-70.8 185.9-228.7 186.3-320.1 0-5-3.1-10.2-9-12.7l-183-77.6-183 77.6zM256 368a32 32 0 1 1 0-64 32 32 0 1 1 0 64zm0-256c18.2 0 32.7 15.5 31.4 33.7l-7.4 104c-.9 12.6-11.4 22.3-23.9 22.3-12.6 0-23-9.7-23.9-22.3l-7.4-104C223.4 127.5 237.8 112 256 112z"/>
+                </svg>
+            </div>
+            <div class="flex flex-col gap-1 items-start">
+                <span class="text-green-700 text-sm font-semibold">حفظ حریم خصوصی</span>
+                <span class="text-green-500 text-sm font-normal">اطلاعات شما محرمانه است و فقط با فروشندگان تایید شده که وام مطابق با نیاز شما دارند، به اشتراک گذاشته می‌شود.</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div>
+                <label for="name" class="mylabel">نام و نام خانوادگی</label>
+                <input
+                        id="name"
+                        type="text"
+                        placeholder=""
+                        class="myinput"
+                />
+            </div>
+            <div>
+                <label for="phone" class="mylabel">شماره تماس</label>
+                <input
+                        id="phone"
+                        type="text"
+                        placeholder=""
+                        class="myinput"
+                />
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-6">
+            <div>
+                <label for="vam" class="mylabel">مبلغ مورد نیاز</label>
+                <input
+                        id="vam"
+                        oninput="formatNumberWithCommas(this)"
+                        type="tel"
+                        placeholder="تومان"
+                        class="myinput"
+                />
+            </div>
+            <div>
+                <label for="ghest" class="mylabel">مدت بازپرداخت موردنیاز</label>
+                <input
+                        id="ghest"
+                        type="text"
+                        placeholder="به ماه"
+                        class="myinput"
+                />
+            </div>
+        </div>
+
+
+        <div class="mb-6">
+            <label for="bank" class="mylabel">بانک</label>
+            <select id="bank" class="myselect">
+                <option>انتخاب کنید</option>
+                <option>بانک ملی</option>
+                <option>بانک ملت</option>
+                <option>بانک صادرات</option>
+                <option>بانک تجارت</option>
+            </select>
+        </div>
+
+        <div class="mb-6">
+            <label for="city" class="mylabel">شهر محل سکونت</label>
+            <input
+                    id="city"
+                    type="text"
+                    placeholder=""
+                    class="myinput"
+            />
+        </div>
+
+        <!-- Description -->
+        <div class="mb-6">
+            <label for="expline" class="mylabel">توضیحات</label>
+            <textarea
+                    id="expline"
+                    rows="5"
+                    class="myinput"
+                    placeholder="توضیحات تکمیلی خود را وارد کنید..."></textarea>
+        </div>
+
+        <div class="mb-6">
+            <label class="flex items-center gap-2">
+                <input type="checkbox" class="mycheckbox"/> نمونه چک باکس</label>
+        </div>
+
+        <!-- Submit Button -->
+        <button class="btn w-full py-4!">
+            ثبت درخواست
+        </button>
+
+    </div>
+
+    <div class="text-center py-4">
+        <h1 class="text-4xl font-semibold text-gray-800">چگونه کار می‌کند؟</h1>
+    </div>
+
+    <div class="container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white border border-gray-100 rounded-lg p-8 text-right shadow-lg hover:shadow-xl transition-shadow">
+                <div class="flex justify-start items-center mb-6">
+                    <div class="bg-blue-600 p-4 rounded-lg flex items-center justify-center">
+                        <svg class="size-8 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path fill="currentColor"
+                                  d="M441 58.9L453.1 71c9.4 9.4 9.4 24.6 0 33.9L424 134.1 377.9 88 407 58.9c9.4-9.4 24.6-9.4 33.9 0zM209.8 256.2L344 121.9 390.1 168 255.8 302.2c-2.9 2.9-6.5 5-10.4 6.1l-58.5 16.7 16.7-58.5c1.1-3.9 3.2-7.5 6.1-10.4zM373.1 25L175.8 222.2c-8.7 8.7-15 19.4-18.3 31.1l-28.6 100c-2.4 8.4-.1 17.4 6.1 23.6s15.2 8.5 23.6 6.1l100-28.6c11.8-3.4 22.5-9.7 31.1-18.3L487 138.9c28.1-28.1 28.1-73.7 0-101.8L474.9 25C446.8-3.1 401.2-3.1 373.1 25zM88 64C39.4 64 0 103.4 0 152L0 424c0 48.6 39.4 88 88 88l272 0c48.6 0 88-39.4 88-88l0-112c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 112c0 22.1-17.9 40-40 40L88 464c-22.1 0-40-17.9-40-40l0-272c0-22.1 17.9-40 40-40l112 0c13.3 0 24-10.7 24-24s-10.7-24-24-24L88 64z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">ثبت درخواست</h3>
+                <p class="text-gray-600 leading-relaxed">فرم نیاز را پر کنید و نیاز خود را به طور دقیق مشخص کنید</p>
+            </div>
+
+            <div class="bg-white border border-gray-100 rounded-lg p-8 text-right shadow-lg hover:shadow-xl transition-shadow">
+                <div class="flex justify-start items-center mb-6">
+                    <div class="bg-blue-600 p-4 rounded-lg flex items-center justify-center">
+                        <svg class="size-8 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                            <path fill="currentColor"
+                                  d="M76.2 258.7c6.1-15.2 4-32.6-5.6-45.9-14.5-20.1-22.6-43.7-22.6-68.8 0-66.8 60.5-128 144-128s144 61.2 144 128-60.5 128-144 128c-15.9 0-31.1-2.3-45.3-6.5-10.3-3.1-21.4-2.5-31.4 1.5l-50.4 20.2 11.4-28.5zM0 144c0 35.8 11.6 69.1 31.7 96.8L1.9 315.2c-1.3 3.2-1.9 6.6-1.9 10 0 14.8 12 26.8 26.8 26.8 3.4 0 6.8-.7 10-1.9l96.3-38.5c18.6 5.5 38.4 8.4 58.9 8.4 106 0 192-78.8 192-176S298-32 192-32 0 46.8 0 144zM384 512c20.6 0 40.3-3 58.9-8.4l96.3 38.5c3.2 1.3 6.6 1.9 10 1.9 14.8 0 26.8-12 26.8-26.8 0-3.4-.7-6.8-1.9-10l-29.7-74.4c20-27.8 31.7-61.1 31.7-96.8 0-82.4-61.7-151.5-145-170.7-1.6 16.3-5.1 31.9-10.1 46.9 63.9 14.8 107.2 67.3 107.2 123.9 0 25.1-8.1 48.7-22.6 68.8-9.6 13.3-11.7 30.6-5.6 45.9l11.4 28.5-50.4-20.2c-10-4-21.1-4.5-31.4-1.5-14.2 4.2-29.4 6.5-45.3 6.5-72.2 0-127.1-45.7-140.7-101.2-15.6 3.2-31.7 5-48.1 5.2 16.4 81.9 94.7 144 188.8 144zM167.2 93.8c3.5-10.4 13.3-17.8 24.8-17.8 14.4 0 26.1 11.7 26.1 26.1 0 7.8-2.8 12.5-6.3 15.9-4 3.9-9.5 6.7-14.8 8.5-12.7 4.2-25 16.4-25 33.5 0 11 9 20 20 20 9.8 0 17.9-7 19.6-16.2 16.4-5.9 46.5-22.4 46.5-61.6 0-36.5-29.6-66.1-66.1-66.1-29.2 0-54 18.9-62.7 45.2-3.5 10.5 2.2 21.8 12.6 25.3s21.8-2.2 25.3-12.6zM192 248a24 24 0 1 0 0-48 24 24 0 1 0 0 48zm259.5 56.6c5.6-9 2.9-20.8-6.1-26.5s-20.8-2.9-26.5 6.1l-49.2 78.7-21.6-28.8c-6.4-8.5-18.4-10.2-26.9-3.8s-10.2 18.4-3.8 26.9l38.4 51.2c3.8 5.1 9.8 7.9 16.2 7.7s12.1-3.6 15.5-9l64-102.4z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">دریافت پیشنهادات</h3>
+                <p class="text-gray-600 leading-relaxed">فروشندگان مناسب پیشنهادات خود را برای شما ارسال می‌کنند</p>
+            </div>
+
+            <div class="bg-white border border-gray-100 rounded-lg p-8 text-right shadow-lg hover:shadow-xl transition-shadow">
+                <div class="flex justify-start items-center mb-6">
+                    <div class="bg-blue-600 p-4 rounded-lg flex items-center justify-center">
+                        <svg class="size-8 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                            <path fill="currentColor"
+                                  d="M320 48c8.8 0 16 7.2 16 16l0 384c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16L48 64c0-8.8 7.2-16 16-16l256 0zM64 0C28.7 0 0 28.7 0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-384c0-35.3-28.7-64-64-64L64 0zM80 128a32 32 0 1 0 64 0 32 32 0 1 0 -64 0zm32 224a32 32 0 1 0 0 64 32 32 0 1 0 0-64zm64-224c0 13.3 10.7 24 24 24l80 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-80 0c-13.3 0-24 10.7-24 24zm32 128c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-48 0c-13.3 0-24 10.7-24 24zM176 384c0 13.3 10.7 24 24 24l80 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-80 0c-13.3 0-24 10.7-24 24zm-.6-164.5c6.4-8.5 4.6-20.5-3.8-26.9s-20.5-4.6-26.9 3.8L112 240 103.4 228.5C97 220 85 218.3 76.5 224.6S66.3 243 72.6 251.5l24 32c3.6 4.8 9.3 7.7 15.4 7.7s11.7-2.8 15.4-7.7l48-64z"/>
+                        </svg>
+                    </div>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">انتخاب بهترین</h3>
+                <p class="text-gray-600 leading-relaxed">پیشنهادات را مقایسه کنید و بهترین گزینه را انتخاب کنید</p>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer class="bg-gray-800 text-gray-400 text-base px-8 py-10">
+    <div class="container mx-auto grid grid-cols-5 gap-8">
+        <div class="col-span-2">
+            <div class="text-white font-bold text-2xl mb-3 flex items-center gap-1">
+                وامجو
+            </div>
+            <p class="text-lg">پلتفرم امن و شفاف برای خرید و فروش امتیاز وام و انتقال وام بانکی</p>
+        </div>
+        <div class="col-span-1">
+            <div class="text-white font-semibold mb-3">دسترسی سریع</div>
+            <ul class="space-y-2 text-xs">
+                <li><a href="#" class="hover:text-white">مشاهده وام‌ها</a></li>
+                <li><a href="#" class="hover:text-white">درخواست وام</a></li>
+                <li><a href="#" class="hover:text-white">ثبت آگهی</a></li>
+            </ul>
+        </div>
+        <div class="col-span-1">
+            <div class="text-white font-semibold mb-3">راهنما</div>
+            <ul class="space-y-2 text-xs">
+                <li><a href="#" class="hover:text-white">نحوه خرید وام</a></li>
+                <li><a href="#" class="hover:text-white">نحوه فروش وام</a></li>
+                <li><a href="#" class="hover:text-white">سوالات متداول</a></li>
+                <li><a href="#" class="hover:text-white">قوانین و مقررات</a></li>
+            </ul>
+        </div>
+        <div class="col-span-1">
+            <div class="text-white font-semibold mb-3">تماس با ما</div>
+            <ul class="space-y-2 text-xs">
+                <li>تلفن: ۰۲۱-۸۰۵۷۴۵۶۳۴۴۱</li>
+                <li>ایمیل: info@vamjoo.com</li>
+                <li>پشتیبانی: ۲۴/۷</li>
+            </ul>
+        </div>
+    </div>
+    <div class="container mx-auto border-t border-gray-700 mt-8 pt-8 text-center text-sm">
+        تمامی حقوق محفوظ است © ۱۴۰۵ وامجو
+    </div>
+</footer>
+
+<script>
+    function formatNumberWithCommas(input) {
+        let value = input.value.replace(/\D/g, '');
+        value = value.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        input.value = value;
+    }
+</script>
+</body>
+</html>

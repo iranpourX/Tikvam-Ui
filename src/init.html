@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تایید کد</title>
+    <link rel="stylesheet" href="./assets/css/output.css">
+</head>
+<body class="bg-gray-50 min-h-screen flex items-center justify-center p-4">
+
+<div class="w-full max-w-md">
+    <!-- کارت اصلی -->
+    <div class="bg-white rounded-2xl shadow-lg p-8">
+
+        <!-- لوگو و عنوان -->
+        <div class="text-center mb-8">
+            <div class="w-16 h-16 bg-black rounded-2xl mx-auto mb-4 flex items-center justify-center">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                </svg>
+            </div>
+            <h1 class="text-2xl font-bold text-gray-900 mb-2">تایید کد</h1>
+            <p class="text-gray-600 text-sm">کد تایید به شماره <span class="font-bold text-black" id="phoneDisplay">09123456789</span> ارسال شد</p>
+        </div>
+
+        <!-- فرم تایید کد -->
+        <form id="verifyForm" class="space-y-6">
+
+            <!-- فیلدهای کد تایید -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-3 text-center">
+                    کد 5 رقمی را وارد کنید
+                </label>
+                <div class="flex gap-2 justify-center" dir="ltr">
+                    <input type="text" maxlength="1" class="code-input w-14 h-14 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black outline-none transition-all" data-index="0">
+                    <input type="text" maxlength="1" class="code-input w-14 h-14 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black outline-none transition-all" data-index="1">
+                    <input type="text" maxlength="1" class="code-input w-14 h-14 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black outline-none transition-all" data-index="2">
+                    <input type="text" maxlength="1" class="code-input w-14 h-14 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black outline-none transition-all" data-index="3">
+                    <input type="text" maxlength="1" class="code-input w-14 h-14 text-center text-2xl font-bold border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-black focus:border-black outline-none transition-all" data-index="4">
+                </div>
+            </div>
+
+            <!-- تایمر و ارسال مجدد -->
+            <div class="text-center">
+                <p class="text-sm text-gray-600">
+                    <span id="timerText">ارسال مجدد کد تا</span>
+                    <span id="timer" class="font-bold text-black">02:00</span>
+                </p>
+                <button
+                        type="button"
+                        id="resendBtn"
+                        class="text-sm text-gray-400 mt-2 cursor-not-allowed"
+                        disabled
+                >
+                    ارسال مجدد کد
+                </button>
+            </div>
+
+            <!-- دکمه تایید -->
+            <button
+                    type="submit"
+                    id="submitBtn"
+                    class="w-full bg-gray-300 text-gray-500 py-3 rounded-xl font-medium cursor-not-allowed transition-all duration-300"
+                    disabled
+            >
+                تایید کد
+            </button>
+
+        </form>
+
+        <!-- دکمه بازگشت -->
+        <div class="mt-6">
+            <button
+                    onclick="window.history.back()"
+                    class="w-full flex items-center justify-center gap-2 py-3 border border-gray-300 rounded-xl hover:bg-gray-50 transition-all"
+            >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                <span class="text-gray-700 font-medium">بازگشت و ویرایش شماره</span>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- راهنما -->
+    <div class="mt-6 text-center">
+        <p class="text-sm text-gray-500">
+            کد را دریافت نکردید؟ پوشه اسپم را بررسی کنید
+        </p>
+    </div>
+
+</div>
+
+<script>
+    const codeInputs = document.querySelectorAll('.code-input')
+    const submitBtn = document.getElementById('submitBtn')
+    const resendBtn = document.getElementById('resendBtn')
+    const timerElement = document.getElementById('timer')
+    const timerText = document.getElementById('timerText')
+
+    let timeLeft = 120 // 2 دقیقه
+    let timerInterval
+
+    // شروع تایمر
+    function startTimer() {
+        timerInterval = setInterval(() => {
+            timeLeft--
+
+            const minutes = Math.floor(timeLeft / 60)
+            const seconds = timeLeft % 60
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`
+
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval)
+                timerText.textContent = 'زمان به پایان رسید'
+                timerElement.textContent = ''
+                resendBtn.disabled = false
+                resendBtn.classList.remove('text-gray-400', 'cursor-not-allowed')
+                resendBtn.classList.add('text-black', 'hover:underline', 'cursor-pointer')
+            }
+        }, 1000)
+    }
+
+    // شروع تایمر در بارگذاری صفحه
+    startTimer()
+
+    // مدیریت ورودی کد
+    codeInputs.forEach((input, index) => {
+        // فقط اعداد
+        input.addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '')
+
+            // رفتن به فیلد بعدی
+            if (this.value && index < codeInputs.length - 1) {
+                codeInputs[index + 1].focus()
+            }
+
+            // بررسی تکمیل بودن همه فیلدها
+            checkAllFilled()
+        })
+
+        // مدیریت کلید Backspace
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Backspace' && !this.value && index > 0) {
+                codeInputs[index - 1].focus()
+            }
+        })
+
+        // انتخاب خودکار متن
+        input.addEventListener('focus', function() {
+            this.select()
+        })
+
+        // جلوگیری از Paste در فیلدهای جداگانه
+        input.addEventListener('paste', function(e) {
+            e.preventDefault()
+            const pastedData = e.clipboardData.getData('text').replace(/[^0-9]/g, '')
+
+            // توزیع کد در فیلدها
+            for (let i = 0; i < pastedData.length && index + i < codeInputs.length; i++) {
+                codeInputs[index + i].value = pastedData[i]
+            }
+
+            // فوکوس روی آخرین فیلد پر شده
+            const lastFilledIndex = Math.min(index + pastedData.length - 1, codeInputs.length - 1)
+            codeInputs[lastFilledIndex].focus()
+
+            checkAllFilled()
+        })
+    })
+
+    // بررسی پر بودن همه فیلدها
+    function checkAllFilled() {
+        const allFilled = Array.from(codeInputs).every(input => input.value.length === 1)
+
+        if (allFilled) {
+            submitBtn.disabled = false
+            submitBtn.classList.remove('bg-gray-300', 'text-gray-500', 'cursor-not-allowed')
+            submitBtn.classList.add('bg-black', 'text-white', 'hover:bg-gray-800', 'shadow-lg', 'hover:shadow-xl')
+        } else {
+            submitBtn.disabled = true
+            submitBtn.classList.add('bg-gray-300', 'text-gray-500', 'cursor-not-allowed')
+            submitBtn.classList.remove('bg-black', 'text-white', 'hover:bg-gray-800', 'shadow-lg', 'hover:shadow-xl')
+        }
+    }
+
+    // ارسال فرم
+    document.getElementById('verifyForm').addEventListener('submit', function(e) {
+        e.preventDefault()
+
+        const code = Array.from(codeInputs).map(input => input.value).join('')
+
+        console.log('کد وارد شده:', code)
+        alert('کد تایید شد: ' + code)
+
+        // اینجا می‌توانید به داشبورد هدایت کنید
+        // window.location.href = '/dashboard'
+    })
+
+    // ارسال مجدد کد
+    resendBtn.addEventListener('click', function() {
+        if (!this.disabled) {
+            console.log('ارسال مجدد کد')
+            alert('کد مجدداً ارسال شد')
+
+            // ریست تایمر
+            timeLeft = 120
+            timerText.textContent = 'ارسال مجدد کد تا'
+            this.disabled = true
+            this.classList.add('text-gray-400', 'cursor-not-allowed')
+            this.classList.remove('text-black', 'hover:underline', 'cursor-pointer')
+
+            // پاک کردن فیلدها
+            codeInputs.forEach(input => input.value = '')
+            codeInputs[0].focus()
+            checkAllFilled()
+
+            // شروع مجدد تایمر
+            clearInterval(timerInterval)
+            startTimer()
+        }
+    })
+
+    // فوکوس اولیه
+    codeInputs[0].focus()
+</script>
+
+</body>
+</html>
