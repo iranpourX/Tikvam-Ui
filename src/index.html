@@ -6,11 +6,24 @@
     <link href="./assets/css/output.css" rel="stylesheet">
     <script src="./assets/js/jquery.min.js"></script>
     <script src="./assets/js/countMe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@@tailwindcss/browser@4"></script>
+
     <title>وام جو</title>
 </head>
 <body class="bg-white text-gray-800 relative">
-<section class="bg-orange-200 w-full px-3 py-2">
-    <span class="text-gray-700 text-sm">بنر تست قیمت کوفت و زهرمار</span>
+<section id="topBanner" class="hidden bg-blue-600 w-full px-4 py-3 shadow-md">
+    <div class="container mx-auto flex items-center justify-between gap-3">
+        <div class="flex items-center p-2.5 gap-3 flex-1">
+            <span class="text-white text-justify text-sm font-medium">تست قیمت کوفت و زهرمار | ارسال رایگان برای اولین خرید</span>
+        </div>
+        <div class="flex items-center gap-3">
+            <button id="closeBanner" class="text-white cursor-pointer hover:text-white">
+                <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </div>
 </section>
 <header class="bg-blue-50">
     <nav class="px-3 py-4.5">
@@ -35,7 +48,9 @@
                 </ul>
 
                 <div class="hidden md:flex gap-2">
-                    <!--                    <a href="./login.html" class="btn text-sm">ورود / ثبت‌نام</a>-->
+                    <!--
+                    <a href="./login.html" class="btn text-sm">ورود / ثبت‌نام</a>
+                    -->
                     <a href="./profile/profile.html" class="p-1 block rounded-full border border-gray-300 size-12">
                         <img src="./assets/img/aziziUI.png" alt="" class="w-full rounded-full">
                     </a>
@@ -484,6 +499,47 @@
             }
         })
     })
+</script>
+<script>
+    // بررسی localStorage و نمایش بنر
+    function checkAndShowBanner() {
+        const bannerClosed = localStorage.getItem('banner_closed');
+        const closedTime = localStorage.getItem('banner_closed_time');
+        
+        if (bannerClosed && closedTime) {
+            const now = new Date().getTime();
+            const hoursPassed = (now - parseInt(closedTime)) / (1000 * 60 * 60);
+            
+            // اگه کمتر از 24 ساعت گذشته باشه، بنر رو نشون نده
+            if (hoursPassed < 4) {
+                document.getElementById('topBanner').style.display = 'none';
+                return;
+            } else {
+                // بعد از 24 ساعت کوکی رو پاک کن
+                localStorage.removeItem('banner_closed');
+                localStorage.removeItem('banner_closed_time');
+            }
+        }
+        
+        // نمایش بنر
+        document.getElementById('topBanner').style.display = 'flex';
+    }
+
+    // بستن بنر و ذخیره در localStorage
+    function closeBanner() {
+        document.getElementById('topBanner').style.display = 'none';
+        localStorage.setItem('banner_closed', 'true');
+        localStorage.setItem('banner_closed_time', new Date().getTime().toString());
+    }
+
+    // وقتی صفحه کامل لود شد اجرا کن
+    document.addEventListener('DOMContentLoaded', function() {
+        const closeBtn = document.getElementById('closeBanner');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', closeBanner);
+        }
+        checkAndShowBanner();
+    });
 </script>
 </body>
 </html>
