@@ -2739,6 +2739,11 @@
       justify-content: space-between;
     }
   }
+  .sm\:justify-center {
+    @media (width >= 40rem) {
+      justify-content: center;
+    }
+  }
   .sm\:justify-end {
     @media (width >= 40rem) {
       justify-content: flex-end;
@@ -2747,6 +2752,11 @@
   .sm\:self-auto {
     @media (width >= 40rem) {
       align-self: auto;
+    }
+  }
+  .sm\:self-center {
+    @media (width >= 40rem) {
+      align-self: center;
     }
   }
   .sm\:p-8 {
