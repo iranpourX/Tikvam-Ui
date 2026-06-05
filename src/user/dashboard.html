@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>داشبورد</title>
+    <link href="./../assets/css/output.css" rel="stylesheet">
+    <link href="./../assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+<div class="min-h-screen bg-slate-50">
+  <header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md lg:hidden">
+  <div class="flex h-16 items-center justify-between px-4">
+    <button id="openSidebar" class="h-11 w-11 rounded-2xl border border-slate-200 bg-white">☰</button>
+    <div class="text-center">
+      <p class="text-sm font-bold text-slate-900">پنل کاربری</p>
+      <p class="text-[11px] text-slate-500">نسخه مینیمال و کامل</p>
+    </div>
+    <button class="h-11 w-11 rounded-2xl border border-slate-200 bg-white">🔔</button>
+  </div>
+</header>
+  <div class="mx-auto max-w-[1600px] lg:px-6">
+    <div class="grid min-h-screen grid-cols-12 gap-6">
+      <aside id="sidebar" class="fixed inset-y-0 right-0 z-50 w-[300px] translate-x-full border-l border-slate-200 bg-white p-5 shadow-[0_20px_60px_rgba(15,23,42,0.14)] transition-transform duration-300 lg:static lg:col-span-3 lg:translate-x-0 lg:shadow-none">
+  <div class="flex items-center justify-between border-b border-slate-200 pb-4">
+    <div class="flex items-center gap-3">
+      <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-600 text-white font-bold">U</div>
+      <div>
+        <h3 class="text-sm font-bold text-slate-900">علی محمدی</h3>
+        <p class="text-xs text-slate-500">کاربر ویژه</p>
+      </div>
+    </div>
+    <button id="closeSidebar" class="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-slate-200 bg-white text-slate-600 lg:hidden">✕</button>
+  </div>
+
+  <nav class="mt-4 space-y-1">
+    <a href="./dashboard.html" class="nav-item active">داشبورد</a>
+    <a href="./loans.html" class="nav-item">وام‌های من</a>
+    <a href="./favorites.html" class="nav-item">علاقه‌مندی‌ها</a>
+    <a href="./notifications.html" class="nav-item">اعلان‌ها</a>
+    <a href="./profile.html" class="nav-item">پروفایل</a>
+    <a href="./settings.html" class="nav-item">تنظیمات</a>
+    <a href="./support.html" class="nav-item">پشتیبانی</a>
+  </nav>
+
+  <div class="mt-6 rounded-3xl bg-slate-50 p-4">
+    <p class="text-xs text-slate-500">تکمیل پروفایل</p>
+    <div class="mt-3 h-2 rounded-full bg-slate-200">
+      <div class="h-2 w-[72%] rounded-full bg-blue-600"></div>
+    </div>
+    <p class="mt-2 text-sm font-semibold text-slate-900">72%</p>
+  </div>
+
+  <div class="mt-4 rounded-3xl border border-slate-200 bg-white p-4">
+    <p class="text-xs text-slate-500">وضعیت امنیت</p>
+    <div class="mt-2 flex items-center justify-between">
+      <p class="text-sm font-semibold text-slate-900">فعال</p>
+      <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">2FA روشن</span>
+    </div>
+  </div>
+
+  <button class="mt-6 w-full rounded-2xl border border-slate-200 bg-white py-3 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+    خروج
+  </button>
+</aside>
+
+<div id="sidebarOverlay" class="fixed inset-0 z-40 hidden bg-black/40 lg:hidden"></div>
+      <main class="col-span-full lg:col-span-9">
+        <div class="space-y-6 p-4 lg:p-0 lg:py-6">
+          <section class="hidden items-center justify-between rounded-3xl border border-slate-200 bg-white px-5 py-4 shadow-[0_10px_30px_rgba(15,23,42,0.05)] lg:flex">
+            <div>
+              <h1 class="text-2xl font-black text-slate-900">داشبورد کاربری</h1>
+              <p class="mt-1 text-sm text-slate-500">نمای کلی حساب، وام‌ها و فعالیت‌ها</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <a href="./loans.html" class="rounded-2xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white">درخواست جدید</a>
+              <a href="./settings.html" class="rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700">تنظیمات</a>
+            </div>
+          </section>
+
+          <section class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div class="rounded-[26px] border border-slate-200 bg-white p-5">
+              <p class="text-sm text-slate-500">وام‌های فعال</p>
+              <p class="mt-2 text-3xl font-black text-slate-900">3</p>
+              <p class="mt-2 text-xs text-emerald-600">+1 نسبت به ماه قبل</p>
+            </div>
+            <div class="rounded-[26px] border border-slate-200 bg-white p-5">
+              <p class="text-sm text-slate-500">موجودی کل حساب‌ها</p>
+              <p class="mt-2 text-3xl font-black text-slate-900">۱۸۲,۵۰۰,۰۰۰</p>
+              <p class="mt-2 text-xs text-slate-500">تومان</p>
+            </div>
+            <div class="rounded-[26px] border border-slate-200 bg-white p-5">
+              <p class="text-sm text-slate-500">درخواست‌های ارسال‌شده</p>
+              <p class="mt-2 text-3xl font-black text-slate-900">12</p>
+              <p class="mt-2 text-xs text-amber-600">3 در انتظار پاسخ</p>
+            </div>
+            <div class="rounded-[26px] border border-slate-200 bg-white p-5">
+              <p class="text-sm text-slate-500">امتیاز اعتباری</p>
+              <p class="mt-2 text-3xl font-black text-slate-900">782</p>
+              <p class="mt-2 text-xs text-green-600">عالی</p>
+            </div>
+          </section>
+
+          <section class="grid grid-cols-1 gap-6 xl:grid-cols-3">
+            <div class="xl:col-span-2 space-y-6">
+              <div class="rounded-[30px] border border-slate-200 bg-white p-6">
+                <div class="mb-5 flex items-center justify-between">
+                  <h3 class="text-xl font-bold text-slate-900">آخرین درخواست‌های وام</h3>
+                  <a href="./loans.html" class="text-sm font-semibold text-blue-600">مشاهده همه</a>
+                </div>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between rounded-xl bg-slate-50 p-4">
+                    <div><p class="font-semibold text-slate-900">وام خرید مسکن بانک ملی</p><p class="text-xs text-slate-500">۱,۲۰۰,۰۰۰,۰۰۰ تومان · ۱۲۰ ماه · ۱۸٪</p></div>
+                    <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">تایید شده</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded-xl bg-slate-50 p-4">
+                    <div><p class="font-semibold text-slate-900">وام خودرو بانک ملت</p><p class="text-xs text-slate-500">۴۵۰,۰۰۰,۰۰۰ تومان · ۴۸ ماه</p></div>
+                    <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">در حال بررسی</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded-xl bg-slate-50 p-4">
+                    <div><p class="font-semibold text-slate-900">وام ازدواج بانک صادرات</p><p class="text-xs text-slate-500">۳۰۰,۰۰۰,۰۰۰ تومان · ۳۶ ماه</p></div>
+                    <span class="rounded-full bg-slate-200 px-3 py-1 text-xs font-semibold text-slate-700">پیش‌نویس</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rounded-[30px] border border-slate-200 bg-white p-6">
+                <div class="mb-5 flex items-center justify-between">
+                  <h3 class="text-xl font-bold text-slate-900">آخرین تراکنش‌ها</h3>
+                  <a href="#" class="text-sm font-semibold text-blue-600">گزارش کامل</a>
+                </div>
+                <div class="space-y-3">
+                  <div class="flex items-center justify-between rounded-xl border border-slate-100 p-4">
+                    <div><p class="font-semibold text-slate-900">واریز حقوق</p><p class="text-xs text-slate-500">بانک ملی · امروز 14:23</p></div>
+                    <span class="font-bold text-emerald-600">+۴۵,۰۰۰,۰۰۰</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded-xl border border-slate-100 p-4">
+                    <div><p class="font-semibold text-slate-900">پرداخت قسط وام</p><p class="text-xs text-slate-500">شماره پیگیری 8421</p></div>
+                    <span class="font-bold text-red-600">-۳,۲۰۰,۰۰۰</span>
+                  </div>
+                  <div class="flex items-center justify-between rounded-xl border border-slate-100 p-4">
+                    <div><p class="font-semibold text-slate-900">انتقال به حساب ملت</p><p class="text-xs text-slate-500">کارت به کارت</p></div>
+                    <span class="font-bold text-red-600">-۱۲,۰۰۰,۰۰۰</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="rounded-[30px] border border-slate-200 bg-white p-6">
+                <h3 class="text-xl font-bold text-slate-900">اعلان فوری</h3>
+                <div class="mt-4 space-y-3">
+                  <div class="rounded-2xl bg-blue-50 p-4">
+                    <p class="text-sm font-semibold text-slate-900">وام شما تایید شد</p>
+                    <p class="mt-1 text-xs text-slate-600">وام مسکن بانک ملی آماده مرحله بعد است.</p>
+                  </div>
+                  <div class="rounded-2xl bg-amber-50 p-4">
+                    <p class="text-sm font-semibold text-slate-900">مدارک را تکمیل کنید</p>
+                    <p class="mt-1 text-xs text-slate-600">کارت ملی و سند درآمد هنوز ناقص است.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="rounded-[30px] border border-slate-200 bg-white p-6">
+                <h3 class="text-xl font-bold text-slate-900">میانبرها</h3>
+                <div class="mt-4 grid grid-cols-2 gap-3">
+                  <a href="./loans.html" class="rounded-2xl bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-700">وام‌ها</a>
+                  <a href="./favorites.html" class="rounded-2xl bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-700">علاقه‌مندی‌ها</a>
+                  <a href="./profile.html" class="rounded-2xl bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-700">پروفایل</a>
+                  <a href="./support.html" class="rounded-2xl bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-700">پشتیبانی</a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+<style>
+  *{font-family:system-ui,Tahoma,sans-serif}
+  body{background:#f8fafc}
+  .nav-item{
+    display:flex;
+    align-items:center;
+    padding:.875rem 1rem;
+    border-radius:1rem;
+    font-size:.875rem;
+    font-weight:600;
+    color:#475569;
+    transition:.2s;
+  }
+  .nav-item:hover{background:#f8fafc;color:#0f172a}
+  .nav-item.active{background:#eff6ff;color:#1d4ed8}
+</style>
+
+<script>
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  document.getElementById('openSidebar')?.addEventListener('click', () => {
+    sidebar.classList.remove('translate-x-full');
+    overlay.classList.remove('hidden');
+  });
+  document.getElementById('closeSidebar')?.addEventListener('click', () => {
+    sidebar.classList.add('translate-x-full');
+    overlay.classList.add('hidden');
+  });
+  overlay?.addEventListener('click', () => {
+    sidebar.classList.add('translate-x-full');
+    overlay.classList.add('hidden');
+  });
+</script>
+</body>
+</html>
