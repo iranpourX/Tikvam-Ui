@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>در حال بروزرسانی | وامجو</title>
+    <link href="./../assets/css/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .maintenance-animation {
+            animation: rotate 3s linear infinite;
+        }
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+        .btn-hover:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .progress-bar {
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-900 to-indigo-900 min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-2xl w-full text-center">
+        <!-- Maintenance Icon -->
+        <div class="maintenance-animation mb-8">
+            <i class="fas fa-tools text-8xl text-blue-300"></i>
+        </div>
+
+        <!-- Message -->
+        <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">در حال بروزرسانی!</h1>
+        <p class="text-blue-200 mb-4 text-lg">
+            سایت وامجو در حال بروزرسانی و بهبود عملکرد است.
+        </p>
+        <div class="bg-white/10 backdrop-blur rounded-xl p-4 mb-6 inline-block">
+            <i class="fas fa-clock text-blue-300 ml-2"></i>
+            <span class="text-blue-200 text-sm">زمان باقیمانده: <span id="timer" class="font-mono font-bold">۰۲:۰۰</span></span>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="max-w-md mx-auto mb-8">
+            <div class="h-2 bg-white/20 rounded-full overflow-hidden">
+                <div id="progressFill" class="progress-bar h-full w-0 bg-blue-400 rounded-full"></div>
+            </div>
+            <p class="text-xs text-blue-300 mt-2">
+                <span id="progressPercent">۰</span>٪ کامل شد
+            </p>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-wrap gap-4 justify-center mb-12">
+            <button id="refreshBtn" class="btn-hover inline-flex items-center gap-2 bg-white text-blue-900 px-6 py-3 rounded-xl font-semibold shadow-lg hover:bg-gray-100">
+                <i class="fas fa-sync-alt"></i>
+                بررسی مجدد
+            </button>
+            <a href="/contact.html" class="btn-hover inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:bg-blue-700">
+                <i class="fas fa-headset"></i>
+                تماس با پشتیبانی
+            </a>
+        </div>
+
+        <!-- Social Media -->
+        <div class="border-t border-white/20 pt-8">
+            <p class="text-blue-200 mb-4">ما را در شبکه‌های اجتماعی دنبال کنید:</p>
+            <div class="flex gap-4 justify-center">
+                <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition">
+                    <i class="fab fa-telegram"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-white/20 transition">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // مدت زمان کل بروزرسانی (به ثانیه)
+        const TOTAL_SECONDS = 120; // 2 دقیقه
+        let remainingSeconds = TOTAL_SECONDS;
+        let interval = null;
+        
+        // عناصر DOM
+        const timerElement = document.getElementById('timer');
+        const progressFill = document.getElementById('progressFill');
+        const progressPercent = document.getElementById('progressPercent');
+        const refreshBtn = document.getElementById('refreshBtn');
+        
+        // به‌روزرسانی نمایشگر
+        function updateDisplay() {
+            // به‌روزرسانی تایمر
+            const minutes = Math.floor(remainingSeconds / 60);
+            const seconds = remainingSeconds % 60;
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            // به‌روزرسانی پروگرس بار
+            const percent = ((TOTAL_SECONDS - remainingSeconds) / TOTAL_SECONDS) * 100;
+            const percentValue = Math.floor(percent);
+            progressFill.style.width = `${percent}%`;
+            progressPercent.textContent = percentValue;
+            
+            // اگر زمان تمام شد
+            if (remainingSeconds <= 0) {
+                clearInterval(interval);
+                progressFill.style.width = '100%';
+                progressPercent.textContent = '۱۰۰';
+                timerElement.textContent = '۰۰:۰۰';
+                
+                // نمایش پیام تکمیل
+                const progressText = document.querySelector('.text-blue-300.mt-2');
+                if (progressText) {
+                    progressText.innerHTML = '✅ بروزرسانی کامل شد! صفحه در حال بازخوانی...';
+                }
+                
+                // بعد از 2 ثانیه صفحه را رفرش کن
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
+            }
+        }
+        
+        // شروع شمارش معکوس
+        function startCountdown() {
+            if (interval) clearInterval(interval);
+            
+            // بررسی ذخیره شده در localStorage (برای رفرش صفحه)
+            const savedTime = localStorage.getItem('maintenance_remaining');
+            const savedTimestamp = localStorage.getItem('maintenance_timestamp');
+            
+            if (savedTime && savedTimestamp) {
+                const elapsed = Math.floor((Date.now() - parseInt(savedTimestamp)) / 1000);
+                remainingSeconds = Math.max(0, parseInt(savedTime) - elapsed);
+                if (remainingSeconds <= 0) {
+                    remainingSeconds = TOTAL_SECONDS;
+                }
+            }
+            
+            updateDisplay();
+            
+            interval = setInterval(() => {
+                if (remainingSeconds > 0) {
+                    remainingSeconds--;
+                    updateDisplay();
+                    
+                    // ذخیره وضعیت در localStorage
+                    localStorage.setItem('maintenance_remaining', remainingSeconds);
+                    localStorage.setItem('maintenance_timestamp', Date.now());
+                } else {
+                    clearInterval(interval);
+                }
+            }, 1000);
+        }
+        
+        // دکمه بررسی مجدد
+        refreshBtn.addEventListener('click', () => {
+            remainingSeconds = TOTAL_SECONDS;
+            localStorage.removeItem('maintenance_remaining');
+            localStorage.removeItem('maintenance_timestamp');
+            startCountdown();
+        });
+        
+        // شروع
+        startCountdown();
+    </script>
+</body>
+</html>

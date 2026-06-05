@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>درخواست بیش از حد | وامجو</title>
+    <link href="./../assets/css/output.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .timer {
+            font-family: monospace;
+            font-size: 48px;
+            font-weight: bold;
+        }
+        .btn-hover {
+            transition: all 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-pink-100 min-h-screen flex items-center justify-center p-4">
+
+    <div class="max-w-2xl w-full text-center">
+        <!-- Icon -->
+        <div class="mb-8">
+            <i class="fas fa-hourglass-half text-8xl text-purple-600"></i>
+        </div>
+
+        <!-- Message -->
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">درخواست بیش از حد!</h1>
+        <p class="text-gray-600 mb-4 text-lg">
+            شما بیش از حد مجاز درخواست ارسال کرده‌اید.
+        </p>
+        <div class="bg-purple-100 rounded-xl p-4 mb-8 inline-block">
+            <i class="fas fa-clock text-purple-600 ml-2"></i>
+            <span class="text-purple-700">لطفاً چند دقیقه دیگر دوباره تلاش کنید</span>
+        </div>
+
+        <!-- Timer (شبیه‌سازی) -->
+        <div class="mb-8">
+            <p class="text-sm text-gray-500 mb-2">زمان انتظار پیشنهادی:</p>
+            <div class="timer text-purple-600" id="countdown">02:00</div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex flex-wrap gap-4 justify-center">
+            <button onclick="location.reload()" class="btn-hover inline-flex items-center gap-2 bg-purple-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:bg-purple-700">
+                <i class="fas fa-sync-alt"></i>
+                تلاش مجدد
+            </button>
+            <a href="/" class="btn-hover inline-flex items-center gap-2 bg-white text-gray-700 px-6 py-3 rounded-xl font-semibold shadow-lg border border-gray-200 hover:bg-gray-50">
+                <i class="fas fa-home"></i>
+                صفحه اصلی
+            </a>
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-12 text-sm text-gray-400">
+            <i class="fas fa-shield-alt"></i> این محدودیت برای حفظ امنیت اعمال شده است
+        </div>
+    </div>
+
+    <script>
+        // Countdown timer (شبیه‌سازی)
+        let seconds = 120;
+        const countdownEl = document.getElementById('countdown');
+        
+        function updateTimer() {
+            const mins = Math.floor(seconds / 60);
+            const secs = seconds % 60;
+            countdownEl.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            if (seconds > 0) {
+                seconds--;
+                setTimeout(updateTimer, 1000);
+            }
+        }
+        updateTimer();
+    </script>
+</body>
+</html>
