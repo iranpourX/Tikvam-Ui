@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>مدیریت ربات‌ها | پنل فروشنده</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .sidebar-transition { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .robot-card, .schedule-card { transition: all 0.2s ease; }
+        .robot-card:hover, .schedule-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05); }
+        .tab-btn.active { border-bottom: 2px solid #2563eb; color: #1e40af; }
+        .template-badge { transition: all 0.2s ease; }
+        .template-badge:hover { background-color: #2563eb; color: white; }
+        .status-scheduled { background-color: #fef3c7; color: #d97706; }
+        .status-sent { background-color: #dcfce7; color: #16a34a; }
+        .status-failed { background-color: #fee2e2; color: #dc2626; }
+        .modal { transition: opacity 0.2s ease; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 block bg-white/95 backdrop-blur-lg border-t border-gray-200 shadow-lg md:hidden">
+        <div class="flex justify-around py-2">
+            <a href="index.html" class="flex flex-col items-center gap-1 px-3 py-1 text-gray-500"><i class="fas fa-tachometer-alt text-xl"></i><span class="text-xs">خانه</span></a>
+            <a href="loans.html" class="flex flex-col items-center gap-1 px-3 py-1 text-gray-500"><i class="fas fa-file-alt text-xl"></i><span class="text-xs">وام</span></a>
+            <a href="robots.html" class="flex flex-col items-center gap-1 px-3 py-1 text-blue-600"><i class="fas fa-robot text-xl"></i><span class="text-xs">ربات</span></a>
+            <a href="profile.html" class="flex flex-col items-center gap-1 px-3 py-1 text-gray-500"><i class="fas fa-user text-xl"></i><span class="text-xs">پروفایل</span></a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 right-0 z-40 w-72 transform translate-x-full bg-white border-r border-gray-200 shadow-2xl sidebar-transition md:translate-x-0">
+        <div class="flex h-full flex-col">
+            <div class="border-b border-gray-100 p-5">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=علی+محمدی&background=2563eb&color=fff&rounded=true&size=40" class="h-10 w-10 rounded-full ring-2 ring-blue-100">
+                        <div>
+                            <h4 class="font-bold text-gray-800">علی محمدی</h4>
+                            <p class="text-xs text-gray-400">فروشنده حرفه‌ای</p>
+                        </div>
+                    </div>
+                    <button id="closeSidebarBtn" class="rounded-lg p-1 text-gray-400 hover:bg-gray-100 md:hidden">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="mt-4 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 p-3">
+                    <div class="flex justify-between text-sm"><span class="text-gray-500">امتیاز</span><span class="font-bold text-amber-500">★★★★☆ 4.8</span></div>
+                    <div class="mt-2 flex justify-between text-sm"><span class="text-gray-500">کیف پول</span><span class="font-bold text-emerald-600">۱۲.۵ میلیون</span></div>
+                </div>
+            </div>
+            <nav class="flex-1 overflow-y-auto p-3">
+                <div class="mb-6"><p class="mb-2 px-3 text-xs font-semibold uppercase text-gray-400">داشبورد</p>
+                    <ul class="space-y-1">
+                        <li><a href="index.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-tachometer-alt w-5"></i> داشبورد</a></li>
+                        <li><a href="loans.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-file-alt w-5"></i> مدیریت وام‌ها</a></li>
+                        <li><a href="add-loan.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-plus-circle w-5"></i> ثبت وام جدید</a></li>
+                    </ul>
+                </div>
+                <div class="mb-6"><p class="mb-2 px-3 text-xs font-semibold uppercase text-gray-400">ارتباطات</p>
+                    <ul class="space-y-1">
+                        <li><a href="robots.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm bg-blue-50 text-blue-600"><i class="fas fa-robot w-5"></i> ربات‌ها</a></li>
+                        <li><a href="requests.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-envelope w-5"></i> درخواست‌ها</a></li>
+                        <li><a href="reservations.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-calendar-check w-5"></i> رزروها</a></li>
+                    </ul>
+                </div>
+                <div class="mb-6"><p class="mb-2 px-3 text-xs font-semibold uppercase text-gray-400">حساب کاربری</p>
+                    <ul class="space-y-1">
+                        <li><a href="profile.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-user-cog w-5"></i> پروفایل</a></li>
+                        <li><a href="wallet.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-wallet w-5"></i> کیف پول</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="border-t border-gray-100 p-4">
+                <button class="flex w-full items-center justify-center gap-2 rounded-xl bg-red-50 px-4 py-2.5 text-sm font-semibold text-red-600 transition hover:bg-red-100"><i class="fas fa-sign-out-alt"></i> خروج</button>
+            </div>
+        </div>
+    </aside>
+    <div id="sidebarOverlay" class="fixed inset-0 z-30 hidden bg-black/50 md:hidden"></div>
+
+    <!-- Main Content -->
+    <div class="min-h-screen md:mr-72">
+        <header class="sticky top-0 z-20 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+            <div class="flex items-center justify-between px-4 py-3 md:px-6">
+                <button id="openSidebarBtn" class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 md:hidden"><i class="fas fa-bars text-xl"></i></button>
+                <h1 class="text-lg font-bold text-gray-800">مدیریت ربات‌ها</h1>
+                <div class="flex items-center gap-3">
+                    <a href="profile.html" class="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border border-gray-200 bg-white shadow-sm">
+                        <img src="https://ui-avatars.com/api/?name=علی+محمدی&background=2563eb&color=fff&rounded=true&size=32" class="h-full w-full rounded-full object-cover">
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="px-4 py-6 md:px-8">
+            <div class="mx-auto max-w-7xl">
+                <!-- Tabs -->
+                <div class="mb-6 border-b border-gray-200 overflow-x-auto">
+                    <div class="flex gap-6 text-sm font-medium">
+                        <button id="tabRobotsBtn" class="tab-btn active pb-3 text-blue-600">🤖 ربات‌های من</button>
+                        <button id="tabSendBtn" class="tab-btn pb-3 text-gray-500">📨 ارسال سریع</button>
+                        <button id="tabTemplatesBtn" class="tab-btn pb-3 text-gray-500">📝 تمپلیت‌ها</button>
+                        <button id="TabSchedulerBtn" class="tab-btn pb-3 text-gray-500">⏰ زمان‌بندی</button>
+                        <button id="TabHistoryBtn" class="tab-btn pb-3 text-gray-500">📜 تاریخچه</button>
+                    </div>
+                </div>
+
+                <!-- ========== TAB 1: ربات‌های من ========== -->
+                <div id="robotsTab" class="tab-content">
+                    <!-- ایتا ربات -->
+                    <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm mb-5">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center">
+                                <i class="fab fa-google text-purple-600 text-xl"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-800">ربات ایتا</h2>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">Eitaa</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">توکن ربات</label>
+                                <div class="flex gap-2">
+                                    <input type="text" id="eitaaToken" class="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-sm dir-ltr" placeholder="توکن ربات ایتا را وارد کنید...">
+                                    <button onclick="saveEitaaToken()" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm">ذخیره</button>
+                                </div>
+                                <p class="text-xs text-gray-400 mt-1">توکن را از @BotFather در ایتا دریافت کنید</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">آیدی ربات (اختیاری)</label>
+                                <input type="text" id="eitaaBotId" class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm dir-ltr" placeholder="@my_bot">
+                            </div>
+                            <div class="flex justify-between items-center pt-2 border-t">
+                                <span class="text-sm text-gray-500">وضعیت اتصال:</span>
+                                <span id="eitaaStatus" class="text-sm text-red-500"><i class="fas fa-circle mr-1 text-xs"></i> متصل نیست</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- بله ربات -->
+                    <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                                <i class="fab fa-telegram text-green-600 text-xl"></i>
+                            </div>
+                            <h2 class="text-xl font-bold text-gray-800">ربات بله</h2>
+                            <span class="bg-gray-100 text-gray-600 text-xs px-2 py-1 rounded-full">Bale</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">توکن ربات</label>
+                                <div class="flex gap-2">
+                                    <input type="text" id="baleToken" class="flex-1 border border-gray-200 rounded-xl px-4 py-2.5 text-sm dir-ltr" placeholder="توکن ربات بله را وارد کنید...">
+                                    <button onclick="saveBaleToken()" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm">ذخیره</button>
+                                </div>
+                                <p class="text-xs text-gray-400 mt-1">توکن را از @BotFather در بله دریافت کنید</p>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">آیدی ربات (اختیاری)</label>
+                                <input type="text" id="baleBotId" class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm dir-ltr" placeholder="@my_bot">
+                            </div>
+                            <div class="flex justify-between items-center pt-2 border-t">
+                                <span class="text-sm text-gray-500">وضعیت اتصال:</span>
+                                <span id="baleStatus" class="text-sm text-red-500"><i class="fas fa-circle mr-1 text-xs"></i> متصل نیست</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========== TAB 2: ارسال سریع ========== -->
+                <div id="sendTab" class="tab-content hidden">
+                    <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
+                        <h2 class="text-lg font-bold text-gray-800 mb-4">ارسال پیام فوری</h2>
+                        
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">انتخاب ربات</label>
+                            <div class="flex gap-4">
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="robotType" value="eitaa" checked class="accent-blue-600">
+                                    <span>ربات ایتا</span>
+                                </label>
+                                <label class="flex items-center gap-2">
+                                    <input type="radio" name="robotType" value="bale" class="accent-blue-600">
+                                    <span>ربات بله</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">ارسال به</label>
+                            <input type="text" id="recipientId" class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm dir-ltr" placeholder="آیدی عددی کاربر یا @username کانال/گروه...">
+                            <p class="text-xs text-gray-400 mt-1">آیدی عددی کاربر یا @username کانال/گروه</p>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">انتخاب تمپلیت (اختیاری)</label>
+                            <select id="quickTemplateSelect" class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm">
+                                <option value="">-- بدون تمپلیت --</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-700 mb-1">متن پیام</label>
+                            <textarea id="messageText" rows="5" class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm" placeholder="متن پیام خود را بنویسید..."></textarea>
+                            <p class="text-xs text-gray-400 mt-1">از متغیرهای {name}، {amount}، {date} می‌توانید استفاده کنید</p>
+                        </div>
+
+                        <div class="flex gap-3 flex-wrap">
+                            <button id="sendMessageBtn" class="bg-blue-600 text-white px-6 py-2.5 rounded-xl text-sm flex items-center gap-2">
+                                <i class="fas fa-paper-plane"></i> ارسال پیام
+                            </button>
+                            <button id="testConnectionBtn" class="border border-gray-200 px-6 py-2.5 rounded-xl text-sm">
+                                تست اتصال
+                            </button>
+                        </div>
+
+                        <div id="sendResult" class="mt-4 hidden p-3 rounded-xl text-sm"></div>
+                    </div>
+                </div>
+
+                <!-- ========== TAB 3: تمپلیت‌ها ========== -->
+                <div id="templatesTab" class="tab-content hidden">
+                    <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm mb-5">
+                        <div class="flex justify-between items-center mb-4 flex-wrap gap-3">
+                            <h2 class="text-lg font-bold text-gray-800">تمپلیت‌های ذخیره شده</h2>
+                            <button id="addTemplateBtn" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm flex items-center gap-2">
+                                <i class="fas fa-plus"></i> تمپلیت جدید
+                            </button>
+                        </div>
+                        <div id="templatesList" class="space-y-3">
+                            <!-- تمپلیت‌ها اینجا نمایش داده می‌شوند -->
+                        </div>
+                        <div id="emptyTemplates" class="hidden text-center py-8 text-gray-400">
+                            <i class="fas fa-file-alt text-4xl mb-2"></i>
+                            <p>هیچ تمپلیتی ذخیره نشده است</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========== TAB 4: زمان‌بندی ========== -->
+                <div id="schedulerTab" class="tab-content hidden">
+                    <div class="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm mb-5">
+                        <div class="flex justify-between items-center mb-4 flex-wrap gap-3">
+                            <h2 class="text-lg font-bold text-gray-800">زمان‌بندی ارسال پیام</h2>
+                            <button id="addScheduleBtn" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm flex items-center gap-2">
+                                <i class="fas fa-calendar-plus"></i> زمان‌بندی جدید
+                            </button>
+                        </div>
+
+                        <!-- فرم زمان‌بندی جدید -->
+                        <div id="scheduleForm" class="hidden bg-gray-50 rounded-xl p-4 mb-5 border border-gray-200">
+                            <h3 class="font-bold mb-3">ایجاد زمان‌بندی جدید</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">ربات</label>
+                                    <select id="scheduleRobot" class="w-full border rounded-xl px-3 py-2 text-sm">
+                                        <option value="eitaa">ایتا</option>
+                                        <option value="bale">بله</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">گیرنده (آیدی)</label>
+                                    <input type="text" id="scheduleRecipient" class="w-full border rounded-xl px-3 py-2 text-sm" placeholder="@username یا آیدی عددی">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">انتخاب تمپلیت</label>
+                                    <select id="scheduleTemplate" class="w-full border rounded-xl px-3 py-2 text-sm">
+                                        <option value="">-- انتخاب تمپلیت --</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">تاریخ ارسال</label>
+                                    <input type="date" id="scheduleDate" class="w-full border rounded-xl px-3 py-2 text-sm">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium mb-1">ساعت ارسال</label>
+                                    <input type="time" id="scheduleTime" class="w-full border rounded-xl px-3 py-2 text-sm">
+                                </div>
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium mb-1">متن پیام (قابل ویرایش)</label>
+                                    <textarea id="scheduleMessage" rows="3" class="w-full border rounded-xl px-3 py-2 text-sm" placeholder="متن پیام..."></textarea>
+                                </div>
+                            </div>
+                            <div class="flex gap-3 mt-4">
+                                <button id="saveScheduleBtn" class="bg-blue-600 text-white px-5 py-2 rounded-xl text-sm">ذخیره زمان‌بندی</button>
+                                <button id="cancelScheduleBtn" class="border border-gray-300 px-5 py-2 rounded-xl text-sm">انصراف</button>
+                            </div>
+                        </div>
+
+                        <!-- لیست زمان‌بندی‌ها -->
+                        <h3 class="font-bold text-gray-800 mb-3">زمان‌بندی‌های فعال</h3>
+                        <div id="schedulesList" class="space-y-3"></div>
+                        <div id="emptySchedules" class="hidden text-center py-8 text-gray-400">
+                            <i class="fas fa-clock text-4xl mb-2"></i>
+                            <p>هیچ زمان‌بندی فعالی وجود ندارد</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========== TAB 5: تاریخچه پیام‌ها ========== -->
+                <div id="historyTab" class="tab-content hidden">
+                    <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
+                        <div class="border-b p-4 flex justify-between items-center flex-wrap gap-3">
+                            <h2 class="font-bold text-gray-800">تاریخچه پیام‌های ارسالی</h2>
+                            <div class="flex gap-2">
+                                <select id="filterRobot" class="border rounded-xl px-3 py-1.5 text-sm">
+                                    <option value="all">همه ربات‌ها</option>
+                                    <option value="eitaa">ایتا</option>
+                                    <option value="bale">بله</option>
+                                </select>
+                                <button id="clearHistoryBtn" class="text-red-600 text-sm px-3 py-1.5 border border-red-200 rounded-xl">پاک کردن تاریخچه</button>
+                            </div>
+                        </div>
+                        <div id="messagesList" class="divide-y divide-gray-100"></div>
+                        <div id="emptyHistory" class="hidden text-center py-10 text-gray-400">
+                            <i class="fas fa-inbox text-5xl mb-3"></i>
+                            <p>هیچ پیامی ارسال نشده است</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- ========== مودال افزودن تمپلیت ========== -->
+    <div id="addTemplateModal" class="modal fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl w-full max-w-md mx-4">
+            <div class="flex justify-between items-center p-5 border-b">
+                <h3 class="text-xl font-bold">تمپلیت جدید</h3>
+                <button onclick="closeAddTemplateModal()" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="p-5 space-y-4">
+                <div>
+                    <label class="block text-sm font-medium mb-1">نام تمپلیت</label>
+                    <input type="text" id="newTemplateName" class="w-full border rounded-xl px-4 py-2.5" placeholder="مثال: خوش آمدگویی">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">متن تمپلیت</label>
+                    <textarea id="newTemplateContent" rows="5" class="w-full border rounded-xl px-4 py-2.5" placeholder="متن پیام... از {name}، {amount}، {date} استفاده کنید"></textarea>
+                    <p class="text-xs text-gray-400 mt-1">از متغیرهای {name}، {amount}، {date} می‌توانید استفاده کنید</p>
+                </div>
+            </div>
+            <div class="flex gap-3 p-5 border-t">
+                <button onclick="saveNewTemplate()" class="flex-1 bg-blue-600 text-white py-2.5 rounded-xl">ذخیره</button>
+                <button onclick="closeAddTemplateModal()" class="flex-1 border py-2.5 rounded-xl">انصراف</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== مودال ویرایش تمپلیت ========== -->
+    <div id="editTemplateModal" class="modal fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl w-full max-w-md mx-4">
+            <div class="flex justify-between items-center p-5 border-b">
+                <h3 class="text-xl font-bold">ویرایش تمپلیت</h3>
+                <button onclick="closeEditTemplateModal()" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="p-5 space-y-4">
+                <input type="hidden" id="editTemplateId">
+                <div>
+                    <label class="block text-sm font-medium mb-1">نام تمپلیت</label>
+                    <input type="text" id="editTemplateName" class="w-full border rounded-xl px-4 py-2.5">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">متن تمپلیت</label>
+                    <textarea id="editTemplateContent" rows="5" class="w-full border rounded-xl px-4 py-2.5"></textarea>
+                    <p class="text-xs text-gray-400 mt-1">از متغیرهای {name}، {amount}، {date} می‌توانید استفاده کنید</p>
+                </div>
+            </div>
+            <div class="flex gap-3 p-5 border-t">
+                <button onclick="updateTemplate()" class="flex-1 bg-blue-600 text-white py-2.5 rounded-xl">ذخیره تغییرات</button>
+                <button onclick="closeEditTemplateModal()" class="flex-1 border py-2.5 rounded-xl">انصراف</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== مودال حذف تمپلیت ========== -->
+    <div id="deleteTemplateModal" class="modal fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-5 w-80 text-center">
+            <i class="fas fa-exclamation-triangle text-red-500 text-4xl mb-3"></i>
+            <h3 class="font-bold mb-2">حذف تمپلیت</h3>
+            <p class="text-sm text-gray-600 mb-4">آیا از حذف این تمپلیت اطمینان دارید؟</p>
+            <div class="flex gap-3">
+                <button id="confirmDeleteTemplateBtn" class="flex-1 bg-red-600 text-white py-2 rounded-xl">حذف</button>
+                <button id="cancelDeleteTemplateBtn" class="flex-1 border py-2 rounded-xl">انصراف</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== مودال حذف زمان‌بندی ========== -->
+    <div id="deleteScheduleModal" class="modal fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl p-5 w-80 text-center">
+            <i class="fas fa-exclamation-triangle text-red-500 text-4xl mb-3"></i>
+            <h3 class="font-bold mb-2">لغو زمان‌بندی</h3>
+            <p class="text-sm text-gray-600 mb-4">آیا از لغو این زمان‌بندی اطمینان دارید؟</p>
+            <div class="flex gap-3">
+                <button id="confirmDeleteScheduleBtn" class="flex-1 bg-red-600 text-white py-2 rounded-xl">لغو</button>
+                <button id="cancelDeleteScheduleBtn" class="flex-1 border py-2 rounded-xl">انصراف</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== سایدبار ==========
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const openBtn = document.getElementById('openSidebarBtn');
+        const closeBtn = document.getElementById('closeSidebarBtn');
+
+        function openSidebar() { sidebar.classList.remove('translate-x-full'); sidebar.classList.add('translate-x-0'); overlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeSidebar() { sidebar.classList.remove('translate-x-0'); sidebar.classList.add('translate-x-full'); overlay.classList.add('hidden'); document.body.style.overflow = ''; }
+        if (openBtn) openBtn.addEventListener('click', openSidebar);
+        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+        if (overlay) overlay.addEventListener('click', closeSidebar);
+        window.addEventListener('resize', function() { if (window.innerWidth >= 768) closeSidebar(); });
+
+        // ========== تب‌ها ==========
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'text-blue-600');
+                btn.classList.add('text-gray-500');
+            });
+            let activeBtn;
+            if (tabId === 'robotsTab') activeBtn = document.getElementById('tabRobotsBtn');
+            else if (tabId === 'sendTab') activeBtn = document.getElementById('tabSendBtn');
+            else if (tabId === 'templatesTab') activeBtn = document.getElementById('tabTemplatesBtn');
+            else if (tabId === 'schedulerTab') activeBtn = document.getElementById('TabSchedulerBtn');
+            else activeBtn = document.getElementById('TabHistoryBtn');
+            activeBtn.classList.add('active', 'text-blue-600');
+            activeBtn.classList.remove('text-gray-500');
+            
+            if (tabId === 'schedulerTab') loadScheduleTemplates();
+            if (tabId === 'templatesTab') renderTemplates();
+            if (tabId === 'schedulerTab') renderSchedules();
+        }
+
+        document.getElementById('tabRobotsBtn').addEventListener('click', () => switchTab('robotsTab'));
+        document.getElementById('tabSendBtn').addEventListener('click', () => switchTab('sendTab'));
+        document.getElementById('tabTemplatesBtn').addEventListener('click', () => switchTab('templatesTab'));
+        document.getElementById('TabSchedulerBtn').addEventListener('click', () => switchTab('schedulerTab'));
+        document.getElementById('TabHistoryBtn').addEventListener('click', () => switchTab('historyTab'));
+
+        // ========== ذخیره توکن‌ها ==========
+        function saveEitaaToken() {
+            const token = document.getElementById('eitaaToken').value;
+            if (token) localStorage.setItem('eitaa_token', token);
+            document.getElementById('eitaaStatus').innerHTML = '<i class="fas fa-circle mr-1 text-xs text-green-500"></i> ذخیره شد';
+            document.getElementById('eitaaStatus').classList.add('text-green-500');
+            document.getElementById('eitaaStatus').classList.remove('text-red-500');
+            setTimeout(() => {
+                document.getElementById('eitaaStatus').innerHTML = '<i class="fas fa-circle mr-1 text-xs text-yellow-500"></i> نیاز به تست';
+            }, 2000);
+        }
+        function saveBaleToken() {
+            const token = document.getElementById('baleToken').value;
+            if (token) localStorage.setItem('bale_token', token);
+            document.getElementById('baleStatus').innerHTML = '<i class="fas fa-circle mr-1 text-xs text-green-500"></i> ذخیره شد';
+            document.getElementById('baleStatus').classList.add('text-green-500');
+            document.getElementById('baleStatus').classList.remove('text-red-500');
+            setTimeout(() => {
+                document.getElementById('baleStatus').innerHTML = '<i class="fas fa-circle mr-1 text-xs text-yellow-500"></i> نیاز به تست';
+            }, 2000);
+        }
+
+        function loadTokens() {
+            const eitaaToken = localStorage.getItem('eitaa_token');
+            const baleToken = localStorage.getItem('bale_token');
+            if (eitaaToken) document.getElementById('eitaaToken').value = eitaaToken;
+            if (baleToken) document.getElementById('baleToken').value = baleToken;
+            document.getElementById('eitaaBotId').value = localStorage.getItem('eitaa_bot_id') || '';
+            document.getElementById('baleBotId').value = localStorage.getItem('bale_bot_id') || '';
+        }
+        loadTokens();
+
+        document.getElementById('eitaaBotId').addEventListener('change', function() { localStorage.setItem('eitaa_bot_id', this.value); });
+        document.getElementById('baleBotId').addEventListener('change', function() { localStorage.setItem('bale_bot_id', this.value); });
+
+        // ========== تمپلیت‌ها ==========
+        let templates = [];
+
+        function loadTemplates() {
+            const stored = localStorage.getItem('message_templates');
+            if (stored) templates = JSON.parse(stored);
+            else {
+                templates = [
+                    { id: 1, name: 'خوش آمدگویی', content: 'سلام {name} عزیز! به جمع فروشندگان وامجو خوش آمدید. 🎉\n\nامیدواریم بهترین تجربه رو داشته باشید.' },
+                    { id: 2, name: 'تخفیف ویژه', content: '🎁 تخفیف ویژه برای شما!\n\n{name} جان، تا {date} می‌توانید از {amount} تومان تخفیف استفاده کنید.' },
+                    { id: 3, name: 'یادآوری', content: '🔔 یادآوری دوستانه\n\n{name} عزیز، فراموش نکنید که وام خود را ثبت کنید.' }
+                ];
+                saveTemplates();
+            }
+            renderTemplates();
+            updateTemplateSelects();
+        }
+
+        function saveTemplates() { localStorage.setItem('message_templates', JSON.stringify(templates)); }
+
+        function renderTemplates() {
+            const container = document.getElementById('templatesList');
+            const empty = document.getElementById('emptyTemplates');
+            if (templates.length === 0) {
+                container.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+            empty.classList.add('hidden');
+            container.innerHTML = templates.map(t => `
+                <div class="template-item bg-gray-50 rounded-xl p-4 border border-gray-200">
+                    <div class="flex justify-between items-start">
+                        <div class="flex-1">
+                            <h3 class="font-bold text-gray-800">${escapeHtml(t.name)}</h3>
+                            <p class="text-sm text-gray-600 mt-1 line-clamp-2">${escapeHtml(t.content.substring(0, 100))}${t.content.length > 100 ? '...' : ''}</p>
+                            <div class="flex gap-2 mt-2">
+                                <button onclick="useTemplate(${t.id})" class="text-blue-600 text-xs">استفاده</button>
+                                <button onclick="openEditTemplateModal(${t.id})" class="text-amber-600 text-xs">ویرایش</button>
+                                <button onclick="openDeleteTemplateModal(${t.id})" class="text-red-600 text-xs">حذف</button>
+                            </div>
+                        </div>
+                        <i class="fas fa-file-alt text-gray-400 text-xl"></i>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function updateTemplateSelects() {
+            const selects = ['quickTemplateSelect', 'scheduleTemplate'];
+            selects.forEach(selectId => {
+                const select = document.getElementById(selectId);
+                if (select) {
+                    select.innerHTML = '<option value="">-- بدون تمپلیت --</option>' + 
+                        templates.map(t => `<option value="${t.id}">${escapeHtml(t.name)}</option>`).join('');
+                }
+            });
+        }
+
+        window.useTemplate = function(templateId) {
+            const template = templates.find(t => t.id === templateId);
+            if (template) {
+                document.getElementById('messageText').value = template.content;
+                switchTab('sendTab');
+            }
+        };
+
+        // ========== مودال‌های تمپلیت ==========
+        function openAddTemplateModal() {
+            document.getElementById('newTemplateName').value = '';
+            document.getElementById('newTemplateContent').value = '';
+            document.getElementById('addTemplateModal').classList.remove('hidden');
+            document.getElementById('addTemplateModal').classList.add('flex');
+        }
+
+        function closeAddTemplateModal() {
+            document.getElementById('addTemplateModal').classList.add('hidden');
+            document.getElementById('addTemplateModal').classList.remove('flex');
+        }
+
+        function saveNewTemplate() {
+            const name = document.getElementById('newTemplateName').value.trim();
+            const content = document.getElementById('newTemplateContent').value.trim();
+            
+            if (!name) {
+                alert('لطفاً نام تمپلیت را وارد کنید');
+                return;
+            }
+            if (!content) {
+                alert('لطفاً متن تمپلیت را وارد کنید');
+                return;
+            }
+            
+            templates.push({ id: Date.now(), name: name, content: content });
+            saveTemplates();
+            renderTemplates();
+            updateTemplateSelects();
+            closeAddTemplateModal();
+            alert('تمپلیت با موفقیت اضافه شد');
+        }
+
+        let currentEditTemplateId = null;
+
+        function openEditTemplateModal(templateId) {
+            const template = templates.find(t => t.id === templateId);
+            if (template) {
+                currentEditTemplateId = templateId;
+                document.getElementById('editTemplateId').value = templateId;
+                document.getElementById('editTemplateName').value = template.name;
+                document.getElementById('editTemplateContent').value = template.content;
+                document.getElementById('editTemplateModal').classList.remove('hidden');
+                document.getElementById('editTemplateModal').classList.add('flex');
+            }
+        }
+
+        function closeEditTemplateModal() {
+            document.getElementById('editTemplateModal').classList.add('hidden');
+            document.getElementById('editTemplateModal').classList.remove('flex');
+            currentEditTemplateId = null;
+        }
+
+        function updateTemplate() {
+            const name = document.getElementById('editTemplateName').value.trim();
+            const content = document.getElementById('editTemplateContent').value.trim();
+            const templateId = currentEditTemplateId || parseInt(document.getElementById('editTemplateId').value);
+            
+            if (!name) {
+                alert('لطفاً نام تمپلیت را وارد کنید');
+                return;
+            }
+            if (!content) {
+                alert('لطفاً متن تمپلیت را وارد کنید');
+                return;
+            }
+            
+            const index = templates.findIndex(t => t.id === templateId);
+            if (index !== -1) {
+                templates[index] = { ...templates[index], name: name, content: content };
+                saveTemplates();
+                renderTemplates();
+                updateTemplateSelects();
+                closeEditTemplateModal();
+                alert('تمپلیت با موفقیت ویرایش شد');
+            }
+        }
+
+        let deleteTemplateId = null;
+
+        function openDeleteTemplateModal(templateId) {
+            deleteTemplateId = templateId;
+            document.getElementById('deleteTemplateModal').classList.remove('hidden');
+            document.getElementById('deleteTemplateModal').classList.add('flex');
+        }
+
+        document.getElementById('confirmDeleteTemplateBtn').addEventListener('click', function() {
+            if (deleteTemplateId) {
+                templates = templates.filter(t => t.id !== deleteTemplateId);
+                saveTemplates();
+                renderTemplates();
+                updateTemplateSelects();
+                deleteTemplateId = null;
+            }
+            document.getElementById('deleteTemplateModal').classList.add('hidden');
+            document.getElementById('deleteTemplateModal').classList.remove('flex');
+        });
+
+        document.getElementById('cancelDeleteTemplateBtn').addEventListener('click', function() {
+            document.getElementById('deleteTemplateModal').classList.add('hidden');
+            document.getElementById('deleteTemplateModal').classList.remove('flex');
+            deleteTemplateId = null;
+        });
+
+        document.getElementById('addTemplateBtn').addEventListener('click', openAddTemplateModal);
+
+        // بارگذاری تمپلیت در ارسال سریع
+        document.getElementById('quickTemplateSelect').addEventListener('change', function() {
+            const templateId = parseInt(this.value);
+            if (templateId) {
+                const template = templates.find(t => t.id === templateId);
+                if (template) document.getElementById('messageText').value = template.content;
+            }
+        });
+
+        // ========== زمان‌بندی ==========
+        let schedules = [];
+
+        function loadSchedules() {
+            const stored = localStorage.getItem('scheduled_messages');
+            if (stored) schedules = JSON.parse(stored);
+            else schedules = [];
+            renderSchedules();
+            startSchedulerChecker();
+        }
+
+        function saveSchedules() { localStorage.setItem('scheduled_messages', JSON.stringify(schedules)); }
+
+        function renderSchedules() {
+            const container = document.getElementById('schedulesList');
+            const empty = document.getElementById('emptySchedules');
+            if (schedules.length === 0) {
+                container.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+            empty.classList.add('hidden');
+            container.innerHTML = schedules.map(s => `
+                <div class="schedule-card bg-gray-50 rounded-xl p-4 border border-gray-200">
+                    <div class="flex justify-between items-start flex-wrap gap-3">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs px-2 py-1 rounded-full ${s.robot === 'eitaa' ? 'bg-purple-100 text-purple-600' : 'bg-green-100 text-green-600'}">
+                                    ${s.robot === 'eitaa' ? '🤖 ایتا' : '🤖 بله'}
+                                </span>
+                                <span class="text-xs px-2 py-1 rounded-full status-scheduled">⏰ زمان‌بندی شده</span>
+                            </div>
+                            <p class="text-sm font-medium mt-2">ارسال به: ${s.recipient}</p>
+                            <p class="text-xs text-gray-500 mt-1">⏱️ ${s.date} - ${s.time}</p>
+                            <p class="text-sm text-gray-600 mt-2 line-clamp-2">${escapeHtml(s.message.substring(0, 80))}${s.message.length > 80 ? '...' : ''}</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="cancelSchedule(${s.id})" class="text-red-600 text-sm px-3 py-1 border border-red-200 rounded-lg">لغو</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function loadScheduleTemplates() {
+            const select = document.getElementById('scheduleTemplate');
+            select.innerHTML = '<option value="">-- انتخاب تمپلیت --</option>' + 
+                templates.map(t => `<option value="${t.id}">${escapeHtml(t.name)}</option>`).join('');
+        }
+
+        document.getElementById('scheduleTemplate').addEventListener('change', function() {
+            const templateId = parseInt(this.value);
+            if (templateId) {
+                const template = templates.find(t => t.id === templateId);
+                if (template) document.getElementById('scheduleMessage').value = template.content;
+            } else {
+                document.getElementById('scheduleMessage').value = '';
+            }
+        });
+
+        document.getElementById('addScheduleBtn').addEventListener('click', function() {
+            document.getElementById('scheduleForm').classList.remove('hidden');
+        });
+
+        document.getElementById('cancelScheduleBtn').addEventListener('click', function() {
+            document.getElementById('scheduleForm').classList.add('hidden');
+            document.getElementById('scheduleRobot').value = 'eitaa';
+            document.getElementById('scheduleRecipient').value = '';
+            document.getElementById('scheduleTemplate').value = '';
+            document.getElementById('scheduleDate').value = '';
+            document.getElementById('scheduleTime').value = '';
+            document.getElementById('scheduleMessage').value = '';
+        });
+
+        document.getElementById('saveScheduleBtn').addEventListener('click', function() {
+            const robot = document.getElementById('scheduleRobot').value;
+            const recipient = document.getElementById('scheduleRecipient').value.trim();
+            const date = document.getElementById('scheduleDate').value;
+            const time = document.getElementById('scheduleTime').value;
+            let message = document.getElementById('scheduleMessage').value.trim();
+
+            if (!recipient) { alert('لطفاً آیدی گیرنده را وارد کنید'); return; }
+            if (!date) { alert('لطفاً تاریخ ارسال را انتخاب کنید'); return; }
+            if (!time) { alert('لطفاً ساعت ارسال را انتخاب کنید'); return; }
+            if (!message) { alert('لطفاً متن پیام را وارد کنید'); return; }
+
+            const scheduleDateTime = new Date(`${date}T${time}`);
+            const now = new Date();
+            if (scheduleDateTime <= now) {
+                alert('زمان ارسال باید از زمان فعلی بزرگتر باشد!');
+                return;
+            }
+
+            schedules.push({
+                id: Date.now(),
+                robot: robot,
+                recipient: recipient,
+                message: message,
+                date: date,
+                time: time,
+                timestamp: scheduleDateTime.getTime(),
+                status: 'scheduled'
+            });
+            saveSchedules();
+            renderSchedules();
+            document.getElementById('cancelScheduleBtn').click();
+            alert('زمان‌بندی با موفقیت ذخیره شد!');
+        });
+
+        window.cancelSchedule = function(id) {
+            cancelScheduleId = id;
+            document.getElementById('deleteScheduleModal').classList.remove('hidden');
+            document.getElementById('deleteScheduleModal').classList.add('flex');
+        };
+
+        let cancelScheduleId = null;
+        document.getElementById('confirmDeleteScheduleBtn').addEventListener('click', function() {
+            if (cancelScheduleId) {
+                schedules = schedules.filter(s => s.id !== cancelScheduleId);
+                saveSchedules();
+                renderSchedules();
+                cancelScheduleId = null;
+            }
+            document.getElementById('deleteScheduleModal').classList.add('hidden');
+            document.getElementById('deleteScheduleModal').classList.remove('flex');
+        });
+        document.getElementById('cancelDeleteScheduleBtn').addEventListener('click', function() {
+            document.getElementById('deleteScheduleModal').classList.add('hidden');
+            document.getElementById('deleteScheduleModal').classList.remove('flex');
+            cancelScheduleId = null;
+        });
+
+        // بررسی خودکار زمان‌بندی‌ها
+        let schedulerInterval = null;
+        function startSchedulerChecker() {
+            if (schedulerInterval) clearInterval(schedulerInterval);
+            schedulerInterval = setInterval(checkAndSendScheduledMessages, 30000);
+        }
+
+        function checkAndSendScheduledMessages() {
+            const now = new Date().getTime();
+            const toSend = schedules.filter(s => s.timestamp <= now && s.status === 'scheduled');
+            
+            toSend.forEach(schedule => {
+                const success = Math.random() > 0.1;
+                const newMessage = {
+                    id: Date.now(),
+                    robot: schedule.robot,
+                    recipient: schedule.recipient,
+                    message: schedule.message,
+                    date: new Date().toLocaleDateString('fa-IR') + ' ' + new Date().toLocaleTimeString('fa-IR'),
+                    status: success ? 'موفق' : 'ناموفق',
+                    fromScheduler: true
+                };
+                messages.unshift(newMessage);
+                saveMessages();
+                schedules = schedules.filter(s => s.id !== schedule.id);
+                saveSchedules();
+                renderSchedules();
+            });
+        }
+
+        // ========== تاریخچه پیام‌ها ==========
+        let messages = [];
+
+        function loadMessages() {
+            const stored = localStorage.getItem('robot_messages');
+            if (stored) messages = JSON.parse(stored);
+            else messages = [];
+            renderMessages();
+        }
+
+        function saveMessages() {
+            localStorage.setItem('robot_messages', JSON.stringify(messages));
+            renderMessages();
+        }
+
+        function renderMessages() {
+            const container = document.getElementById('messagesList');
+            const empty = document.getElementById('emptyHistory');
+            const filter = document.getElementById('filterRobot').value;
+            
+            let filtered = messages;
+            if (filter !== 'all') filtered = messages.filter(m => m.robot === filter);
+            
+            if (filtered.length === 0) {
+                container.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+            empty.classList.add('hidden');
+            container.innerHTML = filtered.map(msg => `
+                <div class="message-item p-4 hover:bg-gray-50">
+                    <div class="flex justify-between items-start flex-wrap gap-2">
+                        <div>
+                            <span class="text-xs px-2 py-1 rounded-full ${msg.robot === 'eitaa' ? 'bg-purple-100 text-purple-600' : 'bg-green-100 text-green-600'}">
+                                ${msg.robot === 'eitaa' ? '🤖 ایتا' : '🤖 بله'}
+                                ${msg.fromScheduler ? '<span class="mr-1">⏰</span>' : ''}
+                            </span>
+                            <p class="text-sm text-gray-600 mt-2">${escapeHtml(msg.message.substring(0, 100))}${msg.message.length > 100 ? '...' : ''}</p>
+                            <p class="text-xs text-gray-400 mt-1">ارسال به: ${msg.recipient}</p>
+                        </div>
+                        <div class="text-left">
+                            <p class="text-xs text-gray-400">${msg.date}</p>
+                            <span class="text-xs ${msg.status === 'موفق' ? 'text-green-600' : 'text-red-600'}">
+                                <i class="fas ${msg.status === 'موفق' ? 'fa-check-circle' : 'fa-times-circle'}"></i> ${msg.status}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        document.getElementById('filterRobot').addEventListener('change', renderMessages);
+        document.getElementById('clearHistoryBtn').addEventListener('click', function() {
+            if (confirm('آیا از پاک کردن تمام تاریخچه پیام‌ها اطمینان دارید؟')) {
+                messages = [];
+                saveMessages();
+            }
+        });
+
+        // ========== ارسال پیام فوری ==========
+        function replaceVariables(text, data) {
+            return text.replace(/{name}/g, data.name || 'مشتری عزیز')
+                       .replace(/{amount}/g, data.amount || 'مبلغ')
+                       .replace(/{date}/g, data.date || new Date().toLocaleDateString('fa-IR'));
+        }
+
+        document.getElementById('sendMessageBtn').addEventListener('click', function() {
+            const robotType = document.querySelector('input[name="robotType"]:checked').value;
+            const recipient = document.getElementById('recipientId').value.trim();
+            let message = document.getElementById('messageText').value.trim();
+            const resultDiv = document.getElementById('sendResult');
+            
+            if (!recipient) {
+                resultDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> لطفاً آیدی گیرنده را وارد کنید';
+                resultDiv.classList.remove('hidden', 'bg-green-50', 'text-green-700');
+                resultDiv.classList.add('bg-red-50', 'text-red-700');
+                return;
+            }
+            if (!message) {
+                resultDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> لطفاً متن پیام را وارد کنید';
+                resultDiv.classList.remove('hidden', 'bg-green-50', 'text-green-700');
+                resultDiv.classList.add('bg-red-50', 'text-red-700');
+                return;
+            }
+            
+            const token = robotType === 'eitaa' ? localStorage.getItem('eitaa_token') : localStorage.getItem('bale_token');
+            if (!token) {
+                resultDiv.innerHTML = `<i class="fas fa-exclamation-triangle"></i> لطفاً ابتدا توکن ربات ${robotType === 'eitaa' ? 'ایتا' : 'بله'} را وارد کنید`;
+                resultDiv.classList.remove('hidden', 'bg-green-50', 'text-green-700');
+                resultDiv.classList.add('bg-red-50', 'text-red-700');
+                return;
+            }
+            
+            message = replaceVariables(message, { name: 'مشتری عزیز', amount: 'مبلغ', date: new Date().toLocaleDateString('fa-IR') });
+            
+            resultDiv.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ارسال پیام...';
+            resultDiv.classList.remove('hidden', 'bg-red-50', 'text-red-700', 'bg-green-50', 'text-green-700');
+            resultDiv.classList.add('bg-blue-50', 'text-blue-700');
+            
+            setTimeout(() => {
+                const success = Math.random() > 0.2;
+                const newMessage = {
+                    id: Date.now(),
+                    robot: robotType,
+                    recipient: recipient,
+                    message: message,
+                    date: new Date().toLocaleDateString('fa-IR') + ' ' + new Date().toLocaleTimeString('fa-IR'),
+                    status: success ? 'موفق' : 'ناموفق',
+                    fromScheduler: false
+                };
+                messages.unshift(newMessage);
+                saveMessages();
+                
+                if (success) {
+                    resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> پیام با موفقیت ارسال شد!';
+                    resultDiv.classList.remove('bg-blue-50', 'text-blue-700');
+                    resultDiv.classList.add('bg-green-50', 'text-green-700');
+                    document.getElementById('messageText').value = '';
+                    document.getElementById('recipientId').value = '';
+                } else {
+                    resultDiv.innerHTML = '<i class="fas fa-times-circle"></i> خطا در ارسال پیام. لطفاً دوباره تلاش کنید.';
+                    resultDiv.classList.remove('bg-blue-50', 'text-blue-700');
+                    resultDiv.classList.add('bg-red-50', 'text-red-700');
+                }
+                
+                setTimeout(() => { resultDiv.classList.add('hidden'); }, 3000);
+            }, 1500);
+        });
+
+        document.getElementById('testConnectionBtn').addEventListener('click', function() {
+            const robotType = document.querySelector('input[name="robotType"]:checked').value;
+            const token = robotType === 'eitaa' ? localStorage.getItem('eitaa_token') : localStorage.getItem('bale_token');
+            const resultDiv = document.getElementById('sendResult');
+            
+            if (!token) {
+                resultDiv.innerHTML = `<i class="fas fa-exclamation-triangle"></i> لطفاً ابتدا توکن ربات ${robotType === 'eitaa' ? 'ایتا' : 'بله'} را وارد کنید`;
+                resultDiv.classList.remove('hidden', 'bg-green-50', 'text-green-700');
+                resultDiv.classList.add('bg-red-50', 'text-red-700');
+                setTimeout(() => resultDiv.classList.add('hidden'), 3000);
+                return;
+            }
+            
+            resultDiv.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال بررسی اتصال...';
+            resultDiv.classList.remove('hidden');
+            resultDiv.classList.add('bg-blue-50', 'text-blue-700');
+            
+            setTimeout(() => {
+                const statusSpan = robotType === 'eitaa' ? document.getElementById('eitaaStatus') : document.getElementById('baleStatus');
+                statusSpan.innerHTML = '<i class="fas fa-circle mr-1 text-xs text-green-500"></i> متصل است';
+                statusSpan.classList.add('text-green-500');
+                statusSpan.classList.remove('text-red-500', 'text-yellow-500');
+                resultDiv.innerHTML = '<i class="fas fa-check-circle"></i> اتصال برقرار است!';
+                resultDiv.classList.remove('bg-blue-50', 'text-blue-700');
+                resultDiv.classList.add('bg-green-50', 'text-green-700');
+                setTimeout(() => resultDiv.classList.add('hidden'), 2000);
+            }, 1000);
+        });
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // بارگذاری اولیه
+        loadTemplates();
+        loadSchedules();
+        loadMessages();
+    </script>
+</body>
+</html>

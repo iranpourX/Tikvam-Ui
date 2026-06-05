@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تیکت‌های پشتیبانی | وامجو</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>.sidebar-transition { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }</style>
+</head>
+<body class="bg-gray-50">
+
+    <nav class="fixed bottom-0 left-0 right-0 z-50 block bg-white/95 backdrop-blur-lg border-t border-gray-200 shadow-lg md:hidden">
+        <div class="flex justify-around py-2"><a href="./dashboard.html" class="flex flex-col items-center gap-1 px-3 py-1 text-gray-500"><i class="fas fa-tachometer-alt text-xl"></i><span class="text-xs">خانه</span></a>
+        <a href="./loans.html" class="flex flex-col items-center gap-1 px-3 py-1 text-gray-500"><i class="fas fa-file-alt text-xl"></i><span class="text-xs">وام‌ها</span></a>
+        <a href="./tickets.html" class="flex flex-col items-center gap-1 px-3 py-1 text-blue-600 relative"><i class="fas fa-headset text-xl"></i><span class="absolute -top-1 right-4 h-4 w-4 rounded-full bg-red-500 text-[10px] text-white text-center">3</span><span class="text-xs">تیکت</span></a>
+        <a href="./profile-settings.html" class="flex flex-col items-center gap-1 px-3 py-1 text-gray-500"><i class="fas fa-user text-xl"></i><span class="text-xs">پروفایل</span></a></div>
+    </nav>
+
+    <aside id="sidebar" class="fixed inset-y-0 right-0 z-40 w-72 transform translate-x-full bg-white border-r border-gray-200 shadow-2xl sidebar-transition md:translate-x-0">
+        <div class="flex h-full flex-col"><div class="border-b p-5"><div class="flex items-center justify-between"><div class="flex items-center gap-3"><img src="./../assets/img/aziziUI.png" class="h-12 w-12 rounded-full"><div><h4 class="font-bold">علی محمدی</h4><p class="text-xs text-gray-400">فروشنده</p></div></div><button id="closeSidebarBtn" class="md:hidden"><i class="fas fa-times text-xl"></i></button></div>
+        <div class="mt-4 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 p-3"><div class="flex justify-between"><span>امتیاز</span><span class="font-bold text-amber-500">★★★★☆ 4.8</span></div><div class="mt-2 flex justify-between"><span>کیف پول</span><span class="font-bold text-emerald-600">۱۲.۵M</span></div><div class="mt-2 h-1.5 bg-gray-200 rounded-full"><div class="h-full w-3/4 rounded-full bg-blue-500"></div></div></div></div>
+        <nav class="flex-1 overflow-y-auto p-3"><ul class="space-y-1"><li><a href="./dashboard.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-gray-600 hover:bg-gray-50"><i class="fas fa-tachometer-alt w-5"></i> داشبورد</a></li><li><a href="./loans.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-gray-600 hover:bg-gray-50"><i class="fas fa-file-alt w-5"></i> وام‌ها</a></li>
+        <li><a href="./tickets.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 bg-blue-50 text-blue-600"><i class="fas fa-headset w-5"></i> تیکت‌ها</a></li>
+        <li><a href="./profile-settings.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-gray-600 hover:bg-gray-50"><i class="fas fa-user-cog w-5"></i> پروفایل</a></li></ul></nav>
+        <div class="border-t p-4"><button class="flex w-full items-center justify-center gap-2 rounded-xl bg-red-50 py-2.5 text-red-600"><i class="fas fa-sign-out-alt"></i> خروج</button></div></div>
+    </aside>
+    <div id="sidebarOverlay" class="fixed inset-0 z-30 hidden bg-black/50 md:hidden"></div>
+
+    <div class="min-h-screen md:mr-72">
+        <header class="sticky top-0 z-20 bg-white/90 backdrop-blur-md border-b shadow-sm"><div class="flex items-center justify-between px-4 py-3"><button id="openSidebarBtn" class="md:hidden p-2"><i class="fas fa-bars text-xl"></i></button><h1 class="text-lg font-bold">تیکت‌های پشتیبانی</h1><div class="flex items-center gap-2"><button id="newTicketBtn" class="rounded-full bg-blue-600 px-4 py-2 text-sm text-white"><i class="fas fa-plus ml-1"></i> تیکت جدید</button><a href="./profile-settings.html" class="flex h-9 w-9 rounded-full border"><img src="./../assets/img/aziziUI.png" class="rounded-full"></a></div></div></header>
+
+        <main class="px-4 py-6 md:px-8"><div class="mx-auto max-w-4xl space-y-4"><div class="grid grid-cols-2 gap-4 md:grid-cols-4"><div class="rounded-2xl bg-white p-4 border text-center"><p class="text-xs text-gray-400">کل تیکت‌ها</p><p class="text-2xl font-bold">۱۲</p></div><div class="rounded-2xl bg-white p-4 border text-center"><p class="text-xs text-gray-400">در انتظار</p><p class="text-2xl font-bold text-amber-600">۳</p></div><div class="rounded-2xl bg-white p-4 border text-center"><p class="text-xs text-gray-400">در حال بررسی</p><p class="text-2xl font-bold text-blue-600">۲</p></div><div class="rounded-2xl bg-white p-4 border text-center"><p class="text-xs text-gray-400">بسته شده</p><p class="text-2xl font-bold text-emerald-600">۷</p></div></div>
+
+        <div class="rounded-2xl border bg-white p-5 shadow-sm"><div class="flex flex-wrap justify-between"><div><div class="flex gap-2 mb-2"><span class="rounded-full bg-red-100 px-2 py-1 text-xs text-red-600">باز</span><span class="text-xs text-gray-400">#T-12345</span></div><h3 class="font-bold">مشکل در ثبت وام جدید</h3><p class="text-sm text-gray-500 mt-1">سلام، هنگام ثبت وام جدید، سیستم خطای "مدارک نامعتبر" می‌دهد...</p><p class="text-xs text-gray-400 mt-2">۱۴۰۴/۰۳/۱۵</p></div><button class="view-ticket mt-2 rounded-lg border px-4 py-2 text-sm">مشاهده</button></div></div>
+
+        <div class="rounded-2xl border bg-white p-5 shadow-sm"><div class="flex flex-wrap justify-between"><div><div class="flex gap-2 mb-2"><span class="rounded-full bg-amber-100 px-2 py-1 text-xs text-amber-600">در انتظار</span><span class="text-xs text-gray-400">#T-12344</span></div><h3 class="font-bold">درخواست افزایش سقف فروش</h3><p class="text-sm text-gray-500 mt-1">فروش خوبی داشته‌ام و می‌خواهم سقف فروش ماهانه خود را افزایش دهم...</p><p class="text-xs text-gray-400 mt-2">۱۴۰۴/۰۳/۱۴</p></div><button class="view-ticket mt-2 rounded-lg border px-4 py-2 text-sm">مشاهده</button></div></div></div></main>
+    </div>
+
+    <!-- New Ticket Modal -->
+    <div id="ticketModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50"><div class="w-full max-w-md rounded-2xl bg-white p-6"><div class="flex justify-between mb-4"><h3 class="text-xl font-bold">تیکت جدید</h3><button id="closeModalBtn" class="text-gray-400"><i class="fas fa-times"></i></button></div><div class="space-y-4"><input type="text" placeholder="موضوع" class="w-full rounded-xl border px-4 py-2.5"><select class="w-full rounded-xl border px-4 py-2.5"><option>مشکل فنی</option><option>مشکل مالی</option><option>راهنمایی</option></select><textarea rows="4" placeholder="شرح مشکل..." class="w-full rounded-xl border px-4 py-2.5"></textarea><button class="w-full rounded-xl bg-blue-600 py-2.5 text-white">ارسال تیکت</button></div></div></div>
+
+    <script>
+        const s=document.getElementById('sidebar'),o=document.getElementById('sidebarOverlay');
+        document.getElementById('openSidebarBtn')?.addEventListener('click',()=>{s.classList.remove('translate-x-full');s.classList.add('translate-x-0');o.classList.remove('hidden');});
+        document.getElementById('closeSidebarBtn')?.addEventListener('click',()=>{s.classList.remove('translate-x-0');s.classList.add('translate-x-full');o.classList.add('hidden');});
+        const modal=document.getElementById('ticketModal');
+        document.getElementById('newTicketBtn')?.addEventListener('click',()=>modal.classList.remove('hidden'));
+        document.getElementById('closeModalBtn')?.addEventListener('click',()=>modal.classList.add('hidden'));
+    </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./../assets/css/output.css" rel="stylesheet">
+    <link href="./../assets/css/style.css" rel="stylesheet">
+    <title>رزروها | وامجو</title>
+</head>
+
+<body class="bg-slate-50">
+
+    <header class="relative overflow-hidden bg-blue-50">
+        <div class="absolute inset-0 -z-0">
+            <div class="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-200/40 blur-3xl"></div>
+            <div class="absolute right-0 top-20 h-64 w-64 rounded-full bg-indigo-200/30 blur-3xl"></div>
+        </div>
+        <nav class="relative z-10 px-4 py-5">
+            <div class="container mx-auto">
+                <div class="flex items-center justify-between rounded-2xl border border-white/70 bg-white/70 px-4 py-3 backdrop-blur-md md:px-6">
+                    <a href="../index.html" class="flex items-center gap-2 font-bold text-2xl text-blue-700">
+                        <img src="./../assets/img/ins_115617.svg" alt="Logo" class="h-9 w-9 object-contain">
+                        <span>تیک وام</span>
+                    </a>
+                    <a href="./dashboard.html" class="text-sm text-slate-600 hover:text-blue-600">← بازگشت به پنل</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-3 py-8">
+        <div class="mb-6">
+            <h1 class="text-2xl font-bold text-slate-800">رزروها</h1>
+            <p class="mt-1 text-sm text-slate-500">لیست رزروهای انجام شده برای وام‌های شما</p>
+        </div>
+
+        <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
+            <div class="rounded-2xl border border-blue-200 bg-gradient-to-r from-blue-50 to-white p-5 shadow-md">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <span class="inline-block rounded-full bg-blue-100 px-2 py-1 text-xs text-blue-700">رزرو فعال</span>
+                        <h3 class="mt-2 text-lg font-bold text-slate-800">وام مسکن ملی</h3>
+                        <p class="text-sm text-slate-600">خریدار: <span class="font-medium">محمد رضایی</span></p>
+                        <p class="text-xs text-slate-400 mt-1">زمان رزرو: ۱۴۰۴/۰۳/۱۶ - تا ۱۴۰۴/۰۳/۱۸</p>
+                    </div>
+                    <svg class="h-8 w-8 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <div class="mt-4 flex gap-3">
+                    <button class="rounded-full bg-blue-600 px-4 py-2 text-sm text-white transition hover:bg-blue-700">تایید نهایی</button>
+                    <button class="rounded-full border border-red-300 bg-white px-4 py-2 text-sm text-red-600 transition hover:bg-red-50">لغو رزرو</button>
+                </div>
+            </div>
+
+            <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-md">
+                <div class="flex items-start justify-between">
+                    <div>
+                        <span class="inline-block rounded-full bg-emerald-100 px-2 py-1 text-xs text-emerald-700">تکمیل شده</span>
+                        <h3 class="mt-2 text-lg font-bold text-slate-800">وام ازدواج</h3>
+                        <p class="text-sm text-slate-600">خریدار: <span class="font-medium">سارا احمدی</span></p>
+                        <p class="text-xs text-slate-400 mt-1">تاریخ تکمیل: ۱۴۰۴/۰۳/۱۰</p>
+                    </div>
+                    <svg class="h-8 w-8 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <div class="mt-4 text-sm text-emerald-600">✓ وجه واریز شده - انتقال انجام شد</div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-gray-400 text-center text-sm py-6 mt-12">
+        تمام حقوق محفوظ است © ۱۴۰۵ وامجو
+    </footer>
+
+</body>
+
+</html>
