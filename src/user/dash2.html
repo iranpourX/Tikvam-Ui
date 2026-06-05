@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>پنل کاربر | وامجو</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .sidebar-transition { transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .stat-card { transition: all 0.2s ease; }
+        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+        .loan-card, .request-card { transition: all 0.2s ease; }
+        .loan-card:hover, .request-card:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); }
+        .tab-btn.active { border-bottom: 2px solid #2563eb; color: #1e40af; background-color: #eff6ff; }
+        .status-pending { background-color: #fef3c7; color: #d97706; }
+        .status-approved { background-color: #dcfce7; color: #16a34a; }
+        .status-rejected { background-color: #fee2e2; color: #dc2626; }
+        .status-reserved { background-color: #dbeafe; color: #2563eb; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+
+    <!-- Mobile Bottom Nav -->
+    <nav class="fixed bottom-0 left-0 right-0 z-50 block bg-white/95 backdrop-blur-lg border-t border-gray-200 shadow-lg md:hidden">
+        <div class="flex justify-around py-2">
+            <a href="dashboard.html" class="flex flex-col items-center gap-1 px-3 py-1 text-blue-600"><i class="fas fa-home text-xl"></i><span class="text-xs">خانه</span></a>
+            <a href="loans.html" class="flex flex-col items-center gap-1 px-3 py-1 text-gray-500"><i class="fas fa-hand-holding-usd text-xl"></i><span class="text-xs">وام‌ها</span></a>
+            <a href="requests.html" class="flex flex-col items-center gap-1 px-3 py-1 text-gray-500"><i class="fas fa-clipboard-list text-xl"></i><span class="text-xs">درخواست‌ها</span></a>
+            <a href="profile.html" class="flex flex-col items-center gap-1 px-3 py-1 text-gray-500"><i class="fas fa-user text-xl"></i><span class="text-xs">پروفایل</span></a>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 right-0 z-40 w-72 transform translate-x-full bg-white border-r border-gray-200 shadow-2xl sidebar-transition md:translate-x-0">
+        <div class="flex h-full flex-col">
+            <div class="border-b border-gray-100 p-5">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <img src="https://ui-avatars.com/api/?name=احمد+رضایی&background=2563eb&color=fff&rounded=true&size=40" class="h-10 w-10 rounded-full ring-2 ring-blue-100">
+                        <div>
+                            <h4 class="font-bold text-gray-800">احمد رضایی</h4>
+                            <p class="text-xs text-gray-400">کاربر عادی</p>
+                        </div>
+                    </div>
+                    <button id="closeSidebarBtn" class="rounded-lg p-1 text-gray-400 hover:bg-gray-100 md:hidden">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="mt-4 rounded-xl bg-gradient-to-r from-blue-50 to-indigo-50 p-3">
+                    <div class="flex justify-between text-sm"><span class="text-gray-500">اعتبار حساب</span><span class="font-bold text-emerald-600">۱۲,۵۰۰,۰۰۰ تومان</span></div>
+                    <div class="mt-2 flex justify-between text-sm"><span class="text-gray-500">درخواست‌های فعال</span><span class="font-bold text-amber-600">۳</span></div>
+                </div>
+            </div>
+            <nav class="flex-1 overflow-y-auto p-3">
+                <div class="mb-6"><p class="mb-2 px-3 text-xs font-semibold uppercase text-gray-400">داشبورد</p>
+                    <ul class="space-y-1">
+                        <li><a href="dashboard.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm bg-blue-50 text-blue-600"><i class="fas fa-tachometer-alt w-5"></i> داشبورد</a></li>
+                        <li><a href="loans.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-hand-holding-usd w-5"></i> وام‌ها</a></li>
+                        <li><a href="my-requests.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-clipboard-list w-5"></i> درخواست‌های من</a></li>
+                    </ul>
+                </div>
+                <div class="mb-6"><p class="mb-2 px-3 text-xs font-semibold uppercase text-gray-400">حساب کاربری</p>
+                    <ul class="space-y-1">
+                        <li><a href="profile.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-user-cog w-5"></i> پروفایل</a></li>
+                        <li><a href="wallet.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-wallet w-5"></i> کیف پول</a></li>
+                        <li><a href="notifications.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-bell w-5"></i> اعلان‌ها</a></li>
+                    </ul>
+                </div>
+                <div class="mb-6"><p class="mb-2 px-3 text-xs font-semibold uppercase text-gray-400">پشتیبانی</p>
+                    <ul class="space-y-1">
+                        <li><a href="tickets.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-headset w-5"></i> تیکت‌ها</a></li>
+                        <li><a href="faq.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-gray-600 hover:bg-gray-50"><i class="fas fa-question-circle w-5"></i> راهنما</a></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="border-t border-gray-100 p-4">
+                <button class="flex w-full items-center justify-center gap-2 rounded-xl bg-red-50 px-4 py-2.5 text-sm font-semibold text-red-600 transition hover:bg-red-100"><i class="fas fa-sign-out-alt"></i> خروج</button>
+            </div>
+        </div>
+    </aside>
+    <div id="sidebarOverlay" class="fixed inset-0 z-30 hidden bg-black/50 md:hidden"></div>
+
+    <!-- Main Content -->
+    <div class="min-h-screen md:mr-72">
+        <header class="sticky top-0 z-20 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+            <div class="flex items-center justify-between px-4 py-3 md:px-6">
+                <button id="openSidebarBtn" class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 md:hidden"><i class="fas fa-bars text-xl"></i></button>
+                <h1 class="text-lg font-bold text-gray-800">پنل کاربری</h1>
+                <div class="flex items-center gap-3">
+                    <button class="relative rounded-full p-2 text-gray-500 hover:bg-gray-100">
+                        <i class="fas fa-bell text-lg"></i>
+                        <span class="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-red-500"></span>
+                    </button>
+                    <a href="profile.html" class="flex h-9 w-9 items-center justify-center overflow-hidden rounded-full border border-gray-200 bg-white shadow-sm">
+                        <img src="https://ui-avatars.com/api/?name=احمد+رضایی&background=2563eb&color=fff&rounded=true&size=32" class="h-full w-full rounded-full object-cover">
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="px-4 py-6 md:px-8">
+            <div class="mx-auto max-w-7xl">
+                <!-- Welcome Banner -->
+                <div class="mb-6 rounded-2xl bg-gradient-to-r from-blue-700 to-indigo-700 p-5 text-white shadow-lg">
+                    <h1 class="text-xl font-bold">خوش آمدید، احمد جان! 👋</h1>
+                    <p class="text-sm text-blue-100 mt-1">به پنل کاربری خوش آمدید. وام مورد نظر خود را جستجو کنید.</p>
+                </div>
+
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-2 gap-3 sm:grid-cols-4 mb-8">
+                    <div class="stat-card bg-white rounded-xl p-3 border shadow-sm text-center">
+                        <p class="text-xs text-gray-400">درخواست‌های فعال</p>
+                        <p class="text-xl font-bold text-amber-600">۳</p>
+                    </div>
+                    <div class="stat-card bg-white rounded-xl p-3 border shadow-sm text-center">
+                        <p class="text-xs text-gray-400">در انتظار پاسخ</p>
+                        <p class="text-xl font-bold text-blue-600">۲</p>
+                    </div>
+                    <div class="stat-card bg-white rounded-xl p-3 border shadow-sm text-center">
+                        <p class="text-xs text-gray-400">تایید شده</p>
+                        <p class="text-xl font-bold text-emerald-600">۱</p>
+                    </div>
+                    <div class="stat-card bg-white rounded-xl p-3 border shadow-sm text-center">
+                        <p class="text-xs text-gray-400">رزرو فعال</p>
+                        <p class="text-xl font-bold text-purple-600">۰</p>
+                    </div>
+                </div>
+
+                <!-- Quick Access -->
+                <div class="mb-8">
+                    <h2 class="text-lg font-bold text-gray-800 mb-4">دسترسی سریع</h2>
+                    <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
+                        <a href="loans.html" class="group bg-white rounded-xl p-4 text-center border hover:shadow transition">
+                            <div class="w-12 h-12 mx-auto rounded-full bg-blue-100 flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition">
+                                <i class="fas fa-search text-xl"></i>
+                            </div>
+                            <p class="text-sm mt-2 font-medium">جستجوی وام</p>
+                        </a>
+                        <a href="my-requests.html" class="group bg-white rounded-xl p-4 text-center border hover:shadow transition">
+                            <div class="w-12 h-12 mx-auto rounded-full bg-amber-100 flex items-center justify-center text-amber-600 group-hover:bg-amber-600 group-hover:text-white transition">
+                                <i class="fas fa-clipboard-list text-xl"></i>
+                            </div>
+                            <p class="text-sm mt-2 font-medium">درخواست‌های من</p>
+                        </a>
+                        <a href="reservations.html" class="group bg-white rounded-xl p-4 text-center border hover:shadow transition">
+                            <div class="w-12 h-12 mx-auto rounded-full bg-purple-100 flex items-center justify-center text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition">
+                                <i class="fas fa-calendar-check text-xl"></i>
+                            </div>
+                            <p class="text-sm mt-2 font-medium">رزروها</p>
+                        </a>
+                        <a href="tickets.html" class="group bg-white rounded-xl p-4 text-center border hover:shadow transition">
+                            <div class="w-12 h-12 mx-auto rounded-full bg-red-100 flex items-center justify-center text-red-600 group-hover:bg-red-600 group-hover:text-white transition">
+                                <i class="fas fa-headset text-xl"></i>
+                            </div>
+                            <p class="text-sm mt-2 font-medium">پشتیبانی</p>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Tabs -->
+                <div class="mb-4 border-b border-gray-200 overflow-x-auto">
+                    <div class="flex gap-1 text-sm font-medium">
+                        <button id="tabLoansBtn" class="tab-btn active px-4 py-2 rounded-t-lg">🏦 وام‌های پیشنهادی</button>
+                        <button id="tabRequestsBtn" class="tab-btn px-4 py-2 rounded-t-lg">📋 آخرین درخواست‌ها</button>
+                    </div>
+                </div>
+
+                <!-- ========== TAB 1: وام‌های پیشنهادی ========== -->
+                <div id="loansTab" class="tab-content">
+                    <div class="space-y-3">
+                        <!-- Loan Card 1 -->
+                        <div class="loan-card bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+                            <div class="flex flex-wrap justify-between items-start gap-3">
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <img src="https://ui-avatars.com/api/?name=ملی&background=2563eb&color=fff&size=24&rounded=true" class="w-6 h-6 rounded-full">
+                                        <h3 class="font-bold text-gray-800">وام مسکن ملی</h3>
+                                    </div>
+                                    <div class="mt-2 flex flex-wrap gap-3 text-sm">
+                                        <span><span class="text-gray-400">مبلغ وام:</span> <span class="font-semibold">۵۰۰,۰۰۰,۰۰۰ تومان</span></span>
+                                        <span><span class="text-gray-400">قیمت امتیاز:</span> <span class="text-emerald-600 font-semibold">۳,۹۰۰,۰۰۰ تومان</span></span>
+                                        <span><span class="text-gray-400">اقساط:</span> ۱۲ ماهه</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <i class="fas fa-store text-xs text-gray-400"></i>
+                                        <span class="text-xs text-gray-500">فروشنده: علی محمدی</span>
+                                        <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">تایید شده</span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button onclick="showLoanDetail(1)" class="border border-blue-300 text-blue-600 px-4 py-2 rounded-lg text-sm">جزئیات</button>
+                                    <button onclick="showRequestModal(1, 'وام مسکن ملی', '۳,۹۰۰,۰۰۰')" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">درخواست</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Loan Card 2 -->
+                        <div class="loan-card bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+                            <div class="flex flex-wrap justify-between items-start gap-3">
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <img src="https://ui-avatars.com/api/?name=ازدواج&background=10b981&color=fff&size=24&rounded=true" class="w-6 h-6 rounded-full">
+                                        <h3 class="font-bold text-gray-800">وام ازدواج</h3>
+                                    </div>
+                                    <div class="mt-2 flex flex-wrap gap-3 text-sm">
+                                        <span><span class="text-gray-400">مبلغ وام:</span> <span class="font-semibold">۳۰۰,۰۰۰,۰۰۰ تومان</span></span>
+                                        <span><span class="text-gray-400">قیمت امتیاز:</span> <span class="text-emerald-600 font-semibold">۲,۲۰۰,۰۰۰ تومان</span></span>
+                                        <span><span class="text-gray-400">اقساط:</span> ۱۸ ماهه</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <i class="fas fa-store text-xs text-gray-400"></i>
+                                        <span class="text-xs text-gray-500">فروشنده: سارا احمدی</span>
+                                        <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">تایید شده</span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button onclick="showLoanDetail(2)" class="border border-blue-300 text-blue-600 px-4 py-2 rounded-lg text-sm">جزئیات</button>
+                                    <button onclick="showRequestModal(2, 'وام ازدواج', '۲,۲۰۰,۰۰۰')" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">درخواست</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Loan Card 3 -->
+                        <div class="loan-card bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+                            <div class="flex flex-wrap justify-between items-start gap-3">
+                                <div>
+                                    <div class="flex items-center gap-2">
+                                        <img src="https://ui-avatars.com/api/?name=کسب&background=8b5cf6&color=fff&size=24&rounded=true" class="w-6 h-6 rounded-full">
+                                        <h3 class="font-bold text-gray-800">وام کسب و کار</h3>
+                                    </div>
+                                    <div class="mt-2 flex flex-wrap gap-3 text-sm">
+                                        <span><span class="text-gray-400">مبلغ وام:</span> <span class="font-semibold">۱,۰۰۰,۰۰۰,۰۰۰ تومان</span></span>
+                                        <span><span class="text-gray-400">قیمت امتیاز:</span> <span class="text-emerald-600 font-semibold">۷,۵۰۰,۰۰۰ تومان</span></span>
+                                        <span><span class="text-gray-400">اقساط:</span> ۳۶ ماهه</span>
+                                    </div>
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <i class="fas fa-store text-xs text-gray-400"></i>
+                                        <span class="text-xs text-gray-500">فروشنده: رضا کریمی</span>
+                                        <span class="text-xs text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">تایید شده</span>
+                                    </div>
+                                </div>
+                                <div class="flex gap-2">
+                                    <button onclick="showLoanDetail(3)" class="border border-blue-300 text-blue-600 px-4 py-2 rounded-lg text-sm">جزئیات</button>
+                                    <button onclick="showRequestModal(3, 'وام کسب و کار', '۷,۵۰۰,۰۰۰')" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm">درخواست</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ========== TAB 2: آخرین درخواست‌ها ========== -->
+                <div id="requestsTab" class="tab-content hidden">
+                    <div id="userRequestsList" class="space-y-3">
+                        <!-- درخواست‌ها اینجا نمایش داده می‌شوند -->
+                    </div>
+                    <div id="emptyRequests" class="hidden text-center py-10 text-gray-400">
+                        <i class="fas fa-inbox text-5xl mb-3"></i>
+                        <p>هیچ درخواستی ثبت نکرده‌اید</p>
+                        <a href="loans.html" class="inline-block mt-3 text-blue-600 text-sm">جستجوی وام ←</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal: درخواست وام -->
+    <div id="requestModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl w-full max-w-md mx-4">
+            <div class="flex justify-between items-center p-5 border-b">
+                <h3 id="modalLoanTitle" class="text-xl font-bold">درخواست وام</h3>
+                <button onclick="closeRequestModal()" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="p-5 space-y-4">
+                <input type="hidden" id="requestLoanId">
+                <div class="bg-gray-50 rounded-xl p-3">
+                    <p class="text-sm text-gray-600">وام: <span id="requestLoanName" class="font-semibold"></span></p>
+                    <p class="text-sm text-gray-600 mt-1">قیمت: <span id="requestLoanPrice" class="font-semibold text-emerald-600"></span> تومان</p>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">مبلغ پیشنهادی (تومان)</label>
+                    <input type="text" id="requestAmount" class="w-full border rounded-xl px-4 py-2.5" placeholder="مبلغ پیشنهادی خود را وارد کنید">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">پیام به فروشنده (اختیاری)</label>
+                    <textarea id="requestMessage" rows="3" class="w-full border rounded-xl px-4 py-2.5" placeholder="متن پیام شما..."></textarea>
+                </div>
+            </div>
+            <div class="flex gap-3 p-5 border-t">
+                <button onclick="submitRequest()" class="flex-1 bg-blue-600 text-white py-2.5 rounded-xl">ثبت درخواست</button>
+                <button onclick="closeRequestModal()" class="flex-1 border py-2.5 rounded-xl">انصراف</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: جزئیات وام -->
+    <div id="loanDetailModal" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-2xl w-full max-w-md mx-4">
+            <div class="flex justify-between items-center p-5 border-b">
+                <h3 class="text-xl font-bold">جزئیات وام</h3>
+                <button onclick="closeLoanDetailModal()" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="p-5 space-y-3" id="loanDetailContent">
+                <!-- جزئیات وام اینجا پر می‌شود -->
+            </div>
+            <div class="p-5 border-t">
+                <button onclick="closeLoanDetailModal()" class="w-full border py-2.5 rounded-xl">بستن</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== سایدبار ==========
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        const openBtn = document.getElementById('openSidebarBtn');
+        const closeBtn = document.getElementById('closeSidebarBtn');
+
+        function openSidebar() { sidebar.classList.remove('translate-x-full'); sidebar.classList.add('translate-x-0'); overlay.classList.remove('hidden'); document.body.style.overflow = 'hidden'; }
+        function closeSidebar() { sidebar.classList.remove('translate-x-0'); sidebar.classList.add('translate-x-full'); overlay.classList.add('hidden'); document.body.style.overflow = ''; }
+        if (openBtn) openBtn.addEventListener('click', openSidebar);
+        if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+        if (overlay) overlay.addEventListener('click', closeSidebar);
+        window.addEventListener('resize', function() { if (window.innerWidth >= 768) closeSidebar(); });
+
+        // ========== تب‌ها ==========
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'text-blue-600', 'border-blue-500', 'bg-blue-50');
+                btn.classList.add('text-gray-500');
+            });
+            const activeBtn = document.getElementById(tabId === 'loansTab' ? 'tabLoansBtn' : 'tabRequestsBtn');
+            activeBtn.classList.add('active', 'text-blue-600', 'border-blue-500', 'bg-blue-50');
+            activeBtn.classList.remove('text-gray-500');
+            
+            if (tabId === 'requestsTab') renderUserRequests();
+        }
+
+        document.getElementById('tabLoansBtn').addEventListener('click', () => switchTab('loansTab'));
+        document.getElementById('tabRequestsBtn').addEventListener('click', () => switchTab('requestsTab'));
+
+        // ========== مدیریت درخواست‌های کاربر ==========
+        let userRequests = [];
+
+        function loadUserRequests() {
+            const stored = localStorage.getItem('user_loan_requests');
+            if (stored) userRequests = JSON.parse(stored);
+            else userRequests = [];
+            renderUserRequests();
+        }
+
+        function saveUserRequests() {
+            localStorage.setItem('user_loan_requests', JSON.stringify(userRequests));
+            renderUserRequests();
+            updateStats();
+        }
+
+        function renderUserRequests() {
+            const container = document.getElementById('userRequestsList');
+            const empty = document.getElementById('emptyRequests');
+            
+            if (userRequests.length === 0) {
+                container.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+            empty.classList.add('hidden');
+            container.innerHTML = userRequests.map(req => `
+                <div class="request-card bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+                    <div class="flex flex-wrap justify-between items-start gap-3">
+                        <div>
+                            <div class="flex items-center gap-2 flex-wrap">
+                                <h3 class="font-bold text-gray-800">${req.loanName}</h3>
+                                <span class="text-xs px-2 py-1 rounded-full ${getStatusClass(req.status)}">${getStatusText(req.status)}</span>
+                            </div>
+                            <div class="mt-2 flex flex-wrap gap-3 text-sm">
+                                <span><span class="text-gray-400">پیشنهادی:</span> <span class="font-semibold text-emerald-600">${req.amount} تومان</span></span>
+                                <span><span class="text-gray-400">تاریخ درخواست:</span> ${req.date}</span>
+                            </div>
+                            ${req.message ? `<p class="text-sm text-gray-500 mt-2">📝 ${req.message}</p>` : ''}
+                            ${req.responseMessage ? `<p class="text-sm text-blue-600 mt-2 bg-blue-50 p-2 rounded-lg">پاسخ فروشنده: ${req.responseMessage}</p>` : ''}
+                        </div>
+                        <div class="flex gap-2">
+                            ${req.status === 'approved' ? `<button onclick="makeReservation(${req.id})" class="bg-purple-600 text-white px-3 py-1.5 rounded-lg text-sm">رزرو</button>` : ''}
+                            ${req.status === 'pending' ? `<button onclick="cancelRequest(${req.id})" class="text-red-600 text-sm px-3 py-1.5 border border-red-200 rounded-lg">لغو</button>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getStatusClass(status) {
+            switch(status) {
+                case 'pending': return 'status-pending';
+                case 'approved': return 'status-approved';
+                case 'rejected': return 'status-rejected';
+                case 'reserved': return 'status-reserved';
+                default: return 'bg-gray-100 text-gray-600';
+            }
+        }
+
+        function getStatusText(status) {
+            switch(status) {
+                case 'pending': return 'در انتظار پاسخ';
+                case 'approved': return 'تایید شده';
+                case 'rejected': return 'رد شده';
+                case 'reserved': return 'رزرو شده';
+                default: return status;
+            }
+        }
+
+        function updateStats() {
+            const pending = userRequests.filter(r => r.status === 'pending').length;
+            const approved = userRequests.filter(r => r.status === 'approved').length;
+            const reserved = userRequests.filter(r => r.status === 'reserved').length;
+            
+            document.querySelectorAll('.stat-card .text-xl').forEach((el, i) => {
+                if (i === 0) el.innerText = pending + approved + reserved;
+                else if (i === 1) el.innerText = pending;
+                else if (i === 2) el.innerText = approved;
+                else if (i === 3) el.innerText = reserved;
+            });
+        }
+
+        // ========== مودال درخواست ==========
+        let currentLoanId = null;
+
+        function showRequestModal(loanId, loanName, loanPrice) {
+            currentLoanId = loanId;
+            document.getElementById('requestLoanId').value = loanId;
+            document.getElementById('requestLoanName').innerText = loanName;
+            document.getElementById('requestLoanPrice').innerText = loanPrice;
+            document.getElementById('requestAmount').value = loanPrice;
+            document.getElementById('requestMessage').value = '';
+            document.getElementById('requestModal').classList.remove('hidden');
+            document.getElementById('requestModal').classList.add('flex');
+        }
+
+        function closeRequestModal() {
+            document.getElementById('requestModal').classList.add('hidden');
+            document.getElementById('requestModal').classList.remove('flex');
+        }
+
+        function submitRequest() {
+            const loanId = document.getElementById('requestLoanId').value;
+            const loanName = document.getElementById('requestLoanName').innerText;
+            const loanPrice = document.getElementById('requestLoanPrice').innerText;
+            const amount = document.getElementById('requestAmount').value;
+            const message = document.getElementById('requestMessage').value;
+
+            if (!amount) {
+                alert('لطفاً مبلغ پیشنهادی را وارد کنید');
+                return;
+            }
+
+            const newRequest = {
+                id: Date.now(),
+                loanId: parseInt(loanId),
+                loanName: loanName,
+                price: loanPrice,
+                amount: amount,
+                message: message,
+                date: new Date().toLocaleDateString('fa-IR'),
+                status: 'pending',
+                responseMessage: null
+            };
+
+            userRequests.unshift(newRequest);
+            saveUserRequests();
+            closeRequestModal();
+            alert('درخواست شما با موفقیت ثبت شد. منتظر پاسخ فروشنده باشید.');
+            switchTab('requestsTab');
+        }
+
+        function cancelRequest(id) {
+            if (confirm('آیا از لغو این درخواست اطمینان دارید؟')) {
+                userRequests = userRequests.filter(r => r.id !== id);
+                saveUserRequests();
+            }
+        }
+
+        function makeReservation(requestId) {
+            const request = userRequests.find(r => r.id === requestId);
+            if (request && request.status === 'approved') {
+                if (confirm(`آیا می‌خواهید وام "${request.loanName}" را رزرو کنید؟`)) {
+                    request.status = 'reserved';
+                    saveUserRequests();
+                    alert('رزرو با موفقیت انجام شد. فروشنده با شما تماس می‌گیرد.');
+                }
+            }
+        }
+
+        // ========== مودال جزئیات وام ==========
+        const loanDetails = {
+            1: { bank: 'بانک ملی', installment: '۱۲ ماهه', rate: '۱۸٪', description: 'وام مسکن ملی برای خرید، ساخت یا تعمیر مسکن ارائه می‌شود. شرایط آسان و اقساط مناسب.' },
+            2: { bank: 'بانک صادرات', installment: '۱۸ ماهه', rate: '۱۶٪', description: 'وام ازدواج برای زوج‌های جوان با کمترین بهره و شرایط ویژه.' },
+            3: { bank: 'بانک ملت', installment: '۳۶ ماهه', rate: '۲۰٪', description: 'وام کسب و کار برای راه‌اندازی یا توسعه کسب و کار با سقف بالا.' }
+        };
+
+        function showLoanDetail(loanId) {
+            const detail = loanDetails[loanId];
+            const content = `
+                <div class="space-y-3">
+                    <div class="flex justify-between border-b pb-2"><span class="text-gray-500">بانک:</span><span class="font-semibold">${detail.bank}</span></div>
+                    <div class="flex justify-between border-b pb-2"><span class="text-gray-500">مدت اقساط:</span><span class="font-semibold">${detail.installment}</span></div>
+                    <div class="flex justify-between border-b pb-2"><span class="text-gray-500">نرخ سود:</span><span class="font-semibold">${detail.rate}</span></div>
+                    <div class="pt-2"><p class="text-gray-600 text-sm">${detail.description}</p></div>
+                </div>
+            `;
+            document.getElementById('loanDetailContent').innerHTML = content;
+            document.getElementById('loanDetailModal').classList.remove('hidden');
+            document.getElementById('loanDetailModal').classList.add('flex');
+        }
+
+        function closeLoanDetailModal() {
+            document.getElementById('loanDetailModal').classList.add('hidden');
+            document.getElementById('loanDetailModal').classList.remove('flex');
+        }
+
+        // بارگذاری اولیه
+        loadUserRequests();
+    </script>
+</body>
+</html>

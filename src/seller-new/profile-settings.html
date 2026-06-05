@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./../assets/css/output.css" rel="stylesheet">
+    <title>تنظیمات پروفایل | وامجو</title>
+    <style>
+        .tab-setting.active {
+            border-bottom: 2px solid #3b82f6;
+            color: #1e40af;
+        }
+        .avatar-upload:hover .avatar-overlay {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50">
+
+    <header class="sticky top-0 z-20 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="flex items-center justify-between px-4 py-3">
+            <button id="menuToggleBtn" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 lg:hidden">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <h1 class="text-lg font-bold text-slate-800">تنظیمات پروفایل</h1>
+            <div class="flex items-center gap-3">
+                <a href="./profile-settings.html" class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white shadow-sm">
+                    <img src="./../assets/img/aziziUI.png" alt="پروفایل" class="h-full w-full rounded-full object-cover">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div id="sidebarContainer"></div>
+
+    <main class="lg:mr-72">
+        <div class="p-4 md:p-6">
+            <div class="mx-auto max-w-4xl">
+                <!-- Profile Tabs -->
+                <div class="mb-6 border-b border-slate-200">
+                    <ul class="flex flex-wrap gap-4 text-sm font-medium">
+                        <li><button class="tab-setting active pb-3 px-1 text-blue-600" data-tab="personal">اطلاعات شخصی</button></li>
+                        <li><button class="tab-setting pb-3 px-1 text-slate-500" data-tab="security">امنیت</button></li>
+                        <li><button class="tab-setting pb-3 px-1 text-slate-500" data-tab="banking">اطلاعات بانکی</button></li>
+                        <li><button class="tab-setting pb-3 px-1 text-slate-500" data-tab="notifications">اعلان‌ها</button></li>
+                    </ul>
+                </div>
+
+                <!-- Tab Content: Personal Info -->
+                <div id="tab-personal" class="tab-content active">
+                    <div class="rounded-2xl border border-slate-200 bg-white p-6">
+                        <!-- Avatar Upload -->
+                        <div class="mb-8 flex flex-col items-center">
+                            <div class="avatar-upload relative">
+                                <div class="relative h-24 w-24 cursor-pointer group">
+                                    <img src="./../assets/img/aziziUI.png" alt="آواتار" class="h-24 w-24 rounded-full object-cover ring-4 ring-blue-100">
+                                    <div class="avatar-overlay absolute inset-0 flex items-center justify-center rounded-full bg-black/50 opacity-0 transition group-hover:opacity-100">
+                                        <svg class="h-8 w-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                                <input type="file" class="hidden" id="avatarInput" accept="image/*">
+                                <button onclick="document.getElementById('avatarInput').click()" class="mt-2 text-sm text-blue-600 hover:text-blue-700">تغییر آواتار</button>
+                            </div>
+                        </div>
+
+                        <div class="grid gap-5 md:grid-cols-2">
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-slate-700">نام و نام خانوادگی</label>
+                                <input type="text" value="علی محمدی" class="w-full rounded-xl border border-slate-200 px-4 py-2.5 focus:border-blue-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-slate-700">نام کاربری</label>
+                                <input type="text" value="alirezamohammadi" class="w-full rounded-xl border border-slate-200 px-4 py-2.5 focus:border-blue-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-slate-700">ایمیل</label>
+                                <input type="email" value="ali@vamjoo.com" class="w-full rounded-xl border border-slate-200 px-4 py-2.5 focus:border-blue-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-slate-700">شماره موبایل</label>
+                                <input type="tel" value="۰۹۱۲۳۴۵۶۷۸۹" class="w-full rounded-xl border border-slate-200 px-4 py-2.5 focus:border-blue-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-slate-700">تاریخ تولد</label>
+                                <input type="text" value="۱۳۷۰/۰۱/۱۵" class="w-full rounded-xl border border-slate-200 px-4 py-2.5 focus:border-blue-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-slate-700">کد ملی</label>
+                                <input type="text" value="۱۲۳۴۵۶۷۸۹۰" class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-2.5" readonly>
+                                <p class="mt-1 text-xs text-slate-400">کد ملی قابل ویرایش نیست</p>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label class="mb-1 block text-sm font-medium text-slate-700">آدرس</label>
+                                <textarea rows="2" class="w-full rounded-xl border border-slate-200 px-4 py-2.5 focus:border-blue-500 focus:outline-none">تهران، خیابان ولیعصر، پلاک ۱۲۳</textarea>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 flex justify-end gap-3">
+                            <button class="rounded-xl border border-slate-200 px-6 py-2.5 text-slate-600 transition hover:bg-slate-50">انصراف</button>
+                            <button class="rounded-xl bg-blue-600 px-6 py-2.5 text-white transition hover:bg-blue-700">ذخیره تغییرات</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Security -->
+                <div id="tab-security" class="tab-content hidden">
+                    <div class="rounded-2xl border border-slate-200 bg-white p-6">
+                        <div class="space-y-5">
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-slate-700">رمز عبور فعلی</label>
+                                <input type="password" class="w-full rounded-xl border border-slate-200 px-4 py-2.5">
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-slate-700">رمز عبور جدید</label>
+                                <input type="password" class="w-full rounded-xl border border-slate-200 px-4 py-2.5">
+                                <p class="mt-1 text-xs text-slate-400">رمز عبور باید حداقل ۸ کاراکتر داشته باشد</p>
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-slate-700">تکرار رمز عبور جدید</label>
+                                <input type="password" class="w-full rounded-xl border border-slate-200 px-4 py-2.5">
+                            </div>
+                        </div>
+                        <div class="mt-6 flex justify-end">
+                            <button class="rounded-xl bg-blue-600 px-6 py-2.5 text-white transition hover:bg-blue-700">بروزرسانی رمز عبور</button>
+                        </div>
+
+                        <div class="mt-8 border-t pt-6">
+                            <h3 class="mb-4 text-lg font-semibold text-slate-800">ورود دو مرحله‌ای</h3>
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm text-slate-600">افزایش امنیت حساب با فعال‌سازی تایید دو مرحله‌ای</p>
+                                    <p class="text-xs text-slate-400">کد تایید به شماره موبایل شما ارسال می‌شود</p>
+                                </div>
+                                <label class="relative inline-flex cursor-pointer items-center">
+                                    <input type="checkbox" class="peer sr-only">
+                                    <div class="peer h-6 w-11 rounded-full bg-slate-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all peer-checked:bg-blue-600 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full"></div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 border-t pt-6">
+                            <h3 class="mb-4 text-lg font-semibold text-slate-800">جلسات فعال</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between rounded-xl bg-slate-50 p-3">
+                                    <div>
+                                        <p class="text-sm font-medium text-slate-700">مرورگر Chrome - ویندوز</p>
+                                        <p class="text-xs text-slate-400">آخرین فعالیت: امروز، ۱۴:۳۰</p>
+                                    </div>
+                                    <button class="text-sm text-red-600 hover:text-red-700">خروج</button>
+                                </div>
+                                <div class="flex items-center justify-between rounded-xl bg-slate-50 p-3">
+                                    <div>
+                                        <p class="text-sm font-medium text-slate-700">مرورگر Safari - آیفون</p>
+                                        <p class="text-xs text-slate-400">آخرین فعالیت: دیروز، ۲۲:۱۵</p>
+                                    </div>
+                                    <button class="text-sm text-red-600 hover:text-red-700">خروج</button>
+                                </div>
+                            </div>
+                            <button class="mt-3 text-sm text-blue-600 hover:text-blue-700">خروج از همه دستگاه‌ها</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Banking -->
+                <div id="tab-banking" class="tab-content hidden">
+                    <div class="rounded-2xl border border-slate-200 bg-white p-6">
+                        <div class="grid gap-5 md:grid-cols-2">
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-slate-700">شماره شبا</label>
+                                <input type="text" placeholder="IRxxxxxxxxxxxxxxxx" value="IR12345678901234567890" class="w-full rounded-xl border border-slate-200 px-4 py-2.5">
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-slate-700">نام بانک</label>
+                                <select class="w-full rounded-xl border border-slate-200 px-4 py-2.5">
+                                    <option>بانک ملی</option>
+                                    <option>بانک ملت</option>
+                                    <option>بانک صادرات</option>
+                                    <option>بانک تجارت</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-slate-700">شماره کارت</label>
+                                <input type="text" placeholder="۶۰۳۷xxxxxxxxxx" value="6037991234567890" class="w-full rounded-xl border border-slate-200 px-4 py-2.5">
+                            </div>
+                            <div>
+                                <label class="mb-1 block text-sm font-medium text-slate-700">نام صاحب حساب</label>
+                                <input type="text" value="علی محمدی" class="w-full rounded-xl border border-slate-200 px-4 py-2.5">
+                            </div>
+                        </div>
+                        <div class="mt-6 flex justify-end">
+                            <button class="rounded-xl bg-blue-600 px-6 py-2.5 text-white transition hover:bg-blue-700">تایید اطلاعات بانکی</button>
+                        </div>
+                        <div class="mt-4 rounded-xl bg-blue-50 p-3 text-center text-sm text-blue-700">
+                            اطلاعات بانکی شما برای واریز مبالغ فروش استفاده می‌شود
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Notifications -->
+                <div id="tab-notifications" class="tab-content hidden">
+                    <div class="rounded-2xl border border-slate-200 bg-white p-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center justify-between rounded-xl bg-slate-50 p-4">
+                                <div>
+                                    <p class="font-medium text-slate-800">دریافت اعلان برای درخواست‌های جدید</p>
+                                    <p class="text-xs text-slate-400">زمانی که خریداری برای وام شما درخواست ثبت می‌کند</p>
+                                </div>
+                                <label class="relative inline-flex cursor-pointer items-center">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <div class="peer h-6 w-11 rounded-full bg-slate-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all peer-checked:bg-blue-600 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl bg-slate-50 p-4">
+                                <div>
+                                    <p class="font-medium text-slate-800">دریافت اعلان برای پیام‌های جدید</p>
+                                    <p class="text-xs text-slate-400">زمانی که خریدار پیام جدیدی ارسال می‌کند</p>
+                                </div>
+                                <label class="relative inline-flex cursor-pointer items-center">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <div class="peer h-6 w-11 rounded-full bg-slate-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all peer-checked:bg-blue-600 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl bg-slate-50 p-4">
+                                <div>
+                                    <p class="font-medium text-slate-800">دریافت خبرنامه ایمیلی</p>
+                                    <p class="text-xs text-slate-400">دریافت جدیدترین اخبار و تخفیف‌ها</p>
+                                </div>
+                                <label class="relative inline-flex cursor-pointer items-center">
+                                    <input type="checkbox" class="peer sr-only">
+                                    <div class="peer h-6 w-11 rounded-full bg-slate-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all peer-checked:bg-blue-600 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full"></div>
+                                </label>
+                            </div>
+                            <div class="flex items-center justify-between rounded-xl bg-slate-50 p-4">
+                                <div>
+                                    <p class="font-medium text-slate-800">اعلان‌های سیستمی</p>
+                                    <p class="text-xs text-slate-400">بروزرسانی‌ها و اطلاعیه‌های مهم سایت</p>
+                                </div>
+                                <label class="relative inline-flex cursor-pointer items-center">
+                                    <input type="checkbox" checked class="peer sr-only">
+                                    <div class="peer h-6 w-11 rounded-full bg-slate-200 after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all peer-checked:bg-blue-600 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full"></div>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mt-6 flex justify-end">
+                            <button class="rounded-xl bg-blue-600 px-6 py-2.5 text-white transition hover:bg-blue-700">ذخیره تنظیمات</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        fetch('./sidebar.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('sidebarContainer').innerHTML = data);
+
+        // Tab switching
+        document.querySelectorAll('.tab-setting').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const tabId = this.dataset.tab;
+                document.querySelectorAll('.tab-setting').forEach(b => {
+                    b.classList.remove('active', 'text-blue-600');
+                    b.classList.add('text-slate-500');
+                });
+                this.classList.add('active', 'text-blue-600');
+                this.classList.remove('text-slate-500');
+
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.add('hidden');
+                });
+                document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>

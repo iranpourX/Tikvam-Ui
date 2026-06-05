@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./../assets/css/output.css" rel="stylesheet">
+    <title>سوالات متداول فروشندگان | وامجو</title>
+</head>
+
+<body class="bg-slate-50">
+
+    <header class="sticky top-0 z-20 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="flex items-center justify-between px-4 py-3">
+            <button id="menuToggleBtn" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 lg:hidden">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <h1 class="text-lg font-bold text-slate-800">سوالات متداول فروشندگان</h1>
+            <div class="flex items-center gap-3">
+                <a href="./profile-settings.html" class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white shadow-sm">
+                    <img src="./../assets/img/aziziUI.png" alt="پروفایل" class="h-full w-full rounded-full object-cover">
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div id="sidebarContainer"></div>
+
+    <main class="lg:mr-72">
+        <div class="p-4 md:p-6">
+            <div class="mx-auto max-w-4xl">
+                <!-- Header -->
+                <div class="mb-8 text-center">
+                    <h1 class="text-3xl font-bold text-slate-800">سوالات متداول</h1>
+                    <p class="mt-2 text-slate-500">پاسخ به رایج‌ترین سوالات فروشندگان وامجو</p>
+                </div>
+
+                <!-- FAQ Categories -->
+                <div class="mb-8 flex flex-wrap justify-center gap-2">
+                    <button class="cat-btn active rounded-full bg-blue-600 px-4 py-2 text-sm text-white">همه</button>
+                    <button class="cat-btn rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600">ثبت وام</button>
+                    <button class="cat-btn rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600">فروش و درآمد</button>
+                    <button class="cat-btn rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600">حساب کاربری</button>
+                    <button class="cat-btn rounded-full border border-slate-200 bg-white px-4 py-2 text-sm text-slate-600">قوانین</button>
+                </div>
+
+                <!-- FAQ List -->
+                <div class="space-y-4">
+                    <!-- Category: General -->
+                    <div class="faq-item" data-cat="ثبت وام">
+                        <details class="rounded-2xl border border-slate-200 bg-white">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold text-slate-800">
+                                چگونه می‌توانم وام خود را در سایت ثبت کنم؟
+                                <svg class="h-4 w-4 text-slate-400 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </summary>
+                            <div class="border-t px-5 pb-5 pt-3 text-sm leading-7 text-slate-600">
+                                برای ثبت وام، وارد پنل فروشنده شوید و روی گزینه "ثبت وام جدید" کلیک کنید. سپس اطلاعات وام خود شامل مبلغ وام، قیمت فروش، مدت اقساط و توضیحات را وارد کنید. پس از آپلود مدارک مورد نیاز، درخواست شما توسط تیم پشتیبانی بررسی و در صورت تایید، آگهی شما در سایت نمایش داده می‌شود.
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="faq-item" data-cat="فروش و درآمد">
+                        <details class="rounded-2xl border border-slate-200 bg-white">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold text-slate-800">
+                                کارمزد سایت چقدر است و چه زمانی کسر می‌شود؟
+                                <svg class="h-4 w-4 text-slate-400 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </summary>
+                            <div class="border-t px-5 pb-5 pt-3 text-sm leading-7 text-slate-600">
+                                کارمزد سایت ۵٪ از مبلغ نهایی هر معامله است. این کارمزد پس از موفقیت معامله و قبل از واریز وجه به حساب شما کسر می‌شود. به عنوان مثال اگر وامی به مبلغ ۳,۹۰۰,۰۰۰ تومان بفروشید، ۱۹۵,۰۰۰ تومان کارمزد کسر و ۳,۷۰۵,۰۰۰ تومان به حساب شما واریز می‌شود.
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="faq-item" data-cat="فروش و درآمد">
+                        <details class="rounded-2xl border border-slate-200 bg-white">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold text-slate-800">
+                                چه مدت طول می‌کشد تا وجه فروش به حساب من واریز شود؟
+                                <svg class="h-4 w-4 text-slate-400 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </summary>
+                            <div class="border-t px-5 pb-5 pt-3 text-sm leading-7 text-slate-600">
+                                پس از تایید نهایی معامله توسط هر دو طرف، وجه حداکثر ظرف ۲۴ ساعت کاری به کیف پول شما در سایت واریز می‌شود. سپس می‌توانید درخواست برداشت به حساب بانکی خود را ثبت کنید که این فرآیند نیز ۲۴ تا ۴۸ ساعت کاری زمان می‌برد.
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="faq-item" data-cat="حساب کاربری">
+                        <details class="rounded-2xl border border-slate-200 bg-white">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold text-slate-800">
+                                چگونه می‌توانم اطلاعات حساب بانکی خود را تغییر دهم؟
+                                <svg class="h-4 w-4 text-slate-400 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </summary>
+                            <div class="border-t px-5 pb-5 pt-3 text-sm leading-7 text-slate-600">
+                                برای تغییر اطلاعات بانکی، به بخش "تنظیمات" در پنل فروشنده بروید و سپس روی تب "اطلاعات بانکی" کلیک کنید. در این بخش می‌توانید شماره شبا، شماره کارت و نام بانک خود را ویرایش کنید. برای تایید نهایی ممکن است نیاز به احراز هویت مجدد باشد.
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="faq-item" data-cat="حساب کاربری">
+                        <details class="rounded-2xl border border-slate-200 bg-white">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold text-slate-800">
+                                آیا امکان حذف حساب کاربری وجود دارد؟
+                                <svg class="h-4 w-4 text-slate-400 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </summary>
+                            <div class="border-t px-5 pb-5 pt-3 text-sm leading-7 text-slate-600">
+                                بله، برای درخواست حذف حساب کاربری می‌توانید با تیم پشتیبانی تماس بگیرید. توجه داشته باشید که حذف حساب کاربری غیرقابل بازگشت است و تمام اطلاعات، آگهی‌ها و تراکنش‌های شما پاک می‌شود. همچنین موجودی کیف پول شما قبل از حذف باید برداشت شود.
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="faq-item" data-cat="قوانین">
+                        <details class="rounded-2xl border border-slate-200 bg-white">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold text-slate-800">
+                                چه مدارکی برای احراز هویت نیاز است؟
+                                <svg class="h-4 w-4 text-slate-400 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </summary>
+                            <div class="border-t px-5 pb-5 pt-3 text-sm leading-7 text-slate-600">
+                                برای احراز هویت به مدارک زیر نیاز دارید: 
+                                <ul class="mt-2 list-disc pr-5 space-y-1">
+                                    <li>تصویر کارت ملی (پشت و رو)</li>
+                                    <li>تصویر شناسنامه یا پاسپورت</li>
+                                    <li>یک سلفی واضح با کارت ملی</li>
+                                    <li>تکمیل اطلاعات بانکی (شماره شبا و کارت)</li>
+                                </ul>
+                                پس از ارسال مدارک، حداکثر ۲۴ ساعت کاری مدارک شما بررسی می‌شود.
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="faq-item" data-cat="ثبت وام">
+                        <details class="rounded-2xl border border-slate-200 bg-white">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold text-slate-800">
+                                آیا می‌توانم وام ثبت شده را ویرایش یا حذف کنم؟
+                                <svg class="h-4 w-4 text-slate-400 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </summary>
+                            <div class="border-t px-5 pb-5 pt-3 text-sm leading-7 text-slate-600">
+                                بله، در بخش "مدیریت وام‌ها" می‌توانید وام‌های ثبت شده خود را مشاهده کنید. با کلیک روی آیکون مداد می‌توانید اطلاعات وام را ویرایش کنید و با کلیک روی آیکون سطل زباله می‌توانید وام را حذف کنید. توجه داشته باشید که وام‌هایی که درخواست فعال دارند یا رزرو شده‌اند را نمی‌توان حذف کرد.
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="faq-item" data-cat="فروش و درآمد">
+                        <details class="rounded-2xl border border-slate-200 bg-white">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold text-slate-800">
+                                چگونه می‌توانم آمار فروش خود را مشاهده کنم؟
+                                <svg class="h-4 w-4 text-slate-400 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </summary>
+                            <div class="border-t px-5 pb-5 pt-3 text-sm leading-7 text-slate-600">
+                                در بخش "داشبورد" می‌توانید خلاصه آمار فروش خود را مشاهده کنید. برای مشاهده جزئیات بیشتر، به بخش "گزارشات مالی" بروید. در این بخش می‌توانید فروش ماهانه، کارمزدها، تعداد تراکنش‌ها و نمودارهای تحلیلی را مشاهده کنید.
+                            </div>
+                        </details>
+                    </div>
+
+                    <div class="faq-item" data-cat="قوانین">
+                        <details class="rounded-2xl border border-slate-200 bg-white">
+                            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-semibold text-slate-800">
+                                اگر با خریدار به مشکل بخورم، چه کنم؟
+                                <svg class="h-4 w-4 text-slate-400 transition group-open:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </summary>
+                            <div class="border-t px-5 pb-5 pt-3 text-sm leading-7 text-slate-600">
+                                در صورت بروز هرگونه مشکل یا اختلاف با خریدار، می‌توانید از تیم پشتیبانی وامجو کمک بگیرید. لطفاً مستندات و مدارک خود را آماده داشته باشید و از طریق بخش "پشتیبانی" در پنل یا چت آنلاین با ما در میان بگذارید. تیم ما در اسرع وقت برای حل مشکل اقدام خواهد کرد.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+
+                <!-- Still have questions -->
+                <div class="mt-10 rounded-2xl bg-blue-50 p-6 text-center">
+                    <h3 class="text-lg font-bold text-slate-800">سوال دیگری دارید؟</h3>
+                    <p class="mt-2 text-sm text-slate-600">تیم پشتیبانی وامجو آماده پاسخگویی به شماست</p>
+                    <div class="mt-4 flex justify-center gap-3">
+                        <a href="./help.html" class="rounded-full bg-blue-600 px-5 py-2 text-sm text-white">رفتن به صفحه راهنما</a>
+                        <a href="#" class="rounded-full border border-blue-300 bg-white px-5 py-2 text-sm text-blue-600">چت با پشتیبانی</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        fetch('./sidebar.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('sidebarContainer').innerHTML = data);
+
+        // Category filter
+        document.querySelectorAll('.cat-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const cat = this.textContent.trim();
+                document.querySelectorAll('.cat-btn').forEach(b => {
+                    b.classList.remove('active', 'bg-blue-600', 'text-white');
+                    b.classList.add('border', 'border-slate-200', 'bg-white', 'text-slate-600');
+                });
+                this.classList.add('active', 'bg-blue-600', 'text-white');
+                this.classList.remove('border', 'border-slate-200', 'bg-white', 'text-slate-600');
+
+                if (cat === 'همه') {
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        item.style.display = 'block';
+                    });
+                } else {
+                    document.querySelectorAll('.faq-item').forEach(item => {
+                        if (item.dataset.cat === cat) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>پنل فروشنده | وامجو</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .tab-btn.active {
+            border-bottom: 2px solid #2563eb;
+            color: #1e40af;
+            background-color: #eff6ff;
+        }
+        .stat-card {
+            transition: all 0.2s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        .loan-card {
+            transition: all 0.2s ease;
+        }
+        .loan-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 font-sans">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-20 bg-white shadow-sm border-b border-slate-200">
+        <div class="px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <i class="fas fa-hand-holding-usd text-blue-600 text-xl"></i>
+                <span class="font-bold text-gray-800 text-lg">پنل فروشنده</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="hidden sm:flex items-center gap-2 bg-blue-50 rounded-full px-3 py-1">
+                    <i class="fas fa-coins text-amber-500 text-sm"></i>
+                    <span class="text-xs font-bold text-slate-700">موجودی: <span class="text-blue-600">۲,۵۴۷,۰۰۰,۰۰۰</span> تومان</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <img src="https://ui-avatars.com/api/?name=علی+محمدی&background=2563eb&color=fff&rounded=true&size=36" 
+                         alt="پروفایل" class="w-9 h-9 rounded-full ring-2 ring-blue-100">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="px-4 py-6 max-w-6xl mx-auto">
+
+        <!-- Welcome Section -->
+        <div class="mb-6 bg-gradient-to-r from-blue-700 to-indigo-700 rounded-2xl p-5 text-white">
+            <h1 class="text-xl font-bold">خوش آمدید، علی جان! 👋</h1>
+            <p class="text-sm text-blue-100 mt-1">به پنل فروشنده خوش آمدید.</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-2 gap-3 sm:grid-cols-4 mb-8">
+            <div class="stat-card bg-white rounded-xl p-3 border border-slate-100 shadow-sm">
+                <p class="text-xs text-slate-400">وام‌های فعال</p>
+                <p class="text-xl font-bold text-slate-800">۱۲</p>
+            </div>
+            <div class="stat-card bg-white rounded-xl p-3 border border-slate-100 shadow-sm">
+                <p class="text-xs text-slate-400">درخواست جدید</p>
+                <p class="text-xl font-bold text-amber-600">۸</p>
+            </div>
+            <div class="stat-card bg-white rounded-xl p-3 border border-slate-100 shadow-sm">
+                <p class="text-xs text-slate-400">رزرو فعال</p>
+                <p class="text-xl font-bold text-emerald-600">۳</p>
+            </div>
+            <div class="stat-card bg-white rounded-xl p-3 border border-slate-100 shadow-sm">
+                <p class="text-xs text-slate-400">کل فروش</p>
+                <p class="text-xl font-bold text-purple-600">۱۲۵M</p>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="mb-6 border-b border-slate-200 overflow-x-auto">
+            <div class="flex gap-1 text-sm font-medium">
+                <button id="tabLoansBtn" class="tab-btn active px-4 py-2 rounded-t-lg transition">📋 مدیریت وام‌ها</button>
+                <button id="tabRequestsBtn" class="tab-btn px-4 py-2 rounded-t-lg transition">📩 درخواست‌ها</button>
+                <button id="tabReservesBtn" class="tab-btn px-4 py-2 rounded-t-lg transition">📅 رزروها</button>
+                <button id="tabWalletBtn" class="tab-btn px-4 py-2 rounded-t-lg transition">💰 کیف پول</button>
+            </div>
+        </div>
+
+        <!-- ========== TAB 1: مدیریت وام‌ها ========== -->
+        <div id="loansTab" class="tab-content">
+            <div class="flex justify-between items-center mb-4 flex-wrap gap-3">
+                <h2 class="text-lg font-bold text-slate-800">وام‌های من</h2>
+                <button id="openAddModal" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-xl text-sm flex items-center gap-2 shadow">
+                    <i class="fas fa-plus text-xs"></i> افزودن وام جدید
+                </button>
+            </div>
+
+            <div id="loansContainer" class="space-y-3">
+                <!-- Loan Card 1 -->
+                <div class="loan-card bg-white rounded-xl border border-slate-200 p-4 shadow-sm" data-id="1">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">فعال</span>
+                            <h3 class="font-bold text-slate-800 mt-2">وام مسکن ملی</h3>
+                            <div class="flex gap-4 mt-2 text-sm">
+                                <span><span class="text-slate-400">مبلغ:</span> ۵۰۰M</span>
+                                <span><span class="text-slate-400">قیمت:</span> <span class="text-emerald-600 font-semibold">۳.۹M</span></span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="edit-loan text-blue-600 hover:text-blue-700 p-2"><i class="fas fa-edit"></i></button>
+                            <button class="delete-loan text-red-600 hover:text-red-700 p-2"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-xs text-slate-400">📅 ثبت: ۱۴۰۴/۰۲/۱۵</div>
+                </div>
+
+                <!-- Loan Card 2 -->
+                <div class="loan-card bg-white rounded-xl border border-slate-200 p-4 shadow-sm" data-id="2">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded-full">در انتظار</span>
+                            <h3 class="font-bold text-slate-800 mt-2">وام ازدواج</h3>
+                            <div class="flex gap-4 mt-2 text-sm">
+                                <span><span class="text-slate-400">مبلغ:</span> ۳۰۰M</span>
+                                <span><span class="text-slate-400">قیمت:</span> <span class="text-emerald-600 font-semibold">۲.۲M</span></span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="edit-loan text-blue-600 hover:text-blue-700 p-2"><i class="fas fa-edit"></i></button>
+                            <button class="delete-loan text-red-600 hover:text-red-700 p-2"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-xs text-slate-400">📅 ثبت: ۱۴۰۴/۰۲/۱۰</div>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyLoans" class="hidden text-center py-8 text-slate-400">
+                <i class="fas fa-folder-open text-4xl mb-2"></i>
+                <p>هیچ وامی ثبت نشده است</p>
+                <button id="emptyAddBtn" class="mt-3 text-blue-600 text-sm">+ افزودن وام جدید</button>
+            </div>
+        </div>
+
+        <!-- ========== TAB 2: درخواست‌ها ========== -->
+        <div id="requestsTab" class="tab-content hidden">
+            <div class="space-y-3">
+                <div class="bg-white rounded-xl border border-slate-200 p-4">
+                    <div class="flex flex-wrap justify-between gap-3">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 font-bold text-sm">م</div>
+                                <div>
+                                    <p class="font-semibold text-slate-800">محمد رضایی</p>
+                                    <p class="text-xs text-slate-400">وام مسکن ملی</p>
+                                </div>
+                            </div>
+                            <div class="mt-2 flex gap-4 text-sm">
+                                <span><span class="text-slate-400">پیشنهادی:</span> <span class="text-emerald-600 font-semibold">۳,۸۵۰,۰۰۰</span></span>
+                                <span><span class="text-slate-400">تاریخ:</span> ۱۴۰۴/۰۳/۱۵</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm">تایید</button>
+                            <button class="border border-red-300 text-red-600 px-4 py-2 rounded-lg text-sm">رد</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 p-4">
+                    <div class="flex flex-wrap justify-between gap-3">
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full bg-amber-100 flex items-center justify-center text-amber-600 font-bold text-sm">س</div>
+                                <div>
+                                    <p class="font-semibold text-slate-800">سارا احمدی</p>
+                                    <p class="text-xs text-slate-400">وام ازدواج</p>
+                                </div>
+                            </div>
+                            <div class="mt-2 flex gap-4 text-sm">
+                                <span><span class="text-slate-400">پیشنهادی:</span> <span class="text-emerald-600 font-semibold">۲,۱۸۰,۰۰۰</span></span>
+                                <span><span class="text-slate-400">تاریخ:</span> ۱۴۰۴/۰۳/۱۴</span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm">تایید</button>
+                            <button class="border border-red-300 text-red-600 px-4 py-2 rounded-lg text-sm">رد</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TAB 3: رزروها ========== -->
+        <div id="reservesTab" class="tab-content hidden">
+            <div class="space-y-3">
+                <div class="bg-gradient-to-r from-blue-50 to-white rounded-xl border border-blue-200 p-4">
+                    <div class="flex justify-between">
+                        <div>
+                            <span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded-full">رزرو فعال</span>
+                            <h3 class="font-bold text-slate-800 mt-2">وام مسکن ملی</h3>
+                            <p class="text-sm text-slate-600">خریدار: محمد رضایی</p>
+                            <p class="text-xs text-slate-400 mt-1">۱۴۰۴/۰۳/۱۶ - تا ۱۴۰۴/۰۳/۱۸</p>
+                        </div>
+                        <i class="fas fa-hourglass-half text-amber-500 text-xl"></i>
+                    </div>
+                    <div class="mt-3 flex gap-2">
+                        <button class="bg-blue-600 text-white px-4 py-1.5 rounded-lg text-sm">تایید نهایی</button>
+                        <button class="border border-red-300 text-red-600 px-4 py-1.5 rounded-lg text-sm">لغو</button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 p-4">
+                    <div class="flex justify-between">
+                        <div>
+                            <span class="bg-emerald-100 text-emerald-700 text-xs px-2 py-1 rounded-full">تکمیل شده</span>
+                            <h3 class="font-bold text-slate-800 mt-2">وام ازدواج</h3>
+                            <p class="text-sm text-slate-600">خریدار: سارا احمدی</p>
+                            <p class="text-xs text-slate-400 mt-1">تاریخ تکمیل: ۱۴۰۴/۰۳/۱۰</p>
+                        </div>
+                        <i class="fas fa-check-circle text-emerald-500 text-xl"></i>
+                    </div>
+                    <div class="mt-3 text-sm text-emerald-600">✓ وجه واریز شد</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========== TAB 4: کیف پول ========== -->
+        <div id="walletTab" class="tab-content hidden">
+            <div class="bg-gradient-to-r from-blue-700 to-indigo-700 rounded-2xl p-5 text-white mb-5">
+                <p class="text-sm text-blue-100">موجودی قابل برداشت</p>
+                <p class="text-3xl font-bold mt-1">۱۲,۵۴۷,۰۰۰ تومان</p>
+                <button class="mt-3 bg-white/20 px-4 py-2 rounded-full text-sm font-semibold backdrop-blur">برداشت وجه</button>
+            </div>
+
+            <div class="bg-white rounded-xl border border-slate-200 p-4 mb-5">
+                <h3 class="font-bold mb-3">درخواست برداشت</h3>
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <input type="number" placeholder="مبلغ" class="flex-1 border rounded-xl px-4 py-2 text-sm">
+                    <input type="text" placeholder="شماره کارت" class="flex-1 border rounded-xl px-4 py-2 text-sm">
+                    <button class="bg-emerald-600 text-white px-5 py-2 rounded-xl text-sm">ثبت</button>
+                </div>
+                <p class="text-xs text-slate-400 mt-2">حداقل برداشت ۵۰۰,۰۰۰ تومان</p>
+            </div>
+
+            <div class="bg-white rounded-xl border border-slate-200 overflow-hidden">
+                <div class="border-b p-3 font-bold text-sm">تراکنش‌های اخیر</div>
+                <div class="divide-y">
+                    <div class="flex justify-between p-3 text-sm">
+                        <div><span class="font-medium">واریز بابت فروش وام</span><p class="text-xs text-slate-400">۱۴۰۴/۰۳/۱۵</p></div>
+                        <span class="text-emerald-600 font-bold">+۳,۹۰۰,۰۰۰</span>
+                    </div>
+                    <div class="flex justify-between p-3 text-sm">
+                        <div><span class="font-medium">برداشت به کارت</span><p class="text-xs text-slate-400">۱۴۰۴/۰۳/۱۰</p></div>
+                        <span class="text-red-600 font-bold">-۲,۰۰۰,۰۰۰</span>
+                    </div>
+                    <div class="flex justify-between p-3 text-sm">
+                        <div><span class="font-medium">کارمزد سایت</span><p class="text-xs text-slate-400">۱۴۰۴/۰۳/۰۵</p></div>
+                        <span class="text-amber-600 font-bold">-۲۰۵,۰۰۰</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- ========== MODAL: افزودن/ویرایش وام ========== -->
+    <div id="loanModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-2xl w-full max-w-md mx-4">
+            <div class="flex justify-between items-center p-5 border-b">
+                <h3 id="modalTitle" class="text-xl font-bold">افزودن وام جدید</h3>
+                <button id="closeModalBtn" class="text-slate-400 hover:text-slate-600"><i class="fas fa-times text-xl"></i></button>
+            </div>
+            <div class="p-5 space-y-4">
+                <input type="hidden" id="editId">
+                <div>
+                    <label class="block text-sm font-medium mb-1">عنوان وام</label>
+                    <input type="text" id="loanTitle" class="w-full border rounded-xl px-4 py-2" placeholder="مثال: وام مسکن ملی">
+                </div>
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-sm font-medium mb-1">مبلغ وام (تومان)</label>
+                        <input type="text" id="loanAmount" class="w-full border rounded-xl px-4 py-2" placeholder="۵۰۰,۰۰۰,۰۰۰">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-1">قیمت فروش (تومان)</label>
+                        <input type="text" id="loanPrice" class="w-full border rounded-xl px-4 py-2" placeholder="۳,۹۰۰,۰۰۰">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium mb-1">وضعیت</label>
+                    <select id="loanStatus" class="w-full border rounded-xl px-4 py-2">
+                        <option value="فعال">فعال</option>
+                        <option value="در انتظار">در انتظار</option>
+                        <option value="تکمیل شده">تکمیل شده</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex gap-3 p-5 border-t">
+                <button id="saveLoanBtn" class="flex-1 bg-blue-600 text-white py-2 rounded-xl">ذخیره</button>
+                <button id="cancelModal" class="flex-1 border border-slate-200 py-2 rounded-xl">انصراف</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-400 text-center text-sm py-4 mt-8">
+        تمامی حقوق محفوظ است © ۱۴۰۵ وامجو
+    </footer>
+
+    <script>
+        // ========== TAB切换功能 ==========
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active', 'text-blue-600', 'border-blue-500', 'bg-blue-50');
+                btn.classList.add('text-slate-500');
+            });
+            const activeBtn = document.getElementById(tabId === 'loansTab' ? 'tabLoansBtn' : 
+                                                      tabId === 'requestsTab' ? 'tabRequestsBtn' :
+                                                      tabId === 'reservesTab' ? 'tabReservesBtn' : 'tabWalletBtn');
+            activeBtn.classList.add('active', 'text-blue-600', 'border-blue-500', 'bg-blue-50');
+            activeBtn.classList.remove('text-slate-500');
+        }
+
+        document.getElementById('tabLoansBtn').addEventListener('click', () => switchTab('loansTab'));
+        document.getElementById('tabRequestsBtn').addEventListener('click', () => switchTab('requestsTab'));
+        document.getElementById('tabReservesBtn').addEventListener('click', () => switchTab('reservesTab'));
+        document.getElementById('tabWalletBtn').addEventListener('click', () => switchTab('walletTab'));
+
+        // ========== مدیریت وام‌ها (CRUD با LocalStorage) ==========
+        let loans = [];
+
+        function loadLoans() {
+            const stored = localStorage.getItem('sellerLoans');
+            if (stored) loans = JSON.parse(stored);
+            else {
+                loans = [
+                    { id: 1, title: 'وام مسکن ملی', amount: '۵۰۰,۰۰۰,۰۰۰', price: '۳,۹۰۰,۰۰۰', status: 'فعال', date: '۱۴۰۴/۰۲/۱۵' },
+                    { id: 2, title: 'وام ازدواج', amount: '۳۰۰,۰۰۰,۰۰۰', price: '۲,۲۰۰,۰۰۰', status: 'در انتظار', date: '۱۴۰۴/۰۲/۱۰' }
+                ];
+                saveLoans();
+            }
+            renderLoans();
+        }
+
+        function saveLoans() { localStorage.setItem('sellerLoans', JSON.stringify(loans)); }
+
+        function renderLoans() {
+            const container = document.getElementById('loansContainer');
+            const emptyState = document.getElementById('emptyLoans');
+            if (!container) return;
+            if (loans.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            emptyState.classList.add('hidden');
+            container.innerHTML = loans.map(loan => `
+                <div class="loan-card bg-white rounded-xl border border-slate-200 p-4 shadow-sm" data-id="${loan.id}">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <span class="rounded-full px-2 py-1 text-xs ${loan.status === 'فعال' ? 'bg-green-100 text-green-700' : loan.status === 'در انتظار' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700'}">${loan.status}</span>
+                            <h3 class="font-bold text-slate-800 mt-2">${loan.title}</h3>
+                            <div class="flex gap-4 mt-2 text-sm">
+                                <span><span class="text-slate-400">مبلغ:</span> ${loan.amount}</span>
+                                <span><span class="text-slate-400">قیمت:</span> <span class="text-emerald-600 font-semibold">${loan.price}</span></span>
+                            </div>
+                        </div>
+                        <div class="flex gap-2">
+                            <button class="edit-loan-btn text-blue-600 hover:text-blue-700 p-2" data-id="${loan.id}"><i class="fas fa-edit"></i></button>
+                            <button class="delete-loan-btn text-red-600 hover:text-red-700 p-2" data-id="${loan.id}"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                    <div class="mt-2 text-xs text-slate-400">📅 ثبت: ${loan.date}</div>
+                </div>
+            `).join('');
+
+            document.querySelectorAll('.edit-loan-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => { e.stopPropagation(); editLoan(parseInt(btn.dataset.id)); });
+            });
+            document.querySelectorAll('.delete-loan-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => { e.stopPropagation(); deleteLoan(parseInt(btn.dataset.id)); });
+            });
+        }
+
+        function editLoan(id) {
+            const loan = loans.find(l => l.id === id);
+            if (loan) {
+                document.getElementById('modalTitle').innerText = 'ویرایش وام';
+                document.getElementById('editId').value = loan.id;
+                document.getElementById('loanTitle').value = loan.title;
+                document.getElementById('loanAmount').value = loan.amount;
+                document.getElementById('loanPrice').value = loan.price;
+                document.getElementById('loanStatus').value = loan.status;
+                document.getElementById('loanModal').classList.remove('hidden');
+            }
+        }
+
+        function deleteLoan(id) {
+            if (confirm('آیا از حذف این وام اطمینان دارید؟')) {
+                loans = loans.filter(l => l.id !== id);
+                saveLoans();
+                renderLoans();
+            }
+        }
+
+        function saveLoan() {
+            const title = document.getElementById('loanTitle').value.trim();
+            const amount = document.getElementById('loanAmount').value.trim();
+            const price = document.getElementById('loanPrice').value.trim();
+            const status = document.getElementById('loanStatus').value;
+            const editId = document.getElementById('editId').value;
+
+            if (!title || !amount || !price) { alert('لطفاً تمام فیلدها را پر کنید!'); return; }
+
+            if (editId) {
+                const index = loans.findIndex(l => l.id == editId);
+                if (index !== -1) {
+                    loans[index] = { ...loans[index], title, amount, price, status };
+                    saveLoans();
+                    renderLoans();
+                }
+            } else {
+                loans.push({ id: Date.now(), title, amount, price, status, date: new Date().toLocaleDateString('fa-IR') });
+                saveLoans();
+                renderLoans();
+            }
+            closeModal();
+        }
+
+        function closeModal() {
+            document.getElementById('loanModal').classList.add('hidden');
+            document.getElementById('editId').value = '';
+            document.getElementById('loanTitle').value = '';
+            document.getElementById('loanAmount').value = '';
+            document.getElementById('loanPrice').value = '';
+            document.getElementById('loanStatus').value = 'فعال';
+            document.getElementById('modalTitle').innerText = 'افزودن وام جدید';
+        }
+
+        document.getElementById('openAddModal')?.addEventListener('click', () => document.getElementById('loanModal').classList.remove('hidden'));
+        document.getElementById('emptyAddBtn')?.addEventListener('click', () => document.getElementById('loanModal').classList.remove('hidden'));
+        document.getElementById('saveLoanBtn')?.addEventListener('click', saveLoan);
+        document.getElementById('closeModalBtn')?.addEventListener('click', closeModal);
+        document.getElementById('cancelModal')?.addEventListener('click', closeModal);
+
+        loadLoans();
+    </script>
+</body>
+</html>

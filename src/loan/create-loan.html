@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./../assets/css/output.css" rel="stylesheet">
+    <link href="./../assets/css/style.css" rel="stylesheet">
+    <script src="./../assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.css" />
+    <script src="https://cdn.jsdelivr.net/npm/plyr@3/dist/plyr.polyfilled.min.js"></script>
+
+    <title>وام جو</title>
+</head>
+
+<body class="bg-white text-gray-800 relative">
+    <!-- Top Banner -->
+    <section id="topBanner"
+        class="hidden w-full border-b border-blue-500/20 bg-gradient-to-r from-blue-700 via-blue-600 to-indigo-700 px-4 py-3 shadow-md">
+        <div class="container mx-auto flex items-center justify-between gap-3">
+            <div class="flex flex-1 items-center p-2 gap-3 overflow-hidden">
+                <span
+                    class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15 text-white">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </span>
+
+                <span class="text-justify text-sm font-medium leading-6 text-white/95 md:text-base">
+                    تست قیمت کوفت و زهرمار | ینی کلتو علی کلتوووووووووو!!
+                </span>
+            </div>
+
+            <button id="closeBanner" type="button"
+                class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/60">
+                <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+    </section>
+    <header class="relative overflow-hidden bg-blue-50">
+        <div class="absolute inset-0 -z-0">
+            <div class="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-200/40 blur-3xl">
+            </div>
+            <div class="absolute right-0 top-20 h-64 w-64 rounded-full bg-indigo-200/30 blur-3xl"></div>
+
+        </div>
+
+        <nav class="relative z-10 px-4 py-5">
+            <div class="container mx-auto">
+                <div
+                    class="flex items-center justify-between rounded-2xl border border-white/70 bg-white/70 px-4 py-3 shadow-lg shadow-blue-100/40 backdrop-blur-md md:px-6">
+                    <a href="#" class="flex items-center gap-2 font-bold text-2xl text-blue-700">
+                        <img src="~/img/ins_115617.svg" alt="Logo" class="h-9 w-9 object-contain">
+                        <span>تیک وام</span>
+                    </a>
+
+                    <ul class="hidden items-center gap-2 text-sm font-semibold text-slate-600 md:flex">
+                        <li><a href="./loan/loan.html"
+                                class="rounded-full px-4 py-2 transition hover:bg-blue-50 hover:text-blue-700">وام‌ها</a>
+                        </li>
+                        <li><a href="./request/request.html"
+                                class="rounded-full px-4 py-2 transition hover:bg-blue-50 hover:text-blue-700">درخواست
+                                وام</a></li>
+                        <li><a href="post/post.html"
+                                class="rounded-full px-4 py-2 transition hover:bg-blue-50 hover:text-blue-700">ثبت
+                                آگهی</a></li>
+                    </ul>
+
+                    <div class="hidden items-center gap-3 md:flex">
+                        <a href="./profile/profile.html"
+                            class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md">
+                            <img src="~/img/aziziUI.png" alt="پروفایل"
+                                class="h-full w-full rounded-full object-cover">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <nav class="block md:hidden bottom-shadow px-3 bg-white fixed bottom-0 left-0 w-full z-10">
+        <ul class="flex md:hidden flex-row justify-between items-center text-xs font-semibold text-gray-400">
+            <li class="bottom-nav bottom-nav-active">
+                <a href="./loan/loan.html">
+                    <span>
+                        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path
+                                d="M48 267.7c2-1.2 4-2.6 5.8-4.3L256 75.7 458.2 263.4c1.8 1.7 3.7 3.1 5.8 4.3L464 448c0 35.3-28.7 64-64 64l-288 0c-35.3 0-64-28.7-64-64l0-180.3z" />
+                            <path
+                                d="M277.8 8.6c-12.3-11.4-31.3-11.4-43.5 0l-224 208c-13 12-13.7 32.3-1.7 45.2s32.3 13.7 45.2 1.7L256 75.7 458.2 263.4c13 12 33.2 11.3 45.2-1.7s11.3-33.2-1.7-45.2L464 181.5 464 80c0-17.7-14.3-32-32-32l-32 0c-17.7 0-32 14.3-32 32l0 12.3-90.2-83.8z" />
+                        </svg>
+                    </span>
+                    <span>خانه</span>
+                </a>
+            </li>
+            <li class="bottom-nav">
+                <a href="./loan/loan.html">
+                    <span>
+                        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                            <path
+                                d="M0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-277.5c0-17-6.7-33.3-18.7-45.3L258.7 18.7C246.7 6.7 230.5 0 213.5 0L64 0C28.7 0 0 28.7 0 64zM96 336c0-13.3 10.7-24 24-24l48 0 0-48c0-13.3 10.7-24 24-24s24 10.7 24 24l0 48 48 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-48 0 0 48c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-48-48 0c-13.3 0-24-10.7-24-24zM208 58.5L325.5 176 232 176c-13.3 0-24-10.7-24-24l0-93.5z" />
+                            <path
+                                d="M216 264c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 48-48 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l48 0 0 48c0 13.3 10.7 24 24 24s24-10.7 24-24l0-48 48 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-48 0 0-48z" />
+                        </svg>
+                    </span>
+                    <span>وام‌ها</span>
+                </a>
+            </li>
+            <li class="bottom-nav">
+                <a href="./loan/loan.html">
+                    <span>
+                        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                            <path
+                                d="M0 64L0 448c0 35.3 28.7 64 64 64l256 0c35.3 0 64-28.7 64-64l0-277.5c0-17-6.7-33.3-18.7-45.3L258.7 18.7C246.7 6.7 230.5 0 213.5 0L64 0C28.7 0 0 28.7 0 64zM96 336c0-13.3 10.7-24 24-24l48 0 0-48c0-13.3 10.7-24 24-24s24 10.7 24 24l0 48 48 0c13.3 0 24 10.7 24 24s-10.7 24-24 24l-48 0 0 48c0 13.3-10.7 24-24 24s-24-10.7-24-24l0-48-48 0c-13.3 0-24-10.7-24-24zM208 58.5L325.5 176 232 176c-13.3 0-24-10.7-24-24l0-93.5z" />
+                            <path
+                                d="M216 264c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 48-48 0c-13.3 0-24 10.7-24 24s10.7 24 24 24l48 0 0 48c0 13.3 10.7 24 24 24s24-10.7 24-24l0-48 48 0c13.3 0 24-10.7 24-24s-10.7-24-24-24l-48 0 0-48z" />
+                        </svg>
+                    </span>
+                    <span>فروشندگان</span>
+                </a>
+            </li>
+            <li class="bottom-nav">
+                <a href="./loan/loan.html">
+                    <span>
+                        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                            <path
+                                d="M0 416l0 64c0 17.7 14.3 32 32 32l320.5 0c29 0 57.3-9.3 80.7-26.5l126.6-93.3c17.8-13.1 21.6-38.1 8.5-55.9s-38.1-21.6-55.9-8.5L392.6 416 280 416c-13.3 0-24-10.7-24-24s10.7-24 24-24l72 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-152.2 0c-33.9 0-66.5 13.5-90.5 37.5L66.7 384 32 384c-17.7 0-32 14.3-32 32z" />
+                            <path
+                                d="M264 0c-13.3 0-24 10.7-24 24l0 56-56 0c-13.3 0-24 10.7-24 24l0 48c0 13.3 10.7 24 24 24l56 0 0 56c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-56 56 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24l-56 0 0-56c0-13.3-10.7-24-24-24L264 0z" />
+                        </svg>
+                    </span>
+                    <span>قیمت طلا</span>
+                </a>
+            </li>
+            <li class="bottom-nav">
+                <a href="./loan/loan.html">
+                    <span>
+                        <svg class="size-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M104 128a120 120 0 1 0 240 0 120 120 0 1 0 -240 0z" />
+                            <path
+                                d="M16 482.3C16 383.8 95.8 304 194.3 304l59.4 0c98.5 0 178.3 79.8 178.3 178.3 0 16.4-13.3 29.7-29.7 29.7L45.7 512C29.3 512 16 498.7 16 482.3z" />
+                        </svg>
+                    </span>
+                    <span class="text-gray-400">ورود</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main class="container mx-auto px-3">
+    <section class="relative overflow-hidden py-20">
+
+        <div class="container mx-auto px-4 relative">
+            <div class="mx-auto mb-10 max-w-3xl text-center">
+                <span
+                    class="inline-flex items-center rounded-full bg-blue-100 px-4 py-1.5 text-sm font-medium text-blue-700 ring-1 ring-blue-200">
+                    افزودن وام
+                </span>
+                <h2 class="mt-4 text-3xl font-bold text-slate-900 md:text-4xl">ثبت اطلاعات امتیاز وام</h2>
+                <p class="mt-3 text-sm leading-7 text-slate-600 md:text-base">
+                    اطلاعات وام خود را وارد کنید تا کارشناسان وامجو بررسی کنند.
+                </p>
+            </div>
+
+            <div class="mx-auto max-w-6xl rounded-3xl border border-blue-100 bg-white shadow-2xl shadow-blue-100/40">
+                <div class="grid grid-cols-1 lg:grid-cols-3">
+                    <div class="bg-gradient-to-br from-blue-700 to-indigo-700 p-8 text-white lg:col-span-1">
+                        <h3 class="text-2xl font-bold">مشخصات آگهی</h3>
+                        <p class="mt-4 text-sm leading-8 text-blue-100">
+                            لطفاً اطلاعات را دقیق وارد کنید تا آگهی شما سریع‌تر تایید شود.
+                        </p>
+
+                        <div class="mt-8 space-y-4">
+                            <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
+                                <p class="text-sm text-blue-100">نکته</p>
+                                <p class="mt-1 text-sm leading-7">هر چه اطلاعات کامل‌تر باشد، شانس نمایش بهتر آگهی بیشتر
+                                    است.</p>
+                            </div>
+                            <div class="rounded-2xl bg-white/10 p-4 backdrop-blur">
+                                <p class="text-sm text-blue-100">امنیت</p>
+                                <p class="mt-1 text-sm leading-7">شماره تماس و مدارک فقط برای بررسی داخلی استفاده
+                                    می‌شود.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="p-6 sm:p-8 lg:col-span-2">
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+                                <div>
+                                    <label class="mb-2 block text-sm font-medium text-slate-700">عنوان آگهی</label>
+                                    <input type="text" placeholder="مثلاً فروش امتیاز وام 300 میلیونی"
+                                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100">
+                                </div>
+
+                                <div>
+                                    <label class="mb-2 block text-sm font-medium text-slate-700">نوع وام</label>
+                                    <select
+                                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100">
+                                        <option>انتخاب کنید</option>
+                                        <option>مسکن</option>
+                                        <option>ازدواج</option>
+                                        <option>کسب و کار</option>
+                                        <option>آزاد</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="mb-2 block text-sm font-medium text-slate-700">مبلغ وام</label>
+                                    <div class="relative">
+                                        <input type="number" placeholder="مثلاً 300000000"
+                                            class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 pl-20 text-sm text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100">
+                                        <span
+                                            class="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-slate-400">تومان</span>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="mb-2 block text-sm font-medium text-slate-700">مبلغ امتیاز</label>
+                                    <input type="number" placeholder="مثلاً 50"
+                                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100">
+                                </div>
+
+                                <div>
+                                    <label class="mb-2 block text-sm font-medium text-slate-700">مدت بازپرداخت</label>
+                                    <select
+                                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100">
+                                        <option>انتخاب کنید</option>
+                                        <option>12 ماه</option>
+                                        <option>24 ماه</option>
+                                        <option>36 ماه</option>
+                                        <option>60 ماه</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="mb-2 block text-sm font-medium text-slate-700">تاریخ آماده
+                                        انتقال</label>
+                                    <input type="date"
+                                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="mb-2 block text-sm font-medium text-slate-700">توضیحات آگهی</label>
+                                <textarea rows="5"
+                                    placeholder="شرایط، جزئیات، محدودیت‌ها و هر توضیح مهم دیگر را بنویسید..."
+                                    class="w-full resize-none rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-7 text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100"></textarea>
+                            </div>
+
+                            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                                    <label class="mb-3 block text-sm font-medium text-slate-700">وضعیت آگهی</label>
+                                    <div class="flex flex-wrap gap-3">
+                                        <label
+                                            class="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm text-slate-700 ring-1 ring-slate-200">
+                                            <input type="radio" name="status" checked class="accent-blue-600">
+                                            فعال
+                                        </label>
+                                        <label
+                                            class="flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm text-slate-700 ring-1 ring-slate-200">
+                                            <input type="radio" name="status" class="accent-blue-600">
+                                            فوری
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                                    <label class="mb-3 block text-sm font-medium text-slate-700">اولویت نمایش</label>
+                                    <input type="range" min="1" max="100" value="60" class="w-full accent-blue-600">
+                                    <div class="mt-2 flex justify-between text-xs text-slate-400">
+                                        <span>کم</span>
+                                        <span>زیاد</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+                                <div>
+                                    <label class="mb-2 block text-sm font-medium text-slate-700">آپلود مدارک</label>
+                                    <input type="file"
+                                        class="w-full rounded-2xl border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-600 file:mr-4 file:rounded-full file:border-0 file:bg-blue-600 file:px-4 file:py-2 file:text-sm file:font-semibold file:text-white hover:file:bg-blue-700">
+                                </div>
+
+                                <div>
+                                    <label class="mb-2 block text-sm font-medium text-slate-700">شماره تماس</label>
+                                    <input type="tel" placeholder="09xxxxxxxxx"
+                                        class="w-full rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-800 outline-none transition focus:border-blue-500 focus:bg-white focus:ring-4 focus:ring-blue-100">
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-3 rounded-2xl bg-blue-50 p-4">
+                                <input id="agree" type="checkbox"
+                                    class="mt-1 h-4 w-4 rounded border-slate-300 accent-blue-600">
+                                <label for="agree" class="text-sm leading-7 text-slate-600">
+                                    اطلاعات وارد شده صحیح است و مسئولیت صحت آن بر عهده من می‌باشد.
+                                </label>
+                            </div>
+
+                            <div class="flex flex-col gap-3 sm:flex-row sm:justify-end">
+                                <button type="button" onclick="openPreviewModal()"
+                                    class="rounded-full border border-slate-200 bg-white px-6 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50 hover:-translate-y-0.5 hover:shadow-lg">
+                                    پیش‌نمایش
+                                </button>
+
+                                <button type="submit"
+                                    class="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 px-7 py-3 text-sm font-bold text-white shadow-lg shadow-blue-200 transition-all duration-300 hover:-translate-y-0.5 hover:from-blue-700 hover:to-indigo-700 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-200">
+                                    <span class="relative z-10 flex items-center gap-2">
+                                        ثبت وام
+                                        <svg class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M5 12h14m-7-7 7 7-7 7" />
+                                        </svg>
+                                    </span>
+
+                                    <span
+                                        class="absolute inset-0 -translate-x-full bg-white/15 transition-transform duration-500 group-hover:translate-x-0"></span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </main>
+
+
+    <div id="previewModal"
+        class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/60 px-4 backdrop-blur-sm">
+        <div class="w-full max-w-3xl overflow-hidden rounded-3xl bg-white shadow-2xl">
+            <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+                <div>
+                    <h3 class="text-lg font-bold text-slate-900">پیش‌نمایش آگهی وام</h3>
+                    <p class="mt-1 text-sm text-slate-500">قبل از ثبت نهایی، اطلاعات را بررسی کنید.</p>
+                </div>
+                <button type="button" onclick="closePreviewModal()"
+                    class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 text-slate-500 transition hover:bg-slate-200 hover:text-slate-700">
+                    ✕
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 gap-6 p-6 md:grid-cols-2">
+                <div class="space-y-4">
+                    <div class="rounded-2xl bg-slate-50 p-4">
+                        <p class="text-xs text-slate-400">عنوان آگهی</p>
+                        <p id="pv-title" class="mt-1 text-sm font-semibold text-slate-800">-</p>
+                    </div>
+                    <div class="rounded-2xl bg-slate-50 p-4">
+                        <p class="text-xs text-slate-400">نوع وام</p>
+                        <p id="pv-type" class="mt-1 text-sm font-semibold text-slate-800">-</p>
+                    </div>
+                    <div class="rounded-2xl bg-slate-50 p-4">
+                        <p class="text-xs text-slate-400">مبلغ وام</p>
+                        <p id="pv-amount" class="mt-1 text-sm font-semibold text-slate-800">-</p>
+                    </div>
+                    <div class="rounded-2xl bg-slate-50 p-4">
+                        <p class="text-xs text-slate-400">مدت بازپرداخت</p>
+                        <p id="pv-term" class="mt-1 text-sm font-semibold text-slate-800">-</p>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="rounded-2xl bg-blue-50 p-4">
+                        <p class="text-xs text-blue-400">توضیحات</p>
+                        <p id="pv-desc" class="mt-1 text-sm leading-7 text-slate-700">-</p>
+                    </div>
+                    <div class="rounded-2xl bg-slate-50 p-4">
+                        <p class="text-xs text-slate-400">شماره تماس</p>
+                        <p id="pv-phone" class="mt-1 text-sm font-semibold text-slate-800">-</p>
+                    </div>
+                    <div class="rounded-2xl bg-slate-50 p-4">
+                        <p class="text-xs text-slate-400">وضعیت</p>
+                        <p id="pv-status" class="mt-1 text-sm font-semibold text-slate-800">-</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex flex-col gap-3 border-t border-slate-100 px-6 py-4 sm:flex-row sm:justify-end">
+                <button type="button" onclick="closePreviewModal()"
+                    class="rounded-full border border-slate-200 bg-white px-5 py-3 text-sm font-bold text-slate-700 transition hover:bg-slate-50">
+                    بستن
+                </button>
+                <button type="button"
+                    class="rounded-full bg-blue-600 px-5 py-3 text-sm font-bold text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700">
+                    تایید و ثبت
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-gray-400 text-base px-8 py-10">
+        <div class="container mx-auto grid grid-cols-1 sm:grid-cols-5 gap-8">
+            <div class="col-span-1 sm:col-span-2">
+                <div class="text-white font-bold text-2xl mb-3 flex items-center gap-1">
+                    وامجو
+                </div>
+                <p class="text-lg">پلتفرم امن و شفاف برای خرید و فروش امتیاز وام و انتقال وام بانکی</p>
+            </div>
+            <div class="col-span-1 sm:text-right">
+                <div class="text-white font-semibold mb-3">دسترسی سریع</div>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#" class="hover:text-white">مشاهده وام‌ها</a></li>
+                    <li><a href="#" class="hover:text-white">درخواست وام</a></li>
+                    <li><a href="#" class="hover:text-white">ثبت آگهی</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1 sm:text-right">
+                <div class="text-white font-semibold mb-3">راهنما</div>
+                <ul class="space-y-2 text-xs">
+                    <li><a href="#" class="hover:text-white">نحوه خرید وام</a></li>
+                    <li><a href="#" class="hover:text-white">نحوه فروش وام</a></li>
+                    <li><a href="#" class="hover:text-white">سوالات متداول</a></li>
+                    <li><a href="#" class="hover:text-white">قوانین و مقررات</a></li>
+                </ul>
+            </div>
+            <div class="col-span-1 sm:text-right">
+                <div class="text-white font-semibold mb-3">تماس با ما</div>
+                <ul class="space-y-2 text-xs">
+                    <li>تلفن: ۰۲۱-۸۰۵۷۴۵۶۳۴۴۱</li>
+                    <li>ایمیل: info@vamjoo.com</li>
+                    <li>پشتیبانی: ۲۴/۷</li>
+                </ul>
+            </div>
+        </div>
+        <div class="container mx-auto border-t border-gray-700 mt-8 pt-8 text-center text-sm">
+            تمامی حقوق محفوظ است © ۱۴۰۵ وامجو
+        </div>
+    </footer>
+
+    <script>
+        function openPreviewModal() {
+            const modal = document.getElementById('previewModal');
+
+            document.getElementById('pv-title').textContent = document.querySelector('input[type="text"]').value || '-';
+            document.getElementById('pv-type').textContent = document.querySelector('select').value || '-';
+            document.getElementById('pv-amount').textContent = document.querySelector('input[type="number"]').value || '-';
+            document.getElementById('pv-term').textContent = document.querySelectorAll('select')[1]?.value || '-';
+            document.getElementById('pv-desc').textContent = document.querySelector('textarea').value || '-';
+            document.getElementById('pv-phone').textContent = document.querySelector('input[type="tel"]').value || '-';
+            document.getElementById('pv-status').textContent = document.querySelector('input[name="status"]:checked')?.parentElement?.innerText.trim() || '-';
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closePreviewModal() {
+            const modal = document.getElementById('previewModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        document.getElementById('previewModal')?.addEventListener('click', function (e) {
+            if (e.target === this) closePreviewModal();
+        });
+    </script>
+
+</body>
+
+</html>

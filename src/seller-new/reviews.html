@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./../assets/css/output.css" rel="stylesheet">
+    <title>نظرات و امتیازات | وامجو</title>
+</head>
+
+<body class="bg-slate-50">
+
+    <header class="sticky top-0 z-20 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="flex items-center justify-between px-4 py-3">
+            <button id="menuToggleBtn" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 lg:hidden">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <h1 class="text-lg font-bold text-slate-800">نظرات و امتیازات</h1>
+            <div class="w-8"></div>
+        </div>
+    </header>
+
+    <div id="sidebarContainer"></div>
+
+    <main class="lg:mr-72">
+        <div class="p-4 md:p-6">
+            <div class="mx-auto max-w-4xl">
+                <!-- Rating Summary Card -->
+                <div class="mb-8 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 p-6 text-white shadow-xl">
+                    <div class="flex flex-wrap items-center justify-between gap-4">
+                        <div>
+                            <p class="text-sm text-white/80">امتیاز شما از ۵ ستاره</p>
+                            <div class="mt-1 flex items-center gap-2">
+                                <span class="text-5xl font-bold">۴.۸</span>
+                                <div class="flex items-center gap-0.5">
+                                    <span class="text-yellow-300">★★★★★</span>
+                                </div>
+                            </div>
+                            <p class="mt-2 text-sm text-white/80">بر اساس ۲۴ نظر</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="text-center">
+                                <p class="text-2xl font-bold">۹۸٪</p>
+                                <p class="text-xs text-white/80">رضایت</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold">۱۲</p>
+                                <p class="text-xs text-white/80">نظرات مثبت</p>
+                            </div>
+                            <div class="text-center">
+                                <p class="text-2xl font-bold">۲</p>
+                                <p class="text-xs text-white/80">نظرات منفی</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Rating Breakdown -->
+                <div class="mb-8 rounded-2xl border border-slate-200 bg-white p-5">
+                    <h3 class="mb-4 text-lg font-bold text-slate-800">جزئیات امتیازات</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-3">
+                            <span class="w-16 text-sm">۵ ستاره</span>
+                            <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full w-3/4 rounded-full bg-emerald-500"></div>
+                            </div>
+                            <span class="w-12 text-sm">۱۸ نظر</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-16 text-sm">۴ ستاره</span>
+                            <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full w-1/2 rounded-full bg-emerald-500"></div>
+                            </div>
+                            <span class="w-12 text-sm">۴ نظر</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-16 text-sm">۳ ستاره</span>
+                            <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full w-1/6 rounded-full bg-amber-500"></div>
+                            </div>
+                            <span class="w-12 text-sm">۱ نظر</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-16 text-sm">۲ ستاره</span>
+                            <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full w-0 rounded-full bg-red-500"></div>
+                            </div>
+                            <span class="w-12 text-sm">۰ نظر</span>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <span class="w-16 text-sm">۱ ستاره</span>
+                            <div class="flex-1 h-2 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="h-full w-1/12 rounded-full bg-red-500"></div>
+                            </div>
+                            <span class="w-12 text-sm">۱ نظر</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews List -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-slate-800">نظرات کاربران</h3>
+
+                    <!-- Review 1 -->
+                    <div class="rounded-2xl border border-slate-200 bg-white p-5">
+                        <div class="flex flex-wrap items-start justify-between gap-3">
+                            <div class="flex items-center gap-3">
+                                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100">
+                                    <span class="font-bold text-blue-600">م</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-800">محمد رضایی</p>
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-yellow-400 text-sm">★★★★★</span>
+                                        <span class="text-xs text-slate-400">خرید وام مسکن ملی</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-400">۱۴۰۴/۰۳/۱۰</p>
+                        </div>
+                        <p class="mt-3 text-sm leading-7 text-slate-600">
+                            فروشنده بسیار خوش برخورد و حرفه‌ای بود. فرآیند انتقال وام خیلی سریع و بدون مشکل انجام شد.
+                            حتماً از خدماتشون دوباره استفاده می‌کنم.
+                        </p>
+                        <div class="mt-3 flex items-center gap-2">
+                            <button class="rounded-full bg-green-50 px-3 py-1 text-xs text-green-600">مفید بود</button>
+                            <button class="rounded-full bg-red-50 px-3 py-1 text-xs text-red-600">گزارش</button>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="rounded-2xl border border-slate-200 bg-white p-5">
+                        <div class="flex flex-wrap items-start justify-between gap-3">
+                            <div class="flex items-center gap-3">
+                                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-100">
+                                    <span class="font-bold text-amber-600">س</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-800">سارا احمدی</p>
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-yellow-400 text-sm">★★★★☆</span>
+                                        <span class="text-xs text-slate-400">خرید وام ازدواج</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-400">۱۴۰۴/۰۲/۲۵</p>
+                        </div>
+                        <p class="mt-3 text-sm leading-7 text-slate-600">
+                            مذاکره خوبی داشتیم و به توافق رسیدیم. فقط زمان انتقال کمی طول کشید که قابل درک بود. در کل
+                            راضی بودم.
+                        </p>
+                        <div class="mt-3 flex items-center gap-2">
+                            <button class="rounded-full bg-green-50 px-3 py-1 text-xs text-green-600">مفید بود</button>
+                            <button class="rounded-full bg-red-50 px-3 py-1 text-xs text-red-600">گزارش</button>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="rounded-2xl border border-slate-200 bg-white p-5">
+                        <div class="flex flex-wrap items-start justify-between gap-3">
+                            <div class="flex items-center gap-3">
+                                <div class="flex h-10 w-10 items-center justify-center rounded-full bg-red-100">
+                                    <span class="font-bold text-red-600">ر</span>
+                                </div>
+                                <div>
+                                    <p class="font-semibold text-slate-800">رضا کریمی</p>
+                                    <div class="flex items-center gap-1">
+                                        <span class="text-yellow-400 text-sm">★★★☆☆</span>
+                                        <span class="text-xs text-slate-400">خرید وام کسب و کار</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-400">۱۴۰۴/۰۲/۱۸</p>
+                        </div>
+                        <p class="mt-3 text-sm leading-7 text-slate-600">
+                                            فروشنده اطلاعات کاملی ارائه داد ولی در زمان پاسخگویی کمی تاخیر داشت. در نهایت معامله انجام شد.
+                                        </p>
+                        <div class="mt-3 flex items-center gap-2">
+                            <button class="rounded-full bg-green-50 px-3 py-1 text-xs text-green-600">مفید بود</button>
+                            <button class="rounded-full bg-red-50 px-3 py-1 text-xs text-red-600">گزارش</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="mt-6 flex justify-center gap-2">
+                    <button class="rounded-lg border px-3 py-1 text-sm disabled:opacity-50">قبلی</button>
+                    <button class="rounded-lg bg-blue-600 px-3 py-1 text-sm text-white">۱</button>
+                    <button class="rounded-lg border px-3 py-1 text-sm">۲</button>
+                    <button class="rounded-lg border px-3 py-1 text-sm">۳</button>
+                    <button class="rounded-lg border px-3 py-1 text-sm">بعدی</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        fetch('./sidebar.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('sidebarContainer').innerHTML = data);
+    </script>
+</body>
+
+</html>

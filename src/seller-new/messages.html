@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./../assets/css/output.css" rel="stylesheet">
+    <title>پیام‌ها | وامجو</title>
+    <style>
+        .chat-user.active {
+            background-color: #eff6ff;
+            border-right: 3px solid #3b82f6;
+        }
+        .message-bubble {
+            max-width: 75%;
+        }
+        .message-bubble.sent {
+            background-color: #3b82f6;
+            color: white;
+            border-bottom-left-radius: 4px;
+        }
+        .message-bubble.received {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            border-bottom-right-radius: 4px;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50">
+
+    <header class="sticky top-0 z-20 bg-white/80 backdrop-blur-md shadow-sm">
+        <div class="flex items-center justify-between px-4 py-3">
+            <button id="menuToggleBtn" class="rounded-lg p-2 text-slate-600 hover:bg-slate-100 lg:hidden">
+                <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
+            <h1 class="text-lg font-bold text-slate-800">پیام‌ها</h1>
+            <div class="relative">
+                <button class="rounded-full p-2 hover:bg-slate-100">
+                    <svg class="h-5 w-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                    </svg>
+                    <span class="absolute -right-0.5 -top-0.5 h-2 w-2 rounded-full bg-red-500"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div id="sidebarContainer"></div>
+
+    <main class="lg:mr-72">
+        <div class="h-[calc(100vh-64px)]">
+            <div class="flex h-full flex-col md:flex-row">
+                <!-- Chat List Sidebar -->
+                <div class="w-full border-l border-slate-200 bg-white md:w-80">
+                    <div class="border-b p-4">
+                        <div class="relative">
+                            <input type="text" placeholder="جستجوی پیام‌ها..." class="w-full rounded-xl border border-slate-200 bg-slate-50 py-2.5 pr-10 pl-4 text-sm">
+                            <svg class="absolute right-3 top-3 h-4 w-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
+                    </div>
+
+                    <div class="overflow-y-auto h-[calc(100%-73px)]">
+                        <!-- Chat User 1 -->
+                        <div class="chat-user flex cursor-pointer items-center gap-3 border-b p-4 transition hover:bg-slate-50" data-chat="chat1">
+                            <div class="relative">
+                                <img src="./../assets/img/aziziUI.png" alt="avatar" class="h-12 w-12 rounded-full object-cover">
+                                <span class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-500 ring-2 ring-white"></span>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between">
+                                    <p class="font-semibold text-slate-800">محمد رضایی</p>
+                                    <p class="text-xs text-slate-400">۱۴:۳۰</p>
+                                </div>
+                                <p class="text-sm text-slate-500">سلام، در مورد وام ۵۰۰ میلیونی...</p>
+                            </div>
+                            <div class="rounded-full bg-red-500 px-1.5 py-0.5 text-xs text-white">۲</div>
+                        </div>
+
+                        <!-- Chat User 2 -->
+                        <div class="chat-user flex cursor-pointer items-center gap-3 border-b p-4 transition hover:bg-slate-50" data-chat="chat2">
+                            <div class="relative">
+                                <img src="./../assets/img/aziziUI.png" alt="avatar" class="h-12 w-12 rounded-full object-cover">
+                                <span class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-500 ring-2 ring-white"></span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-slate-800">سارا احمدی</p>
+                                <p class="text-sm text-slate-500">ممنون از راهنماییتون...</p>
+                            </div>
+                        </div>
+
+                        <!-- Chat User 3 -->
+                        <div class="chat-user flex cursor-pointer items-center gap-3 border-b p-4 transition hover:bg-slate-50" data-chat="chat3">
+                            <div class="relative">
+                                <img src="./../assets/img/aziziUI.png" alt="avatar" class="h-12 w-12 rounded-full object-cover">
+                                <span class="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-gray-400 ring-2 ring-white"></span>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-slate-800">رضا کریمی</p>
+                                <p class="text-sm text-slate-500">آیا امکان انتقال حضوری وجود داره؟...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Area -->
+                <div class="flex-1 bg-slate-50">
+                    <!-- Chat Header -->
+                    <div class="flex items-center gap-3 border-b bg-white p-4" id="chatHeader">
+                        <img src="./../assets/img/aziziUI.png" alt="avatar" class="h-10 w-10 rounded-full object-cover">
+                        <div>
+                            <p class="font-semibold text-slate-800" id="chatName">محمد رضایی</p>
+                            <p class="text-xs text-green-600">آنلاین</p>
+                        </div>
+                    </div>
+
+                    <!-- Messages Area -->
+                    <div class="h-[calc(100%-130px)] overflow-y-auto p-4 space-y-3" id="messagesArea">
+                        <div class="flex justify-start">
+                            <div class="message-bubble received rounded-2xl px-4 py-2">
+                                <p class="text-sm">سلام علی جان! وقت بخیر</p>
+                                <p class="mt-1 text-right text-[10px] opacity-70">۱۰:۱۵</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <div class="message-bubble sent rounded-2xl px-4 py-2">
+                                <p class="text-sm">سلام محمد! وقت شما هم بخیر</p>
+                                <p class="mt-1 text-left text-[10px] opacity-70">۱۰:۱۶</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-start">
+                            <div class="message-bubble received rounded-2xl px-4 py-2">
+                                <p class="text-sm">در مورد وام ۵۰۰ میلیونی که ثبت کردید، میشه مذاکره کرد؟</p>
+                                <p class="mt-1 text-right text-[10px] opacity-70">۱۰:۱۷</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-end">
+                            <div class="message-bubble sent rounded-2xl px-4 py-2">
+                                <p class="text-sm">بله حتماً. قیمت پیشنهادی شما چقدره؟</p>
+                                <p class="mt-1 text-left text-[10px] opacity-70">۱۰:۱۸</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Message Input -->
+                    <div class="border-t bg-white p-4">
+                        <div class="flex gap-3">
+                            <button class="rounded-full p-2 text-slate-400 hover:bg-slate-100">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                                </svg>
+                            </button>
+                            <input type="text" placeholder="پیام خود را بنویسید..." class="flex-1 rounded-xl border border-slate-200 px-4 py-2.5 text-sm focus:border-blue-500 focus:outline-none">
+                            <button class="rounded-full bg-blue-600 px-5 py-2.5 text-sm text-white transition hover:bg-blue-700">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        fetch('./sidebar.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('sidebarContainer').innerHTML = data);
+
+        // Chat switching functionality
+        document.querySelectorAll('.chat-user').forEach(chat => {
+            chat.addEventListener('click', function() {
+                document.querySelectorAll('.chat-user').forEach(c => c.classList.remove('active'));
+                this.classList.add('active');
+                const chatName = this.querySelector('.font-semibold').innerText;
+                document.getElementById('chatName').innerText = chatName;
+            });
+        });
+    </script>
+</body>
+
+</html>

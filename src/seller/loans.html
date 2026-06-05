@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./../assets/css/output.css" rel="stylesheet">
+    <link href="./../assets/css/style.css" rel="stylesheet">
+    <script src="./../assets/js/jquery.min.js"></script>
+    <title>مدیریت وام‌ها | وامجو</title>
+    <style>
+        .modal {
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .loan-card {
+            transition: all 0.3s ease;
+        }
+        .loan-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.01);
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50">
+
+    <!-- Header -->
+    <header class="relative overflow-hidden bg-blue-50">
+        <div class="absolute inset-0 -z-0">
+            <div class="absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full bg-blue-200/40 blur-3xl"></div>
+            <div class="absolute right-0 top-20 h-64 w-64 rounded-full bg-indigo-200/30 blur-3xl"></div>
+        </div>
+        <nav class="relative z-10 px-4 py-5">
+            <div class="container mx-auto">
+                <div class="flex items-center justify-between rounded-2xl border border-white/70 bg-white/70 px-4 py-3 shadow-lg shadow-blue-100/40 backdrop-blur-md md:px-6">
+                    <a href="../index.html" class="flex items-center gap-2 font-bold text-2xl text-blue-700">
+                        <img src="./../assets/img/ins_115617.svg" alt="Logo" class="h-9 w-9 object-contain">
+                        <span>تیک وام</span>
+                    </a>
+                    <div class="flex items-center gap-3">
+                        <a href="./dashboard.html" class="text-sm text-slate-600 hover:text-blue-600">بازگشت به پنل</a>
+                        <a href="./profile.html" class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white">
+                            <img src="./../assets/img/aziziUI.png" alt="پروفایل" class="h-full w-full rounded-full object-cover">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container mx-auto px-3 py-8">
+        <div class="mb-6 flex flex-wrap items-center justify-between gap-4">
+            <div>
+                <h1 class="text-2xl font-bold text-slate-800">مدیریت وام‌ها</h1>
+                <p class="mt-1 text-sm text-slate-500">لیست تمام وام‌های ثبت شده شما</p>
+            </div>
+            <a href="./add-loan.html" class="inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-blue-700">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                افزودن وام جدید
+            </a>
+        </div>
+
+        <!-- Loans Grid -->
+        <div class="grid grid-cols-1 gap-5 lg:grid-cols-2" id="loansContainer">
+            <!-- Loans will be loaded dynamically -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="hidden rounded-2xl border-2 border-dashed border-slate-200 bg-white p-12 text-center">
+            <svg class="mx-auto h-16 w-16 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <h3 class="mt-4 text-lg font-semibold text-slate-700">هیچ وامی ثبت نشده است</h3>
+            <p class="mt-1 text-sm text-slate-400">اولین وام خود را ثبت کنید</p>
+            <a href="./add-loan.html" class="mt-4 inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-2 text-sm text-white">ثبت وام جدید</a>
+        </div>
+    </main>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/50 px-4">
+        <div class="w-full max-w-lg rounded-3xl bg-white shadow-2xl">
+            <div class="flex items-center justify-between border-b p-5">
+                <h3 class="text-lg font-bold">ویرایش وام</h3>
+                <button onclick="closeEditModal()" class="text-slate-400 hover:text-slate-600">✕</button>
+            </div>
+            <div class="p-5 space-y-4">
+                <input type="hidden" id="editLoanId">
+                <div>
+                    <label class="mb-1 block text-sm font-medium">عنوان وام</label>
+                    <input type="text" id="editTitle" class="w-full rounded-xl border border-slate-200 px-4 py-2.5">
+                </div>
+                <div>
+                    <label class="mb-1 block text-sm font-medium">مبلغ وام (تومان)</label>
+                    <input type="text" id="editAmount" class="w-full rounded-xl border border-slate-200 px-4 py-2.5">
+                </div>
+                <div>
+                    <label class="mb-1 block text-sm font-medium">قیمت فروش (تومان)</label>
+                    <input type="text" id="editPrice" class="w-full rounded-xl border border-slate-200 px-4 py-2.5">
+                </div>
+                <div>
+                    <label class="mb-1 block text-sm font-medium">وضعیت</label>
+                    <select id="editStatus" class="w-full rounded-xl border border-slate-200 px-4 py-2.5">
+                        <option value="فعال">فعال</option>
+                        <option value="در انتظار">در انتظار</option>
+                        <option value="تکمیل شده">تکمیل شده</option>
+                    </select>
+                </div>
+            </div>
+            <div class="flex gap-3 border-t p-5">
+                <button onclick="updateLoan()" class="flex-1 rounded-xl bg-blue-600 py-2.5 text-white">ذخیره تغییرات</button>
+                <button onclick="closeEditModal()" class="flex-1 rounded-xl border border-slate-200 py-2.5">انصراف</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-gray-400 text-base px-8 py-10 mt-12">
+        <div class="container mx-auto text-center text-sm">تمام حقوق محفوظ است © ۱۴۰۵ وامجو</div>
+    </footer>
+
+    <script>
+        let loans = [];
+
+        function loadLoans() {
+            const stored = localStorage.getItem('sellerLoans');
+            if (stored) loans = JSON.parse(stored);
+            else {
+                loans = [
+                    { id: 1, title: 'وام مسکن ملی', amount: '۵۰۰,۰۰۰,۰۰۰', price: '۳,۹۰۰,۰۰۰', status: 'فعال', date: '۱۴۰۴/۰۲/۱۵' },
+                    { id: 2, title: 'وام ازدواج', amount: '۳۰۰,۰۰۰,۰۰۰', price: '۲,۲۰۰,۰۰۰', status: 'در انتظار', date: '۱۴۰۴/۰۲/۱۰' },
+                    { id: 3, title: 'وام کسب و کار', amount: '۱,۰۰۰,۰۰۰,۰۰۰', price: '۷,۵۰۰,۰۰۰', status: 'فعال', date: '۱۴۰۴/۰۲/۰۵' }
+                ];
+                saveLoans();
+            }
+            renderLoans();
+        }
+
+        function saveLoans() {
+            localStorage.setItem('sellerLoans', JSON.stringify(loans));
+        }
+
+        function renderLoans() {
+            const container = document.getElementById('loansContainer');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (loans.length === 0) {
+                container.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            
+            container.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+            container.innerHTML = loans.map(loan => `
+                <div class="loan-card rounded-2xl border border-slate-200 bg-white p-5 shadow-md">
+                    <div class="flex flex-wrap items-start justify-between gap-3">
+                        <div>
+                            <span class="inline-block rounded-full px-2 py-1 text-xs ${loan.status === 'فعال' ? 'bg-green-100 text-green-700' : loan.status === 'در انتظار' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700'}">${loan.status}</span>
+                            <h3 class="mt-2 text-lg font-bold text-slate-800">${loan.title}</h3>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="openEditModal(${loan.id})" class="rounded-lg p-2 text-blue-600 hover:bg-blue-50"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg></button>
+                            <button onclick="deleteLoan(${loan.id})" class="rounded-lg p-2 text-red-600 hover:bg-red-50"><svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg></button>
+                        </div>
+                    </div>
+                    <div class="mt-4 grid grid-cols-2 gap-3">
+                        <div class="rounded-xl bg-slate-50 p-3">
+                            <p class="text-xs text-slate-400">مبلغ وام</p>
+                            <p class="font-semibold text-slate-800">${loan.amount} تومان</p>
+                        </div>
+                        <div class="rounded-xl bg-slate-50 p-3">
+                            <p class="text-xs text-slate-400">قیمت فروش</p>
+                            <p class="font-semibold text-emerald-600">${loan.price} تومان</p>
+                        </div>
+                    </div>
+                    <div class="mt-3 flex items-center justify-between border-t pt-3 text-xs text-slate-400">
+                        <span>📅 تاریخ ثبت: ${loan.date}</span>
+                        <a href="./requests.html" class="text-blue-600 hover:text-blue-700">مشاهده درخواست‌ها →</a>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        let currentEditId = null;
+
+        function openEditModal(id) {
+            const loan = loans.find(l => l.id === id);
+            if (loan) {
+                currentEditId = id;
+                document.getElementById('editTitle').value = loan.title;
+                document.getElementById('editAmount').value = loan.amount;
+                document.getElementById('editPrice').value = loan.price;
+                document.getElementById('editStatus').value = loan.status;
+                document.getElementById('editModal').classList.add('flex');
+                document.getElementById('editModal').classList.remove('hidden');
+            }
+        }
+
+        function updateLoan() {
+            const index = loans.findIndex(l => l.id === currentEditId);
+            if (index !== -1) {
+                loans[index] = {
+                    ...loans[index],
+                    title: document.getElementById('editTitle').value,
+                    amount: document.getElementById('editAmount').value,
+                    price: document.getElementById('editPrice').value,
+                    status: document.getElementById('editStatus').value
+                };
+                saveLoans();
+                renderLoans();
+                closeEditModal();
+            }
+        }
+
+        function deleteLoan(id) {
+            if (confirm('آیا از حذف این وام اطمینان دارید؟')) {
+                loans = loans.filter(l => l.id !== id);
+                saveLoans();
+                renderLoans();
+            }
+        }
+
+        function closeEditModal() {
+            document.getElementById('editModal').classList.add('hidden');
+            document.getElementById('editModal').classList.remove('flex');
+        }
+
+        loadLoans();
+    </script>
+</body>
+
+</html>

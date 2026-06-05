@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تنظیمات</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>*{font-family:system-ui,Tahoma,sans-serif}body{background:#f8fafc}.nav-item{display:flex;align-items:center;padding:.875rem 1rem;border-radius:1rem;font-size:.875rem;font-weight:600;color:#475569;transition:.2s}.nav-item:hover{background:#f8fafc;color:#0f172a}.nav-item.active{background:#eff6ff;color:#1d4ed8}</style>
+</head>
+<body>
+<div class="min-h-screen bg-slate-50">
+  <div class="mx-auto max-w-[1600px] lg:px-6">
+    <div class="grid grid-cols-12 gap-6">
+      <!-- sidebar -->
+      <main class="col-span-full lg:col-span-9">
+        <div class="p-4 lg:p-0 lg:py-6 space-y-6">
+          <section class="rounded-[30px] border border-slate-200 bg-white p-5">
+            <h1 class="text-xl font-bold text-slate-900">تنظیمات حساب</h1>
+            <p class="mt-1 text-sm text-slate-500">ویرایش اطلاعات، امنیت و اعلان‌ها</p>
+          </section>
+
+          <section class="rounded-[30px] border border-slate-200 bg-white p-5">
+            <h2 class="text-lg font-bold text-slate-900">اطلاعات شخصی</h2>
+            <div class="mt-4 grid gap-3 sm:grid-cols-2">
+              <input class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none focus:border-blue-300 focus:bg-white" value="علی محمدی">
+              <input class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none focus:border-blue-300 focus:bg-white" value="alirahimi@gmail.com">
+              <input class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none focus:border-blue-300 focus:bg-white" value="0912***1234">
+              <input class="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm outline-none focus:border-blue-300 focus:bg-white" value="تهران">
+            </div>
+          </section>
+
+          <section class="rounded-[30px] border border-slate-200 bg-white p-5">
+            <h2 class="text-lg font-bold text-slate-900">امنیت</h2>
+            <div class="mt-4 grid gap-3 lg:grid-cols-3">
+              <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs text-slate-500">رمز عبور</p><p class="mt-1 font-semibold text-slate-900">آخرین تغییر: 30 روز پیش</p></div>
+              <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs text-slate-500">تأیید دو مرحله‌ای</p><p class="mt-1 font-semibold text-slate-900 text-emerald-600">فعال</p></div>
+              <div class="rounded-2xl bg-slate-50 p-4"><p class="text-xs text-slate-500">دستگاه‌های متصل</p><p class="mt-1 font-semibold text-slate-900">2 دستگاه</p></div>
+            </div>
+          </section>
+
+          <section class="rounded-[30px] border border-slate-200 bg-white p-5">
+            <h2 class="text-lg font-bold text-slate-900">اعلان‌ها و حریم خصوصی</h2>
+            <div class="mt-4 space-y-3">
+              <label class="flex items-center justify-between rounded-2xl bg-slate-50 p-4">
+                <span class="text-sm font-semibold text-slate-900">اعلان پیامک</span>
+                <input type="checkbox" checked class="h-5 w-5 accent-blue-600">
+              </label>
+              <label class="flex items-center justify-between rounded-2xl bg-slate-50 p-4">
+                <span class="text-sm font-semibold text-slate-900">اعلان ایمیل</span>
+                <input type="checkbox" checked class="h-5 w-5 accent-blue-600">
+              </label>
+              <label class="flex items-center justify-between rounded-2xl bg-slate-50 p-4">
+                <span class="text-sm font-semibold text-slate-900">نمایش موجودی در داشبورد</span>
+                <input type="checkbox" class="h-5 w-5 accent-blue-600">
+              </label>
+            </div>
+
+            <div class="mt-4 flex gap-2">
+              <button class="rounded-2xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white">ذخیره</button>
+              <button class="rounded-2xl border border-slate-200 bg-white px-4 py-3 text-sm font-semibold text-slate-700">انصراف</button>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
+</body>
+</html>
