@@ -170,7 +170,7 @@
                                     d="M0 64C0 28.7 28.7 0 64 0h149.5c17 0 33.3 6.7 45.3 18.7l106.5 106.5c12 12 18.7 28.3 18.7 45.3V448c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V64zm224 56c0-6.6-5.4-12-12-12h-92v92c0 6.6 5.4 12 12 12h92v-92z" />
                             </svg>
                         </span>
-                        <span class="leading-none">وام‌ها</span>
+                        <span class="leading-none text-slate-900">وام‌ها</span>
                     </a>
                 </li>
 
@@ -185,7 +185,7 @@
                                     d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.3 48C79.5 304 0 383.5 0 482.3C0 500.1 14.3 512 32 512H416c17.7 0 32-11.9 32-29.7C448 383.5 368.5 304 269.3 304H178.7z" />
                             </svg>
                         </span>
-                        <span class="leading-none">فروشندگان</span>
+                        <span class="leading-none text-slate-900">فروشندگان</span>
                     </a>
                 </li>
 
@@ -200,7 +200,7 @@
                                     d="M502.6 278.6c-12.5-12.5-32.8-12.5-45.3 0L448 287.9V112c0-35.3-28.7-64-64-64h-32V24c0-13.3-10.7-24-24-24h-32c-13.3 0-24 10.7-24 24v24H80c-35.3 0-64 28.7-64 64v240c0 35.3 28.7 64 64 64h272l-37.4 37.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l144-144c12.5-12.5 12.5-32.8 0-45.3l-1.3-1.3z" />
                             </svg>
                         </span>
-                        <span class="leading-none">قیمت طلا</span>
+                        <span class="leading-none text-slate-900">قیمت طلا</span>
                     </a>
                 </li>
 
@@ -215,7 +215,7 @@
                                     d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zM96 320c-53 0-96 43-96 96v32c0 35.3 28.7 64 64 64h320c35.3 0 64-28.7 64-64v-32c0-53-43-96-96-96H96z" />
                             </svg>
                         </span>
-                        <span class="leading-none">ورود</span>
+                        <span class="leading-none text-slate-900">ورود</span>
                     </a>
                 </li>
             </ul>
@@ -223,7 +223,7 @@
     </nav>
     <main class="container mx-auto px-3">
 
-        <section class="relative -mt-24 px-4 mb-24" style="margin-top: -40%;">
+        <section class="relative -mt-24  mb-24" style="margin-top: -40%;">
             <div class="mx-auto max-w-7xl">
                 <div
                     class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-2xl shadow-slate-200/60">
@@ -235,7 +235,7 @@
                         </div>
 
                         <a href="#"
-                            class="inline-flex justify-end items-center gap-2 text-sm font-semibold text-blue-700 transition hover:text-blue-800">
+                            class="inline-flex items-center gap-2 text-sm font-semibold text-blue-700 transition hover:text-blue-800">
                             همه وام‌ها
                             <svg class="size-3.5 text-blue-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
                                 fill="currentColor">
@@ -274,351 +274,574 @@
 
                     <div class="overflow-x-auto">
                         <div class="w-full mx-auto bg-white overflow-hidden">
-                            <div class="grid grid-cols-12 bg-slate-100 px-5 py-3 text-xs font-semibold text-slate-500">
-                                <div class="col-span-5 md:col-span-3 lg:col-span-3 pr-14">بانک / مبلغ وام</div>
+                            <div
+                                class="hidden md:grid grid-cols-12 bg-slate-100 px-5 py-3 text-xs font-semibold text-slate-500">
+                                <div class="col-span-5 md:col-span-3 lg:col-span-3 pr-11">بانک / مبلغ وام</div>
                                 <div class="col-span-4 md:col-span-3 lg:col-span-3 text-center">قیمت</div>
-                                <div class="hidden md:block   md:col-span-3 lg:col-span-3 pr-2  text-center">
-                                    فروشنده
-                                </div>
-
+                                <div class="hidden md:block md:col-span-3 lg:col-span-3 pr-2 text-center">فروشنده</div>
                                 <div class="col-span-3 md:col-span-3 lg:col-span-3 md:pl-3 sm:pl-4 text-left">جزئیات
                                 </div>
                             </div>
 
                             <div class="divide-y divide-slate-200">
-                                <div class="grid grid-cols-12 items-center transition hover:bg-slate-50">
+
+                                <div class="grid grid-cols-12 items-stretch transition hover:bg-slate-50">
                                     <div
-                                        class="col-span-5 flex items-center gap-3 px-5 py-4 md:col-span-3 lg:col-span-3">
+                                        class="col-span-12 flex items-center gap-2 px-4 py-2.5 md:col-span-3 md:px-5 md:py-4 lg:col-span-3">
                                         <div
-                                            class="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+                                            class="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 md:h-9 md:w-9">
                                             <img src="./assets/img/Shahr.png" alt="Shahr"
-                                                class="h-8 w-8 object-contain" />
+                                                class="h-5 w-5 object-contain md:h-6 md:w-6" />
                                         </div>
-                                        <div class="flex flex-col items-start">
-                                            <span class="text-gray-900 font-semibold text-sm md:text-base">
-                                                ۵۰۰,۰۰۰,۰۰۰ <small
-                                                    class="text-xs md:text-sm font-normal text-gray-700">تومان</small>
-                                            </span>
-                                            <span class="text-gray-500 text-xs md:text-sm mt-1">اقساط ۱۲ ماهه</span>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-span-4 text-center px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div
-                                            class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold text-emerald-700 ">
-                                            ۳,۹۰۰,۰۰۰ تومان
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-1.5">
+                                                <span
+                                                    class="text-xs font-semibold text-slate-900 md:text-base">۵۰۰,۰۰۰,۰۰۰</span>
+                                                <small
+                                                    class="text-[10px] font-normal text-slate-600 md:text-sm">تومان</small>
+                                            </div>
+                                            <span
+                                                class="mt-0.5 block text-[11px] leading-4 text-slate-500 md:text-sm">اقساط
+                                                ۱۲ ماهه</span>
                                         </div>
-                                    </div>
 
-                                    <div
-                                        class="hidden md:block text-center col-span-4 px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold  ">
-                                            ممد سلر
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="col-span-3 md:col-span-3 lg:col-span-3 p-3 md:pl-6 flex items-center justify-end">
-                                        <button class="btn  py-2! text-tiny! md:text-sm!">
-                                            <span class="hidden md:inline">جزئیات</span>
-                                            <span class="flex md:hidden">
+                                        <div class="ml-auto flex items-center gap-1.5 md:hidden">
+                                            <div
+                                                class="inline-flex rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
+                                                ۳,۹۰۰,۰۰۰
+                                            </div>
+                                            <button
+                                                class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                    stroke-width="1.5" stroke="currentColor" class="size-4">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                                 </svg>
+                                            </button>
+                                        </div>
+                                    </div>
 
-                                            </span>
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                                            ۳,۹۰۰,۰۰۰ تومان
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-700">
+                                            ممد سلر
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-end px-5 py-4 md:pl-6">
+                                        <button
+                                            class="inline-flex items-center gap-1.5 rounded-2xl border border-blue-200 bg-blue-50 px-3.5 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 hover:border-blue-300">
+                                            <span>جزئیات</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="size-3.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-12 items-center transition hover:bg-slate-50">
+                                                                <div class="grid grid-cols-12 items-stretch transition hover:bg-slate-50">
                                     <div
-                                        class="col-span-5 flex items-center gap-3 px-5 py-4 md:col-span-3 lg:col-span-3">
+                                        class="col-span-12 flex items-center gap-2 px-4 py-2.5 md:col-span-3 md:px-5 md:py-4 lg:col-span-3">
                                         <div
-                                            class="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+                                            class="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 md:h-9 md:w-9">
                                             <img src="./assets/img/Shahr.png" alt="Shahr"
-                                                class="h-8 w-8 object-contain" />
+                                                class="h-5 w-5 object-contain md:h-6 md:w-6" />
                                         </div>
-                                        <div class="flex flex-col items-start">
-                                            <span class="text-gray-900 font-semibold text-sm md:text-base">
-                                                ۵۰۰,۰۰۰,۰۰۰ <small
-                                                    class="text-xs md:text-sm font-normal text-gray-700">تومان</small>
-                                            </span>
-                                            <span class="text-gray-500 text-xs md:text-sm mt-1">اقساط ۱۲ ماهه</span>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-span-4 text-center px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div
-                                            class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold text-emerald-700 ">
-                                            ۳,۹۰۰,۰۰۰ تومان
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-1.5">
+                                                <span
+                                                    class="text-xs font-semibold text-slate-900 md:text-base">۵۰۰,۰۰۰,۰۰۰</span>
+                                                <small
+                                                    class="text-[10px] font-normal text-slate-600 md:text-sm">تومان</small>
+                                            </div>
+                                            <span
+                                                class="mt-0.5 block text-[11px] leading-4 text-slate-500 md:text-sm">اقساط
+                                                ۱۲ ماهه</span>
                                         </div>
-                                    </div>
 
-                                    <div
-                                        class="hidden md:block text-center col-span-4 px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold  ">
-                                            ممد سلر
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="col-span-3 md:col-span-3 lg:col-span-3 p-3 md:pl-6 flex items-center justify-end">
-                                        <button class="btn  py-2! text-tiny! md:text-sm!">
-                                            <span class="hidden md:inline">جزئیات</span>
-                                            <span class="flex md:hidden">
+                                        <div class="ml-auto flex items-center gap-1.5 md:hidden">
+                                            <div
+                                                class="inline-flex rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
+                                                ۳,۹۰۰,۰۰۰
+                                            </div>
+                                            <button
+                                                class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                    stroke-width="1.5" stroke="currentColor" class="size-4">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                                 </svg>
+                                            </button>
+                                        </div>
+                                    </div>
 
-                                            </span>
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                                            ۳,۹۰۰,۰۰۰ تومان
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-700">
+                                            ممد سلر
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-end px-5 py-4 md:pl-6">
+                                        <button
+                                            class="inline-flex items-center gap-1.5 rounded-2xl border border-blue-200 bg-blue-50 px-3.5 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 hover:border-blue-300">
+                                            <span>جزئیات</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="size-3.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-12 items-center transition hover:bg-slate-50">
+                                                                <div class="grid grid-cols-12 items-stretch transition hover:bg-slate-50">
                                     <div
-                                        class="col-span-5 flex items-center gap-3 px-5 py-4 md:col-span-3 lg:col-span-3">
+                                        class="col-span-12 flex items-center gap-2 px-4 py-2.5 md:col-span-3 md:px-5 md:py-4 lg:col-span-3">
                                         <div
-                                            class="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+                                            class="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 md:h-9 md:w-9">
                                             <img src="./assets/img/Shahr.png" alt="Shahr"
-                                                class="h-8 w-8 object-contain" />
+                                                class="h-5 w-5 object-contain md:h-6 md:w-6" />
                                         </div>
-                                        <div class="flex flex-col items-start">
-                                            <span class="text-gray-900 font-semibold text-sm md:text-base">
-                                                ۵۰۰,۰۰۰,۰۰۰ <small
-                                                    class="text-xs md:text-sm font-normal text-gray-700">تومان</small>
-                                            </span>
-                                            <span class="text-gray-500 text-xs md:text-sm mt-1">اقساط ۱۲ ماهه</span>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-span-4 text-center px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div
-                                            class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold text-emerald-700 ">
-                                            ۳,۹۰۰,۰۰۰ تومان
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-1.5">
+                                                <span
+                                                    class="text-xs font-semibold text-slate-900 md:text-base">۵۰۰,۰۰۰,۰۰۰</span>
+                                                <small
+                                                    class="text-[10px] font-normal text-slate-600 md:text-sm">تومان</small>
+                                            </div>
+                                            <span
+                                                class="mt-0.5 block text-[11px] leading-4 text-slate-500 md:text-sm">اقساط
+                                                ۱۲ ماهه</span>
                                         </div>
-                                    </div>
 
-                                    <div
-                                        class="hidden md:block text-center col-span-4 px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold  ">
-                                            ممد سلر
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="col-span-3 md:col-span-3 lg:col-span-3 p-3 md:pl-6 flex items-center justify-end">
-                                        <button class="btn  py-2! text-tiny! md:text-sm!">
-                                            <span class="hidden md:inline">جزئیات</span>
-                                            <span class="flex md:hidden">
+                                        <div class="ml-auto flex items-center gap-1.5 md:hidden">
+                                            <div
+                                                class="inline-flex rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
+                                                ۳,۹۰۰,۰۰۰
+                                            </div>
+                                            <button
+                                                class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                    stroke-width="1.5" stroke="currentColor" class="size-4">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                                 </svg>
+                                            </button>
+                                        </div>
+                                    </div>
 
-                                            </span>
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                                            ۳,۹۰۰,۰۰۰ تومان
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-700">
+                                            ممد سلر
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-end px-5 py-4 md:pl-6">
+                                        <button
+                                            class="inline-flex items-center gap-1.5 rounded-2xl border border-blue-200 bg-blue-50 px-3.5 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 hover:border-blue-300">
+                                            <span>جزئیات</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="size-3.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-12 items-center transition hover:bg-slate-50">
+                                                                <div class="grid grid-cols-12 items-stretch transition hover:bg-slate-50">
                                     <div
-                                        class="col-span-5 flex items-center gap-3 px-5 py-4 md:col-span-3 lg:col-span-3">
+                                        class="col-span-12 flex items-center gap-2 px-4 py-2.5 md:col-span-3 md:px-5 md:py-4 lg:col-span-3">
                                         <div
-                                            class="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+                                            class="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 md:h-9 md:w-9">
                                             <img src="./assets/img/Shahr.png" alt="Shahr"
-                                                class="h-8 w-8 object-contain" />
+                                                class="h-5 w-5 object-contain md:h-6 md:w-6" />
                                         </div>
-                                        <div class="flex flex-col items-start">
-                                            <span class="text-gray-900 font-semibold text-sm md:text-base">
-                                                ۵۰۰,۰۰۰,۰۰۰ <small
-                                                    class="text-xs md:text-sm font-normal text-gray-700">تومان</small>
-                                            </span>
-                                            <span class="text-gray-500 text-xs md:text-sm mt-1">اقساط ۱۲ ماهه</span>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-span-4 text-center px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div
-                                            class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold text-emerald-700 ">
-                                            ۳,۹۰۰,۰۰۰ تومان
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-1.5">
+                                                <span
+                                                    class="text-xs font-semibold text-slate-900 md:text-base">۵۰۰,۰۰۰,۰۰۰</span>
+                                                <small
+                                                    class="text-[10px] font-normal text-slate-600 md:text-sm">تومان</small>
+                                            </div>
+                                            <span
+                                                class="mt-0.5 block text-[11px] leading-4 text-slate-500 md:text-sm">اقساط
+                                                ۱۲ ماهه</span>
                                         </div>
-                                    </div>
 
-                                    <div
-                                        class="hidden md:block text-center col-span-4 px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold  ">
-                                            ممد سلر
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="col-span-3 md:col-span-3 lg:col-span-3 p-3 md:pl-6 flex items-center justify-end">
-                                        <button class="btn  py-2! text-tiny! md:text-sm!">
-                                            <span class="hidden md:inline">جزئیات</span>
-                                            <span class="flex md:hidden">
+                                        <div class="ml-auto flex items-center gap-1.5 md:hidden">
+                                            <div
+                                                class="inline-flex rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
+                                                ۳,۹۰۰,۰۰۰
+                                            </div>
+                                            <button
+                                                class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                    stroke-width="1.5" stroke="currentColor" class="size-4">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                                 </svg>
+                                            </button>
+                                        </div>
+                                    </div>
 
-                                            </span>
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                                            ۳,۹۰۰,۰۰۰ تومان
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-700">
+                                            ممد سلر
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-end px-5 py-4 md:pl-6">
+                                        <button
+                                            class="inline-flex items-center gap-1.5 rounded-2xl border border-blue-200 bg-blue-50 px-3.5 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 hover:border-blue-300">
+                                            <span>جزئیات</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="size-3.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-12 items-center transition hover:bg-slate-50">
+                                                                <div class="grid grid-cols-12 items-stretch transition hover:bg-slate-50">
                                     <div
-                                        class="col-span-5 flex items-center gap-3 px-5 py-4 md:col-span-3 lg:col-span-3">
+                                        class="col-span-12 flex items-center gap-2 px-4 py-2.5 md:col-span-3 md:px-5 md:py-4 lg:col-span-3">
                                         <div
-                                            class="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+                                            class="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 md:h-9 md:w-9">
                                             <img src="./assets/img/Shahr.png" alt="Shahr"
-                                                class="h-8 w-8 object-contain" />
+                                                class="h-5 w-5 object-contain md:h-6 md:w-6" />
                                         </div>
-                                        <div class="flex flex-col items-start">
-                                            <span class="text-gray-900 font-semibold text-sm md:text-base">
-                                                ۵۰۰,۰۰۰,۰۰۰ <small
-                                                    class="text-xs md:text-sm font-normal text-gray-700">تومان</small>
-                                            </span>
-                                            <span class="text-gray-500 text-xs md:text-sm mt-1">اقساط ۱۲ ماهه</span>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-span-4 text-center px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div
-                                            class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold text-emerald-700 ">
-                                            ۳,۹۰۰,۰۰۰ تومان
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-1.5">
+                                                <span
+                                                    class="text-xs font-semibold text-slate-900 md:text-base">۵۰۰,۰۰۰,۰۰۰</span>
+                                                <small
+                                                    class="text-[10px] font-normal text-slate-600 md:text-sm">تومان</small>
+                                            </div>
+                                            <span
+                                                class="mt-0.5 block text-[11px] leading-4 text-slate-500 md:text-sm">اقساط
+                                                ۱۲ ماهه</span>
                                         </div>
-                                    </div>
 
-                                    <div
-                                        class="hidden md:block text-center col-span-4 px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold  ">
-                                            ممد سلر
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="col-span-3 md:col-span-3 lg:col-span-3 p-3 md:pl-6 flex items-center justify-end">
-                                        <button class="btn  py-2! text-tiny! md:text-sm!">
-                                            <span class="hidden md:inline">جزئیات</span>
-                                            <span class="flex md:hidden">
+                                        <div class="ml-auto flex items-center gap-1.5 md:hidden">
+                                            <div
+                                                class="inline-flex rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
+                                                ۳,۹۰۰,۰۰۰
+                                            </div>
+                                            <button
+                                                class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                    stroke-width="1.5" stroke="currentColor" class="size-4">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                                 </svg>
+                                            </button>
+                                        </div>
+                                    </div>
 
-                                            </span>
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                                            ۳,۹۰۰,۰۰۰ تومان
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-700">
+                                            ممد سلر
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-end px-5 py-4 md:pl-6">
+                                        <button
+                                            class="inline-flex items-center gap-1.5 rounded-2xl border border-blue-200 bg-blue-50 px-3.5 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 hover:border-blue-300">
+                                            <span>جزئیات</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="size-3.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-12 items-center transition hover:bg-slate-50">
+                                                                <div class="grid grid-cols-12 items-stretch transition hover:bg-slate-50">
                                     <div
-                                        class="col-span-5 flex items-center gap-3 px-5 py-4 md:col-span-3 lg:col-span-3">
+                                        class="col-span-12 flex items-center gap-2 px-4 py-2.5 md:col-span-3 md:px-5 md:py-4 lg:col-span-3">
                                         <div
-                                            class="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+                                            class="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 md:h-9 md:w-9">
                                             <img src="./assets/img/Shahr.png" alt="Shahr"
-                                                class="h-8 w-8 object-contain" />
+                                                class="h-5 w-5 object-contain md:h-6 md:w-6" />
                                         </div>
-                                        <div class="flex flex-col items-start">
-                                            <span class="text-gray-900 font-semibold text-sm md:text-base">
-                                                ۵۰۰,۰۰۰,۰۰۰ <small
-                                                    class="text-xs md:text-sm font-normal text-gray-700">تومان</small>
-                                            </span>
-                                            <span class="text-gray-500 text-xs md:text-sm mt-1">اقساط ۱۲ ماهه</span>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-span-4 text-center px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div
-                                            class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold text-emerald-700 ">
-                                            ۳,۹۰۰,۰۰۰ تومان
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-1.5">
+                                                <span
+                                                    class="text-xs font-semibold text-slate-900 md:text-base">۵۰۰,۰۰۰,۰۰۰</span>
+                                                <small
+                                                    class="text-[10px] font-normal text-slate-600 md:text-sm">تومان</small>
+                                            </div>
+                                            <span
+                                                class="mt-0.5 block text-[11px] leading-4 text-slate-500 md:text-sm">اقساط
+                                                ۱۲ ماهه</span>
                                         </div>
-                                    </div>
 
-                                    <div
-                                        class="hidden md:block text-center col-span-4 px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold  ">
-                                            ممد سلر
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="col-span-3 md:col-span-3 lg:col-span-3 p-3 md:pl-6 flex items-center justify-end">
-                                        <button class="btn  py-2! text-tiny! md:text-sm!">
-                                            <span class="hidden md:inline">جزئیات</span>
-                                            <span class="flex md:hidden">
+                                        <div class="ml-auto flex items-center gap-1.5 md:hidden">
+                                            <div
+                                                class="inline-flex rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
+                                                ۳,۹۰۰,۰۰۰
+                                            </div>
+                                            <button
+                                                class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                    stroke-width="1.5" stroke="currentColor" class="size-4">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                                 </svg>
+                                            </button>
+                                        </div>
+                                    </div>
 
-                                            </span>
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                                            ۳,۹۰۰,۰۰۰ تومان
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-700">
+                                            ممد سلر
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-end px-5 py-4 md:pl-6">
+                                        <button
+                                            class="inline-flex items-center gap-1.5 rounded-2xl border border-blue-200 bg-blue-50 px-3.5 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 hover:border-blue-300">
+                                            <span>جزئیات</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="size-3.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
                                         </button>
                                     </div>
                                 </div>
-                                <div class="grid grid-cols-12 items-center transition hover:bg-slate-50">
+                                                                <div class="grid grid-cols-12 items-stretch transition hover:bg-slate-50">
                                     <div
-                                        class="col-span-5 flex items-center gap-3 px-5 py-4 md:col-span-3 lg:col-span-3">
+                                        class="col-span-12 flex items-center gap-2 px-4 py-2.5 md:col-span-3 md:px-5 md:py-4 lg:col-span-3">
                                         <div
-                                            class="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-white ring-1 ring-slate-200">
+                                            class="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 md:h-9 md:w-9">
                                             <img src="./assets/img/Shahr.png" alt="Shahr"
-                                                class="h-8 w-8 object-contain" />
+                                                class="h-5 w-5 object-contain md:h-6 md:w-6" />
                                         </div>
-                                        <div class="flex flex-col items-start">
-                                            <span class="text-gray-900 font-semibold text-sm md:text-base">
-                                                ۵۰۰,۰۰۰,۰۰۰ <small
-                                                    class="text-xs md:text-sm font-normal text-gray-700">تومان</small>
-                                            </span>
-                                            <span class="text-gray-500 text-xs md:text-sm mt-1">اقساط ۱۲ ماهه</span>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-span-4 text-center px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div
-                                            class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold text-emerald-700 ">
-                                            ۳,۹۰۰,۰۰۰ تومان
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-1.5">
+                                                <span
+                                                    class="text-xs font-semibold text-slate-900 md:text-base">۵۰۰,۰۰۰,۰۰۰</span>
+                                                <small
+                                                    class="text-[10px] font-normal text-slate-600 md:text-sm">تومان</small>
+                                            </div>
+                                            <span
+                                                class="mt-0.5 block text-[11px] leading-4 text-slate-500 md:text-sm">اقساط
+                                                ۱۲ ماهه</span>
                                         </div>
-                                    </div>
 
-                                    <div
-                                        class="hidden md:block text-center col-span-4 px-5 py-4 md:col-span-3 lg:col-span-3">
-                                        <div class="inline-flex px-3 py-1.5 text-sd ms:text-md font-semibold  ">
-                                            ممد سلر
-                                        </div>
-                                    </div>
-
-                                    <div
-                                        class="col-span-3 md:col-span-3 lg:col-span-3 p-3 md:pl-6 flex items-center justify-end">
-                                        <button class="btn  py-2! text-tiny! md:text-sm!">
-                                            <span class="hidden md:inline">جزئیات</span>
-                                            <span class="flex md:hidden">
+                                        <div class="ml-auto flex items-center gap-1.5 md:hidden">
+                                            <div
+                                                class="inline-flex rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
+                                                ۳,۹۰۰,۰۰۰
+                                            </div>
+                                            <button
+                                                class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                                    stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                    stroke-width="1.5" stroke="currentColor" class="size-4">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                                                 </svg>
+                                            </button>
+                                        </div>
+                                    </div>
 
-                                            </span>
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                                            ۳,۹۰۰,۰۰۰ تومان
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-700">
+                                            ممد سلر
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-end px-5 py-4 md:pl-6">
+                                        <button
+                                            class="inline-flex items-center gap-1.5 rounded-2xl border border-blue-200 bg-blue-50 px-3.5 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 hover:border-blue-300">
+                                            <span>جزئیات</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="size-3.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
+                                                                <div class="grid grid-cols-12 items-stretch transition hover:bg-slate-50">
+                                    <div
+                                        class="col-span-12 flex items-center gap-2 px-4 py-2.5 md:col-span-3 md:px-5 md:py-4 lg:col-span-3">
+                                        <div
+                                            class="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-xl bg-white ring-1 ring-slate-200 md:h-9 md:w-9">
+                                            <img src="./assets/img/Shahr.png" alt="Shahr"
+                                                class="h-5 w-5 object-contain md:h-6 md:w-6" />
+                                        </div>
+
+                                        <div class="min-w-0 flex-1">
+                                            <div class="flex items-center gap-1.5">
+                                                <span
+                                                    class="text-xs font-semibold text-slate-900 md:text-base">۵۰۰,۰۰۰,۰۰۰</span>
+                                                <small
+                                                    class="text-[10px] font-normal text-slate-600 md:text-sm">تومان</small>
+                                            </div>
+                                            <span
+                                                class="mt-0.5 block text-[11px] leading-4 text-slate-500 md:text-sm">اقساط
+                                                ۱۲ ماهه</span>
+                                        </div>
+
+                                        <div class="ml-auto flex items-center gap-1.5 md:hidden">
+                                            <div
+                                                class="inline-flex rounded-full bg-emerald-50 px-2 py-0.5 text-[10px] font-semibold text-emerald-700">
+                                                ۳,۹۰۰,۰۰۰
+                                            </div>
+                                            <button
+                                                class="inline-flex h-8 w-8 items-center justify-center rounded-xl bg-blue-50 text-blue-700">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                    stroke-width="1.5" stroke="currentColor" class="size-4">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                        d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-semibold text-emerald-700">
+                                            ۳,۹۰۰,۰۰۰ تومان
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-center px-5 py-4">
+                                        <div
+                                            class="inline-flex rounded-full bg-slate-100 px-3 py-1.5 text-sm font-semibold text-slate-700">
+                                            ممد سلر
+                                        </div>
+                                    </div>
+
+                                    <div
+                                        class="hidden md:flex md:col-span-3 lg:col-span-3 items-center justify-end px-5 py-4 md:pl-6">
+                                        <button
+                                            class="inline-flex items-center gap-1.5 rounded-2xl border border-blue-200 bg-blue-50 px-3.5 py-2 text-sm font-semibold text-blue-700 transition hover:bg-blue-100 hover:border-blue-300">
+                                            <span>جزئیات</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                stroke-width="1.5" stroke="currentColor" class="size-3.5">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                                            </svg>
                                         </button>
                                     </div>
                                 </div>
@@ -767,7 +990,6 @@
         </div>
     </div>
     <main class="container mx-auto px-3">
-
         <!--فروشندگان-->
         <section>
             <div class="py-16 overflow-hidden ">
@@ -1226,12 +1448,12 @@
 
             <div
                 class="mt-16 rounded-3xl bg-white/10 p-8 text-center shadow-2xl shadow-black/10 ring-1 ring-white/10 backdrop-blur">
-                <div
-                    class="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-white/15 text-white ring-1 ring-white/20">
-                    <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M8 10h8M8 14h5m5 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
+                <div class="avatar-pyramid">
+                    <img class="avatar-side" src="https://randomuser.me/api/portraits/women/68.jpg"
+                        alt="کاربر سمت راست">
+                    <img class="avatar-center" src="https://randomuser.me/api/portraits/men/32.jpg"
+                        alt="کاربر اصلی وسط">
+                    <img class="avatar-side" src="https://randomuser.me/api/portraits/women/45.jpg" alt="کاربر سمت چپ">
                 </div>
                 <h3 class="mb-2 text-2xl font-bold text-white">سوال دیگری دارید؟</h3>
                 <p class="mb-6 text-blue-100">تیم وامجو آماده پاسخ‌گویی به سوالات شماست.</p>
