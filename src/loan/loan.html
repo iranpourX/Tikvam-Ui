@@ -1,267 +1,389 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./../assets/css/output.css" rel="stylesheet">
     <script src="./../assets/js/jquery.min.js"></script>
+    <script src="./../assets/js/plyr.polyfilled.min.js"></script>
     <title>وام جو</title>
 </head>
-<body class="bg-white text-gray-800" dir="rtl">
 
-<nav class="bg-blue-50 shadow-sm px-8 py-3">
-    <div class="container mx-auto">
-        <div class="flex flex-row justify-between items-center">
+<body class="bg-white text-gray-800 relative">
+<!-- Top Banner -->
+<section id="topBanner"
+         class="hidden w-full border-b border-blue-500/20 bg-linear-to-r from-blue-700 via-blue-600 to-indigo-700 px-4 py-3 shadow-md">
+    <div class="container mx-auto flex items-center justify-between gap-3">
+        <div class="flex flex-1 items-center p-2 gap-3 overflow-hidden">
+                <span
+                        class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-white/15 text-white">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </span>
 
-            <div class="flex items-center gap-2 text-blue-600 font-bold text-lg">وامجو</div>
-
-            <ul class="flex flex-row justify-center items-center gap-8 text-base font-semibold text-gray-600">
-                <li class="flex">
-                    <a href="./loan.html" class="px-4 py-2.5 rounded-2xl hover:selected selected">وام ها</a>
-                </li>
-                <li class="flex">
-                    <a href="./../request/request.html" class="px-4 py-2.5 rounded-2xl hover:selected">درخواست وام</a>
-                </li>
-                <li class="flex">
-                    <a href="./../post/post.html" class="px-4 py-2.5 rounded-2xl hover:selected">ثبت آگهی</a>
-                </li>
-            </ul>
-
-            <div class="flex gap-2">
-                <button class="btn text-sm">ورود / ثبت‌نام</button>
-            </div>
+            <span class="text-justify text-sm font-medium leading-6 text-white/95 md:text-base">
+                    تست قیمت کوفت و زهرمار | ینی کلتو علی کلتوووووووووو!!
+                </span>
         </div>
-    </div>
-</nav>
 
-<div class="bg-blue-50 px-8 py-4">
-    <div class="container top-9 mx-auto relative">
-        <label>
-            <input
-                    type="text"
-                    placeholder="بانک ملی"
-                    class="w-full shadow-lg font-normal border border-gray-300 rounded-lg px-4 py-2.5 pr-10 text-base focus:outline-none focus:ring-1 focus:ring-blue-500"
-            />
-        </label>
-        <svg class="absolute right-3.5 top-3.5 size-4" viewBox="0 0 17 17" fill="none"
-             xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.8334 15.8333L12.9168 12.9166M15 7.91665C15 11.8287 11.8287 15 7.91671 15C4.00469 15 0.833374 11.8287 0.833374 7.91665C0.833374 4.00463 4.00469 0.833313 7.91671 0.833313C11.8287 0.833313 15 4.00463 15 7.91665Z"
-                  stroke="#667085" stroke-width="1.66667" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <button
-                id="filters"
-                class="absolute left-0 top-0 flex xl:hidden text-gray-500 font-semibold cursor-pointer items-center justify-center gap-2 border border-gray-300 px-3 py-2.5 rounded-l-lg">
-            <svg class="size-6 text-gray-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                <path fill="currentColor"
-                      d="M0 93.7C0 77.3 13.3 64 29.7 64l452.7 0c16.4 0 29.7 13.3 29.7 29.7 0 7.9-3.1 15.4-8.7 21L336 281.9 336 482.3c0 16.4-13.3 29.7-29.7 29.7-7.9 0-15.4-3.1-21-8.7L183 401c-4.5-4.5-7-10.6-7-17L176 281.9 8.7 114.6C3.1 109.1 0 101.5 0 93.7zM73.9 112L217 255c4.5 4.5 7 10.6 7 17l0 102.1 64 64 0-166.1c0-6.4 2.5-12.5 7-17l143-143-364.1 0z"/>
+        <button id="closeBanner" type="button"
+                class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white/10 text-white transition hover:bg-white/20 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/60">
+            <svg class="size-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
-            فیلتر ها
         </button>
     </div>
-</div>
+</section>
+<header class="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-md">
+    <div class="mx-auto px-3 sm:px-4 lg:px-6">
+        <div class="flex h-20 items-center justify-between gap-3">
 
-<main class="container mx-auto px-2 pt-12 pb-30">
-    <div class="grid grid-cols-12 gap-6">
-        <div id="filter-back"
-             class="fixed hidden z-30 left-0 top-0 right-0 h-screen bg-black/25 overflow-hidden"></div>
-        <div id="filter-content"
-             class="fixed z-40 left-0 right-0 rounded-lg transition-all duration-400 max-lg:bottom-shadow xl:shadow -bottom-180 xl:static xl:flex sm:col-span-3">
-            <div class="bg-white border border-gray-200 rounded-lg shadow p-4 flex flex-col gap-5 text-sm">
-                <div class="flex items-center pb-4 border-b border-gray-200 justify-between gap-4">
-                    <h3 class="font-semibold text-lg">فیلترها</h3>
-                    <button class="hidden md:flex text-blue-500 text-sm cursor-pointer">حذف فیلترها</button>
+            <!-- Brand -->
+            <a href="#" class="flex items-center gap-3">
+                <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600 text-white shadow-lg shadow-blue-200">
+                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                         stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2l7 4v6c0 5-3.2 9.4-7 10-3.8-.6-7-5-7-10V6l7-4z"></path>
+                    </svg>
                 </div>
-
-                <div>
-                    <span class="text-sm text-gray-500 font-normal flex mb-4">مبلغ</span>
-                    <div id="filter-amount"
-                         class="price-range-filter"
-                         data-min="50000000"
-                         data-max="500000000"
-                         data-label-min="۵۰ میلیون"
-                         data-label-max="۵۰۰ میلیون"
-                         data-unit="تومان">
-                    </div>
+                <div class="flex flex-col">
+                    <span class="text-sm font-bold text-slate-900 sm:text-base">وام‌مارکت</span>
+                    <span class="text-[11px] text-slate-500 sm:text-xs">جست‌وجوی وام و تسهیلات</span>
                 </div>
+            </a>
 
-                <div class="border-t border-t-gray-200 pt-3">
-                    <div class="text-gray-500 flex text-sm mb-2">بانک</div>
-                    <div class="flex items-center justify-between gap-2 mb-2">
-                        <label class="w-full">
-                            <select class="w-full border border-gray-200 rounded-lg px-2 py-1.5 text-xs text-gray-500">
-                                <option>انتخاب بانک</option>
-                                <option>بانک ملی</option>
-                                <option>بانک ملت</option>
-                            </select>
-                        </label>
-                        <label class="w-full">
-                            <select class="w-full border border-gray-200 rounded-lg px-2 py-1.5 text-xs text-gray-500">
-                                <option>انتخاب شعبه</option>
-                            </select>
-                        </label>
-                    </div>
+            <!-- Desktop search -->
+            <div class="hidden flex-1 px-6 lg:block">
+                <div class="relative mx-auto max-w-2xl">
+                    <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-slate-400">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="7"></circle>
+                            <path d="M20 20l-3.5-3.5"></path>
+                        </svg>
+                    </span>
+                    <input
+                            type="text"
+                            placeholder="جست‌وجو بین بانک، مبلغ، شهر یا نوع وام..."
+                            class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 pr-12 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-blue-300 focus:bg-white focus:ring-4 focus:ring-blue-100"
+                    />
                 </div>
-
-                <div class="border-t border-t-gray-200 pt-3">
-                    <div class="text-gray-500 flex text-sm mb-2">استان</div>
-                    <label class="w-full">
-                        <select class="w-full border border-gray-200 rounded-lg px-2 py-1.5 text-xs text-gray-500">
-                            <option>انتخاب کنید</option>
-                        </select>
-                    </label>
-                </div>
-
-                <div class="border-t border-t-gray-200 pt-3">
-                    <div class="text-gray-500 flex text-sm mb-2">تضمین</div>
-                    <div class="flex flex-col gap-1.5">
-                        <label class="flex items-center gap-2">
-                            <input type="checkbox" class="mycheckbox"/> وثیقه ملکی</label>
-                        <label class="flex items-center gap-2">
-                            <input type="checkbox" class="mycheckbox"/> ضامن</label>
-                        <label class="flex items-center gap-2">
-                            <input type="checkbox" class="mycheckbox"/> چک</label>
-                        <label class="flex items-center gap-2">
-                            <input type="checkbox" class="mycheckbox"/> بدون
-                            وثیقه</label>
-                    </div>
-                </div>
-
-                <div class="flex md:hidden items-center justify-between gap-2">
-                    <button class="btn w-4/6">
-                        اعمال فیلتر
-                    </button>
-                    <button class="btn w-2/6 bg-white! border-gray-300! text-gray-700!">
-                        حذف فیلتر
-                    </button>
-                </div>
-
             </div>
+
+            <!-- Desktop actions -->
+            <div class="hidden items-center gap-2 lg:flex">
+                <a href="#"
+                   class="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900">دسته‌بندی‌ها</a>
+                <a href="#"
+                   class="rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-100 hover:text-slate-900">وام‌های
+                    جدید</a>
+                <a href="#"
+                   class="rounded-xl bg-blue-600 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-200 transition hover:bg-blue-700">ثبت
+                    آگهی</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="menuBtn"
+                    class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:bg-slate-50 lg:hidden">
+                <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                     stroke-linecap="round">
+                    <path d="M4 6h16"></path>
+                    <path d="M4 12h16"></path>
+                    <path d="M4 18h16"></path>
+                </svg>
+            </button>
         </div>
 
-        <div class="col-span-full xl:col-span-9">
-            <div class="flex flex-col gap-4">
-                <div class="flex items-center justify-between">
-                    <h2 class="font-semibold text-gray-900 text-lg">نتایج</h2>
-                    <span class="text-blue-600 bg-blue-100 text-sm px-3 py-1 rounded-xl">12</span>
+        <!-- Mobile menu -->
+        <div id="mobileMenu" class="hidden pb-4 lg:hidden">
+            <div class="space-y-3 rounded-xl border border-slate-200 bg-white p-4 shadow-[0_12px_30px_rgba(15,23,42,0.06)]">
+                <div class="relative">
+          <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-slate-400">
+            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="M20 20l-3.5-3.5"></path>
+            </svg>
+          </span>
+                    <input
+                            type="text"
+                            placeholder="جست‌وجو..."
+                            class="w-full rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 pr-12 text-sm text-slate-700 outline-none placeholder:text-slate-400 focus:border-blue-300 focus:bg-white focus:ring-4 focus:ring-blue-100"
+                    />
                 </div>
 
-                <div class="bg-white rounded-lg border border-gray-200 shadow p-6 flex flex-col gap-6">
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center gap-2 text-sm text-gray-500">
-                            <img src="./../assets/img/Melli.png" alt="melli bank">
-                            <div class="flex flex-col items-start justify-center">
-                                <span class="text-base text-gray-500">
-                                    <b class="text-gray-800 text-lg font-bold"> ۵۰،۰۰۰،۰۰۰ </b>تومان
-                                </span>
-                                <span class="font-normal text-gray-700 text-sm">بانک ملی . ۲ روز پیش</span>
-                            </div>
-                        </div>
+                <div class="grid grid-cols-2 gap-2">
+                    <a href="#"
+                       class="rounded-xl bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-700">دسته‌بندی‌ها</a>
+                    <a href="#"
+                       class="rounded-xl bg-slate-50 px-4 py-3 text-center text-sm font-semibold text-slate-700">وام‌های
+                        جدید</a>
+                    <a href="#"
+                       class="col-span-2 rounded-xl bg-blue-600 px-4 py-3 text-center text-sm font-semibold text-white">ثبت
+                        آگهی</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
 
-                        <div class="hidden md:flex items-center gap-2">
 
-                            <button class="p-2.5 border border-gray-300 rounded-lg bg-white">
-                                <svg class="size-4 fill-gray-700" xmlns="http://www.w3.org/2000/svg"
-                                     viewBox="0 0 384 512">
-                                    <path fill="currentColor"
-                                          d="M0 64C0 28.7 28.7 0 64 0L320 0c35.3 0 64 28.7 64 64l0 417.1c0 25.6-28.5 40.8-49.8 26.6L192 412.8 49.8 507.7C28.5 521.9 0 506.6 0 481.1L0 64zM64 48c-8.8 0-16 7.2-16 16l0 387.2 117.4-78.2c16.1-10.7 37.1-10.7 53.2 0L336 451.2 336 64c0-8.8-7.2-16-16-16L64 48z" />
-                                </svg>
-                            </button>
+<main class="container mx-auto">
+    <div class="min-h-screen">
+        <div class="mx-auto px-3 py-4 sm:px-4 lg:px-6">
+            <div class="grid grid-cols-12 gap-6">
 
-                            <button class="p-2.5 border border-gray-300 rounded-lg bg-white">
-                                <svg class="size-4 fill-gray-700" xmlns="http://www.w3.org/2000/svg"
-                                     viewBox="0 0 512 512">
-                                    <path fill="currentColor"
-                                          d="M432 96a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm48 0c0 53-43 96-96 96-27.4 0-52.1-11.5-69.6-29.9L188.9 231.8c2 7.7 3.1 15.8 3.1 24.2s-1.1 16.5-3.1 24.2l125.5 69.7c17.5-18.4 42.2-29.9 69.6-29.9 53 0 96 43 96 96s-43 96-96 96-96-43-96-96c0-8.3 1.1-16.5 3.1-24.2L165.6 322.1C148.1 340.5 123.4 352 96 352 43 352 0 309 0 256s43-96 96-96c27.4 0 52.1 11.5 69.6 29.9l125.5-69.7c-2-7.7-3.1-15.8-3.1-24.2 0-53 43-96 96-96s96 43 96 96zM144 256a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM384 464a48 48 0 1 0 0-96 48 48 0 1 0 0 96z" />
-                                </svg>
-                            </button>
-
-                            <a href="./../loan/loan.html" class="btn text-sm">مشاهده جزئیات</a>
-                        </div>
-
-                    </div>
-
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm border-t border-t-gray-200 pt-3">
-                        <div class="text-right font-normal text-sm">
-                            <div class="text-gray-500 mb-1">قیمت</div>
-                            <div class="font-semibold text-base text-gray-800">
-                                ۸۰،۰۰۰،۰۰۰ <small class="text-gray-500 text-sm font-normal">تومان</small>
-                            </div>
-                        </div>
-                        <div class="text-right font-normal text-sm">
-                            <div class="text-gray-500 mb-1">اقساط ماهانه</div>
-                            <div class="font-semibold text-base text-gray-800">
-                                ۱۲،۵۰۰،۰۰۰ <small class="text-gray-500 text-sm font-normal">تومان</small>
-                            </div>
-                        </div>
-                        <div class="text-right font-normal text-sm">
-                            <div class="text-gray-500 mb-1">مدت کل</div>
-                            <div class="font-semibold text-base text-gray-800">۴۸ ماه</div>
-                        </div>
-                        <div class="text-right font-normal text-sm">
-                            <div class="text-gray-500 mb-1">بهره</div>
-                            <span class="mybadge inline-flex! bg-green-100 text-green-600">۴ درصد</span>
-                        </div>
-                    </div>
-
-                    <div class="flex gap-2 flex-wrap border-t border-gray-200 pt-3">
-                        <span class="bg-green-100 font-medium text-green-700 text-sm px-3 py-1 rounded-2xl">احراز هویت شده</span>
-                        <span class="bg-blue-100 font-medium text-blue-700 text-sm px-3 py-1 rounded-2xl">قابل مذاکره</span>
-                        <span class="bg-purple-100 font-medium text-purple-700 text-sm px-3 py-1 rounded-2xl">پاسخگویی سریع</span>
-                    </div>
-
-                    <div class="flex md:hidden items-center gap-2">
-
-                        <button class="p-2.5 border border-gray-300 rounded-lg bg-white">
-                            <svg class="size-4 fill-gray-700" xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="0 0 384 512">
-                                <path fill="currentColor"
-                                      d="M0 64C0 28.7 28.7 0 64 0L320 0c35.3 0 64 28.7 64 64l0 417.1c0 25.6-28.5 40.8-49.8 26.6L192 412.8 49.8 507.7C28.5 521.9 0 506.6 0 481.1L0 64zM64 48c-8.8 0-16 7.2-16 16l0 387.2 117.4-78.2c16.1-10.7 37.1-10.7 53.2 0L336 451.2 336 64c0-8.8-7.2-16-16-16L64 48z" />
-                            </svg>
-                        </button>
-
-                        <button class="p-2.5 border border-gray-300 rounded-lg bg-white">
-                            <svg class="size-4 fill-gray-700" xmlns="http://www.w3.org/2000/svg"
-                                 viewBox="0 0 512 512">
-                                <path fill="currentColor"
-                                      d="M432 96a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm48 0c0 53-43 96-96 96-27.4 0-52.1-11.5-69.6-29.9L188.9 231.8c2 7.7 3.1 15.8 3.1 24.2s-1.1 16.5-3.1 24.2l125.5 69.7c17.5-18.4 42.2-29.9 69.6-29.9 53 0 96 43 96 96s-43 96-96 96-96-43-96-96c0-8.3 1.1-16.5 3.1-24.2L165.6 322.1C148.1 340.5 123.4 352 96 352 43 352 0 309 0 256s43-96 96-96c27.4 0 52.1 11.5 69.6 29.9l125.5-69.7c-2-7.7-3.1-15.8-3.1-24.2 0-53 43-96 96-96s96 43 96 96zM144 256a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM384 464a48 48 0 1 0 0-96 48 48 0 1 0 0 96z" />
-                            </svg>
-                        </button>
-
-                        <a href="./../loan/loan.html" class="btn text-sm w-full">مشاهده جزئیات</a>
-                    </div>
+                <!-- Mobile filter button -->
+                <div class="col-span-full xl:hidden">
+                    <button id="openFilters"
+                            class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-bold text-white shadow-lg shadow-blue-200">
+                        <svg class="size-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
+                             fill="currentColor">
+                            <path d="M0 93.7C0 77.3 13.3 64 29.7 64l452.7 0c16.4 0 29.7 13.3 29.7 29.7 0 7.9-3.1 15.4-8.7 21L336 281.9 336 482.3c0 16.4-13.3 29.7-29.7 29.7-7.9 0-15.4-3.1-21-8.7L183 401c-4.5-4.5-7-10.6-7-17L176 281.9 8.7 114.6C3.1 109.1 0 101.5 0 93.7z"/>
+                        </svg>
+                        فیلترها
+                    </button>
                 </div>
 
-                <button class="w-full border border-gray-300 rounded-xl py-3 text-sm text-gray-600 hover:bg-gray-50">
-                    نمایش موارد بیشتر
-                </button>
+                <div id="filter-back" class="fixed inset-0 z-30 hidden bg-black/40 backdrop-blur-[2px] xl:hidden"></div>
+
+                <!-- Filters -->
+                <aside id="filter-content"
+                       class="fixed inset-x-0 bottom-0 z-40 translate-y-full border border-slate-200 bg-white p-4 shadow-lg transition-transform duration-300 xl:sticky xl:top-20 xl:col-span-3 xl:self-start xl:translate-y-0 xl:rounded-xl">
+
+                    <div class="mb-4 flex items-center justify-between border-b border-slate-200 pb-3">
+                        <h3 id="apply-all" class="text-lg font-bold text-slate-900">فیلترها</h3>
+                        <button id="clearFiltersDesktop"
+                                class="hidden xl:inline-flex text-sm font-semibold text-blue-600">حذف فیلترها
+                        </button>
+                    </div>
+
+                    <div class="max-h-[70vh] space-y-4 overflow-y-auto p-2">
+                        <div>
+                            <div class="mb-3 flex items-center justify-between">
+                                <span class="text-sm font-medium text-slate-500">مبلغ</span>
+                                <span class="text-xs text-slate-400">بازه‌ای</span>
+                            </div>
+                            <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                                <div id="filter-amount"
+                                     class="price-range-filter"
+                                     data-min="50000000"
+                                     data-max="500000000"
+                                     data-label-min="۵۰ میلیون"
+                                     data-label-max="۵۰۰ میلیون"
+                                     data-unit="تومان">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-4">
+                            <div class="mb-3 text-sm font-medium text-slate-500">مدت بازپرداخت</div>
+                            <div class="flex flex-wrap gap-2">
+                                <button type="button" class="filter-chip">۱۲ ماه</button>
+                                <button type="button" class="filter-chip">۲۴ ماه</button>
+                                <button type="button" class="filter-chip">۳۶ ماه</button>
+                                <button type="button" class="filter-chip">۴۸ ماه</button>
+                                <button type="button" class="filter-chip">۶۰ ماه</button>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-4">
+                            <div class="mb-3 text-sm font-medium text-slate-500">نرخ بهره</div>
+                            <div class="flex flex-wrap gap-2">
+                                <button type="button" class="filter-chip">زیر ۳٪</button>
+                                <button type="button" class="filter-chip">۳ تا ۵٪</button>
+                                <button type="button" class="filter-chip">۵ تا ۱۰٪</button>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-4">
+                            <div class="mb-3 text-sm font-medium text-slate-500">بانک</div>
+                            <div class="grid grid-cols-1 gap-2">
+                                <select class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs text-slate-600">
+                                    <option>انتخاب بانک</option>
+                                    <option>بانک ملی</option>
+                                    <option>بانک ملت</option>
+                                    <option>بانک صادرات</option>
+                                </select>
+                                <select class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs text-slate-600">
+                                    <option>انتخاب شعبه</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-4">
+                            <div class="mb-3 text-sm font-medium text-slate-500">استان</div>
+                            <select class="w-full rounded-xl border border-slate-200 bg-slate-50 px-3 py-2.5 text-xs text-slate-600">
+                                <option>انتخاب استان</option>
+                                <option>تهران</option>
+                                <option>اصفهان</option>
+                                <option>خراسان رضوی</option>
+                                <option>فارس</option>
+                            </select>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-4">
+                            <div class="mb-3 text-sm font-medium text-slate-500">نوع ضمانت</div>
+                            <div class="flex flex-wrap gap-2">
+                                <button type="button" class="filter-chip">وثیقه ملکی</button>
+                                <button type="button" class="filter-chip">ضامن</button>
+                                <button type="button" class="filter-chip">چک</button>
+                                <button type="button" class="filter-chip">بدون وثیقه</button>
+                            </div>
+                        </div>
+
+                        <div class="border-t border-slate-200 pt-4">
+                            <div class="mb-3 text-sm font-medium text-slate-500">ویژگی‌ها</div>
+                            <div class="flex flex-wrap gap-2">
+                                <button type="button" class="filter-chip">احراز هویت شده</button>
+                                <button type="button" class="filter-chip">پاسخگویی سریع</button>
+                                <button type="button" class="filter-chip">قابل مذاکره</button>
+                                <button type="button" class="filter-chip">فوری</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-4 grid grid-cols-2 gap-2 xl:hidden">
+                        <button id="applyFilters" class="rounded-xl bg-blue-600 py-3 text-sm font-bold text-white">
+                            اعمال تغییرات
+                        </button>
+                        <button id="clearFilters"
+                                class="rounded-xl border border-slate-200 bg-white py-3 text-sm font-semibold text-slate-700">
+                            پاک کردن
+                        </button>
+                    </div>
+
+                </aside>
+
+                <!-- Results -->
+                <div class="col-span-full xl:col-span-9">
+                    <div class="flex flex-col gap-4">
+                        <div class="flex items-center justify-between">
+                            <h2 class="text-lg font-bold text-slate-900">نتایج</h2>
+                            <span class="rounded-full bg-blue-50 px-3 py-1 text-sm font-semibold text-blue-700">12</span>
+                        </div>
+
+                        <!-- Desktop cards: your original style -->
+                        <div class="hidden md:flex flex-col gap-4">
+                            <div class="bg-white rounded-xl border border-slate-200 shadow p-6 flex flex-col gap-6">
+                                <div class="flex items-center justify-between">
+                                    <div class="flex items-center gap-2 text-sm text-slate-500">
+                                        <img src="./../assets/img/Melli.png" alt="bank"
+                                             class="size-12 p-1 object-contain">
+                                        <div class="flex flex-col items-start justify-center">
+                                            <span class="text-base text-slate-500"><b
+                                                    class="text-lg font-bold text-slate-900">۵۰،۰۰۰،۰۰۰</b> تومان</span>
+                                            <span class="font-normal text-slate-600 text-sm">بانک ملی - ۲ روز پیش</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="hidden md:flex items-center gap-2">
+                                        <button class="p-2 border border-slate-300 rounded-xl bg-white text-slate-600 hover:bg-slate-50">
+                                            <svg class="size-5 text-gray-700" xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 384 512">
+                                                <path fill="currentColor"
+                                                      d="M0 64C0 28.7 28.7 0 64 0L320 0c35.3 0 64 28.7 64 64l0 426c0 18.6-20.2 30.1-36.2 20.7L192 418.6 36.2 510.6C20.2 520.1 0 508.6 0 490L0 64zM64 32C46.3 32 32 46.3 32 64l0 412 147.8-87.3c7.5-4.5 16.9-4.5 24.4 0L352 476 352 64c0-17.7-14.3-32-32-32L64 32z"/>
+                                            </svg>
+                                        </button>
+                                        <button class="p-2 border border-slate-300 rounded-xl bg-white text-slate-600 hover:bg-slate-50">
+                                            <svg class="size-5 text-gray-700" xmlns="http://www.w3.org/2000/svg"
+                                                 viewBox="0 0 512 512">
+                                                <path fill="currentColor"
+                                                      d="M448 96c0-35.3-28.7-64-64-64s-64 28.7-64 64c0 5.6 .7 11 2 16.1 2.6 10.2 7.7 19.4 14.6 26.9 .3 .4 .6 .7 1 1 11.7 12.3 28.1 19.9 46.4 19.9 35.3 0 64-28.7 64-64zM293.5 128c-3.5-10-5.5-20.8-5.5-32 0-53 43-96 96-96s96 43 96 96-43 96-96 96c-30.3 0-57.4-14.1-75-36L186.5 224c3.5 10 5.5 20.8 5.5 32s-1.9 22-5.5 32L309 356c17.6-22 44.6-36 75-36 53 0 96 43 96 96s-43 96-96 96-96-43-96-96c0-11.2 1.9-22 5.5-32L171 316c-17.6 22-44.6 36-75 36-53 0-96-43-96-96s43-96 96-96c30.3 0 57.4 14.1 75 36l122.5-68zM142.4 211.9c-11.7-12.3-28.1-19.9-46.4-19.9-35.3 0-64 28.7-64 64s28.7 64 64 64c18.3 0 34.7-7.7 46.4-19.9 6.7-7 11.8-15.6 14.7-25 .3-1 .6-1.9 .8-2.9 1.3-5.1 2-10.6 2-16.1s-.7-11-2-16.1c-2.6-10.2-7.7-19.4-14.6-26.9-.3-.4-.6-.7-1-1zM384 480c35.3 0 64-28.7 64-64s-28.7-64-64-64c-18.3 0-34.7 7.6-46.4 19.9-.3 .3-.7 .7-1 1-6.9 7.5-11.9 16.7-14.6 26.9-1.3 5.1-2 10.5-2 16.1 0 35.3 28.7 64 64 64z"/>
+                                            </svg>
+                                        </button>
+                                        <a href="loan-old.html"
+                                           class="btn rounded-xl bg-blue-600 text-sm text-white">مشاهده جزئیات</a>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm border-t border-slate-200 pt-3">
+                                    <div>
+                                        <div class="text-slate-500 mb-1">قیمت</div>
+                                        <div class="font-semibold text-base text-slate-800">۸۰،۰۰۰،۰۰۰ <small
+                                                class="text-slate-500 text-sm font-normal">تومان</small></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-slate-500 mb-1">اقساط ماهانه</div>
+                                        <div class="font-semibold text-base text-slate-800">۱۲،۵۰۰،۰۰۰ <small
+                                                class="text-slate-500 text-sm font-normal">تومان</small></div>
+                                    </div>
+                                    <div>
+                                        <div class="text-slate-500 mb-1">مدت کل</div>
+                                        <div class="font-semibold text-base text-slate-800">۴۸ ماه</div>
+                                    </div>
+                                    <div>
+                                        <div class="text-slate-500 mb-1">بهره</div>
+                                        <span class="inline-flex rounded-full bg-green-100 px-3 py-1 text-green-700">۴ درصد</span>
+                                    </div>
+                                </div>
+
+                                <div class="flex gap-2 flex-wrap border-t border-slate-200 pt-3">
+                                    <span class="bg-green-100 font-medium text-green-700 text-sm px-3 py-1 rounded-xl">احراز هویت شده</span>
+                                    <span class="bg-blue-100 font-medium text-blue-700 text-sm px-3 py-1 rounded-xl">قابل مذاکره</span>
+                                    <span class="bg-purple-100 font-medium text-purple-700 text-sm px-3 py-1 rounded-xl">پاسخگویی سریع</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Mobile cards -->
+                        <div class="space-y-3 md:hidden">
+                            <div class="loan-item rounded-xl border border-slate-200 bg-white shadow">
+                                <div class="flex items-center gap-3 p-4">
+                                    <img src="./../assets/img/Melli.png" alt="bank"
+                                         class="size-10 p-1 object-contain">
+                                    <div class="min-w-0 flex-1">
+                                        <div class="truncate text-sm font-bold text-slate-900">۵۰،۰۰۰،۰۰۰ تومان</div>
+                                        <div class="truncate text-xs text-slate-500">بانک ملی · ۲ روز پیش · ۴۸ ماه ·
+                                            ۴٪
+                                        </div>
+                                    </div>
+                                    <button type="button"
+                                            class="loan-toggle rounded-xl bg-blue-50 px-3 py-2 text-blue-700 transition">
+                                        <svg class="arrow-icon h-4 w-4 transition-transform duration-300"
+                                             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+                                             stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M6 9l6 6 6-6"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="loan-details-mobile hidden border-t border-slate-200 p-4">
+                                    <div class="grid grid-cols-2 gap-3 text-sm">
+                                        <div><span class="text-slate-400">قیمت:</span> ۸۰،۰۰۰،۰۰۰</div>
+                                        <div><span class="text-slate-400">اقساط:</span> ۱۲،۵۰۰،۰۰۰</div>
+                                        <div><span class="text-slate-400">مدت:</span> ۴۸ ماه</div>
+                                        <div><span class="text-slate-400">بهره:</span> ۴٪</div>
+                                    </div>
+                                    <div class="mt-3 flex flex-wrap gap-2">
+                                        <span class="rounded-xl bg-green-100 px-3 py-1 text-xs font-medium text-green-700">احراز هویت شده</span>
+                                        <span class="rounded-xl bg-blue-100 px-3 py-1 text-xs font-medium text-blue-700">قابل مذاکره</span>
+                                    </div>
+                                    <a href="loan-old.html"
+                                       class="mt-4 inline-flex w-full justify-center rounded-xl bg-blue-600 py-3 text-sm font-bold text-white">مشاهده
+                                        جزئیات</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button class="w-full rounded-xl border border-slate-200 py-3 text-sm text-slate-600 hover:bg-slate-50">
+                            نمایش موارد بیشتر
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </main>
-
-<!-- CTA Banner -->
-<div class="bg-gray-800 mt-32 px-8 relative">
-    <div class="container bg-gray-50 shadow-xl mx-auto relative bottom-25 p-16 rounded-2xl flex items-center justify-between">
-        <div class="flex flex-col items-start">
-            <h3 class="text-3xl font-bold mb-2">قصد فروش امتیاز خود را دارید؟</h3>
-            <p class="text-gray-400 font-normal text-lg">با ثبت آگهی وام، کارشناسان وامجو در اولین فرصت شما را به
-                فروشندگان مطمئن
-                وصل خواهند کرد</p>
-        </div>
-        <button class="btn text-sm whitespace-nowrap">ثبت آگهی</button>
-    </div>
-</div>
-
-<!-- Footer -->
-<footer class="bg-gray-800 text-gray-400 text-base px-8 py-10">
-    <div class="container mx-auto grid grid-cols-5 gap-8">
-        <div class="col-span-2">
+<footer class="bg-slate-900 text-gray-400 text-base px-8 py-10">
+    <div class="container mx-auto grid grid-cols-1 sm:grid-cols-5 gap-8">
+        <div class="col-span-1 sm:col-span-2">
             <div class="text-white font-bold text-2xl mb-3 flex items-center gap-1">
                 وامجو
             </div>
             <p class="text-lg">پلتفرم امن و شفاف برای خرید و فروش امتیاز وام و انتقال وام بانکی</p>
         </div>
-        <div class="col-span-1">
+        <div class="col-span-1 sm:text-right">
             <div class="text-white font-semibold mb-3">دسترسی سریع</div>
             <ul class="space-y-2 text-xs">
                 <li><a href="#" class="hover:text-white">مشاهده وام‌ها</a></li>
@@ -269,7 +391,7 @@
                 <li><a href="#" class="hover:text-white">ثبت آگهی</a></li>
             </ul>
         </div>
-        <div class="col-span-1">
+        <div class="col-span-1 sm:text-right">
             <div class="text-white font-semibold mb-3">راهنما</div>
             <ul class="space-y-2 text-xs">
                 <li><a href="#" class="hover:text-white">نحوه خرید وام</a></li>
@@ -278,7 +400,7 @@
                 <li><a href="#" class="hover:text-white">قوانین و مقررات</a></li>
             </ul>
         </div>
-        <div class="col-span-1">
+        <div class="col-span-1 sm:text-right">
             <div class="text-white font-semibold mb-3">تماس با ما</div>
             <ul class="space-y-2 text-xs">
                 <li>تلفن: ۰۲۱-۸۰۵۷۴۵۶۳۴۴۱</li>
@@ -291,159 +413,250 @@
         تمامی حقوق محفوظ است © ۱۴۰۵ وامجو
     </div>
 </footer>
-
 <script>
-    jQuery(document).ready(function (e) {
-        $('#filters').on('click', function () {
-            $('#filter-content').addClass('bottom-0!')
-            $('#filter-back').addClass('block!')
-        })
+    const openFilters = document.getElementById('openFilters')
+    const filterBack = document.getElementById('filter-back')
+    const filterContent = document.getElementById('filter-content')
+    const clearFilters = document.getElementById('clearFilters')
+    const applyFilters = document.getElementById('applyFilters')
 
-        $('#filter-back').on('click', function () {
-            $('#filter-content').removeClass('bottom-0!')
-            if ($('#filter-back').hasClass('block!')) {
-                $('#filter-back').removeClass('block!')
+    openFilters?.addEventListener('click', () => {
+        filterBack.classList.remove('hidden')
+        filterContent.classList.remove('translate-y-full')
+    });
+
+    function hideFilters() {
+        filterBack.classList.add('hidden')
+        filterContent.classList.add('translate-y-full')
+    }
+
+    filterBack?.addEventListener('click', hideFilters)
+    clearFilters?.addEventListener('click', hideFilters)
+    applyFilters?.addEventListener('click', hideFilters)
+
+    document.querySelectorAll('.filter-chip').forEach(btn => {
+        btn.addEventListener('click', () => btn.classList.toggle('active'))
+    })
+
+    document.querySelectorAll('.loan-item').forEach((item) => {
+        const toggle = item.querySelector('.loan-toggle')
+        const details = item.querySelector('.loan-details-mobile')
+        const arrow = item.querySelector('.arrow-icon')
+
+        toggle?.addEventListener('click', () => {
+            const isOpen = !details.classList.contains('hidden');
+            document.querySelectorAll('.loan-details-mobile').forEach((el) => el.classList.add('hidden'))
+            document.querySelectorAll('.arrow-icon').forEach((ic) => ic.style.transform = 'rotate(0deg)')
+            if (!isOpen) {
+                details.classList.remove('hidden')
+                arrow.style.transform = 'rotate(180deg)'
             }
         })
     })
 
+    const menuBtn = document.getElementById('menuBtn')
+    const mobileMenu = document.getElementById('mobileMenu')
+
+    menuBtn?.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden')
+    })
+
     class PriceRangeFilter {
         constructor(container) {
-            this.container = container;
-            this.minPrice = parseInt(container.dataset.min);
-            this.maxPrice = parseInt(container.dataset.max);
-            this.labelMin = container.dataset.labelMin;
-            this.labelMax = container.dataset.labelMax;
-            this.unit = container.dataset.unit || 'تومان';
-            this.minGap = 5;
-
-            this.render();
-            this.attachEvents();
-            this.updateSlider();
+            this.container = container
+            this.minPrice = parseInt(container.dataset.min)
+            this.maxPrice = parseInt(container.dataset.max)
+            this.labelMin = container.dataset.labelMin || ''
+            this.labelMax = container.dataset.labelMax || ''
+            this.unit = container.dataset.unit || 'تومان'
+            this.minGap = 5
+            this.ajaxTimeout = null
+            this.render()
+            this.attachEvents()
+            this.updateSlider()
         }
 
         render() {
             this.container.innerHTML = `
-          <div class="mb-4">
-            <div class="flex gap-3 mb-4">
-              <div class="flex-1">
-                <label class="text-xs text-gray-500 mb-1 block">حداقل</label>
-                <input
-                  type="text"
-                  class="min-input w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  readonly
-                />
-              </div>
-              <div class="flex-1">
-                <label class="text-xs text-gray-500 mb-1 block">حداکثر</label>
-                <input
-                  type="text"
-                  class="max-input w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-center focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  readonly
-                />
-              </div>
-            </div>
+            <div class="mb-4">
+                <div class="flex gap-3 mb-4">
+                    <div class="flex-1">
+                        <label class="text-xs text-gray-500 mb-1 block">
+                            حداقل
+                        </label>
 
-            <div class="relative mb-2">
-              <div class="range-slider">
-                <div class="range-fill"></div>
-                <input type="range" class="range-min" min="0" max="100" value="0" step="1" />
-                <input type="range" class="range-max" min="0" max="100" value="100" step="1" />
-              </div>
-            </div>
+                        <input
+                            type="text"
+                            class="min-input w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-center"
+                            readonly
+                        />
+                    </div>
 
-            <div class="flex justify-between text-xs text-gray-400 mt-2">
-              <span>${this.labelMin}</span>
-              <span>${this.labelMax}</span>
-            </div>
-          </div>
-        `;
+                    <div class="flex-1">
+                        <label class="text-xs text-gray-500 mb-1 block">
+                            حداکثر
+                        </label>
+                        <input
+                            type="text"
+                            class="max-input w-full border border-gray-300 rounded-lg px-3 py-2 text-sm text-center"
+                            readonly
+                        />
+                    </div>
+                </div>
 
-            this.rangeMin = this.container.querySelector('.range-min');
-            this.rangeMax = this.container.querySelector('.range-max');
-            this.rangeFill = this.container.querySelector('.range-fill');
-            this.minInput = this.container.querySelector('.min-input');
-            this.maxInput = this.container.querySelector('.max-input');
+                <div class="relative mb-2">
+                    <div class="range-slider">
+                        <div class="range-fill"></div>
+                        <input
+                            type="range"
+                            class="range-min"
+                            min="0"
+                            max="100"
+                            value="0"
+                            step="1"
+                        />
+
+                        <input
+                            type="range"
+                            class="range-max"
+                            min="0"
+                            max="100"
+                            value="100"
+                            step="1"
+                        />
+                    </div>
+                </div>
+
+                <div class="flex justify-between text-xs text-gray-400 mt-2">
+                    <span>${this.labelMin}</span>
+                    <span>${this.labelMax}</span>
+                </div>
+            </div>`;
+
+            this.rangeMin = this.container.querySelector('.range-min')
+            this.rangeMax = this.container.querySelector('.range-max')
+            this.rangeFill = this.container.querySelector('.range-fill')
+
+            this.minInput = this.container.querySelector('.min-input')
+            this.maxInput = this.container.querySelector('.max-input')
         }
 
         attachEvents() {
-            this.rangeMin.addEventListener('input', () => this.updateSlider());
-            this.rangeMax.addEventListener('input', () => this.updateSlider());
+            this.rangeMin.addEventListener('input', () => {
+                this.updateSlider()
+            })
+
+            this.rangeMax.addEventListener('input', () => {
+                this.updateSlider()
+            })
+
+            this.rangeMin.addEventListener('change', () => {
+                this.sendAjax();
+            })
+
+            this.rangeMax.addEventListener('change', () => {
+                this.sendAjax();
+            })
         }
 
         percentToPrice(percent) {
-            return this.minPrice + (this.maxPrice - this.minPrice) * (percent / 100);
+            return this.minPrice +
+                ((this.maxPrice - this.minPrice) * percent / 100);
         }
 
         formatPersianNumber(num) {
-            const persianDigits = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-            const formatted = Math.round(num).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '،');
-            return formatted.split('').map(char => char >= '0' && char <= '9' ? persianDigits[char] : char).join('');
+            const persianDigits = [
+                '۰', '۱', '۲', '۳', '۴',
+                '۵', '۶', '۷', '۸', '۹'
+            ]
+
+            return Math.round(num)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, '،')
+                .split('')
+                .map(char => char >= '0' && char <= '9'
+                    ? persianDigits[char]
+                    : char
+                )
+                .join('')
         }
 
         updateSlider() {
-            let minVal = parseInt(this.rangeMin.value);
-            let maxVal = parseInt(this.rangeMax.value);
+
+            let minVal = parseInt(this.rangeMin.value)
+            let maxVal = parseInt(this.rangeMax.value)
 
             if (maxVal - minVal < this.minGap) {
                 if (document.activeElement === this.rangeMin) {
-                    this.rangeMin.value = maxVal - this.minGap;
-                    minVal = maxVal - this.minGap;
+                    this.rangeMin.value = maxVal - this.minGap
+                    minVal = maxVal - this.minGap
                 } else {
-                    this.rangeMax.value = minVal + this.minGap;
-                    maxVal = minVal + this.minGap;
+                    this.rangeMax.value = minVal + this.minGap
+                    maxVal = minVal + this.minGap
                 }
             }
 
-            this.rangeFill.style.right = minVal + '%';
-            this.rangeFill.style.left = (100 - maxVal) + '%';
-
-            const minPrice = this.percentToPrice(minVal);
-            const maxPrice = this.percentToPrice(maxVal);
-
-            this.minInput.value = this.formatPersianNumber(minPrice);
-            this.maxInput.value = this.formatPersianNumber(maxPrice);
+            this.rangeFill.style.right = minVal + '%'
+            this.rangeFill.style.left = (100 - maxVal) + '%'
+            const minPrice = this.percentToPrice(minVal)
+            const maxPrice = this.percentToPrice(maxVal)
+            this.minInput.value = this.formatPersianNumber(minPrice)
+            this.maxInput.value = this.formatPersianNumber(maxPrice)
         }
 
         getValues() {
             return {
-                min: this.percentToPrice(parseInt(this.rangeMin.value)),
-                max: this.percentToPrice(parseInt(this.rangeMax.value))
-            };
+                min: Math.round(this.percentToPrice(parseInt(this.rangeMin.value))),
+                max: Math.round(this.percentToPrice(parseInt(this.rangeMax.value)))
+            }
+        }
+
+        sendAjax() {
+            clearTimeout(this.ajaxTimeout);
+            this.ajaxTimeout = setTimeout(() => {
+                const values = this.getValues()
+
+                $.ajax({
+                    url: '/loans/filter',
+                    method: 'GET',
+                    data: {
+                        min_price: values.min,
+                        max_price: values.max
+                    },
+                    beforeSend() {
+                        $('.loading').show();
+                    },
+                    success(response) {
+                        $('#loan-list').html(response);
+                        console.log(
+                            'Min:',
+                            values.min,
+                            'Max:',
+                            values.max
+                        );
+                    },
+                    error(xhr) {
+                        console.error(xhr);
+                    },
+                    complete() {
+                        $('.loading').hide();
+                    }
+                })
+
+            }, 1000)
         }
     }
 
-    // ذخیره instance های فیلترها
-    const filters = {};
+    const filters = {}
 
-    // Initialize filters
     document.addEventListener('DOMContentLoaded', () => {
-        filters.amount = new PriceRangeFilter(document.getElementById('filter-amount'));
-        filters.monthly = new PriceRangeFilter(document.getElementById('filter-monthly'));
-        filters.transfer = new PriceRangeFilter(document.getElementById('filter-transfer'));
 
-        // دکمه اعمال همه فیلترها
-        document.getElementById('apply-all').addEventListener('click', () => {
-            const amountValues = filters.amount.getValues();
-            const monthlyValues = filters.monthly.getValues();
-            const transferValues = filters.transfer.getValues();
+        filters.amount = new PriceRangeFilter(
+            document.getElementById('filter-amount')
+        )
 
-            console.log('فیلترهای اعمال شده:', {
-                amount: amountValues,
-                monthly: monthlyValues,
-                transfer: transferValues
-            });
-
-            // اینجا می‌تونی API call بزنی
-            alert(`فیلترها اعمال شد:
-
-مبلغ: ${filters.amount.formatPersianNumber(amountValues.min)} - ${filters.amount.formatPersianNumber(amountValues.max)} تومان
-
-اقساط ماهانه: ${filters.monthly.formatPersianNumber(monthlyValues.min)} - ${filters.monthly.formatPersianNumber(monthlyValues.max)} تومان
-
-قیمت انتقال: ${filters.transfer.formatPersianNumber(transferValues.min)} - ${filters.transfer.formatPersianNumber(transferValues.max)} تومان`);
-        });
-    });
+    })
 </script>
 </body>
+
 </html>
